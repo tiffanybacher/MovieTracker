@@ -2,12 +2,15 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Switch, Route } from 'react-router';
 import './App.css';
-import { fetchMovies } from '../../apiCalls/fetchMovies';
+import { fetchDiscover } from '../../api/fetchDiscover';
+import { cleanDiscover } from '../../api/cleaners';
 
 class App extends Component {
   
   componentDidMount() {
-    fetchMovies();
+    fetchDiscover()
+      .then(response => cleanDiscover(response.results))
+      .then(movies => console.log(movies));
   }
   
   render() {
