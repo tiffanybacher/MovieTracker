@@ -2,7 +2,7 @@
 
 
 #Logins
-/utils.API-logins.js
+/src/utils/API-logins.js
 
 # dependencies
 /node_modules
