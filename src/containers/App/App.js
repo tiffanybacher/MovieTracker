@@ -26,12 +26,10 @@ class App extends Component {
     return(
       <div className="App">
         <h1>OUR APP</h1>
-        <MovieContainer />
-        {/* <Header />
+        {/* <Header /> */}
         <Switch>
-          <Route exact path='/' component={Splash}/>
-          <Route exact path='/movies' component={MovieContainer}/>
-        </Switch> */}
+          <Route exact path='/' component={MovieContainer}/>
+        </Switch> 
       </div>
     );
   }
