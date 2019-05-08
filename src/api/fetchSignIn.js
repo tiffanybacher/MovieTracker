@@ -1,14 +1,14 @@
 export const fetchSignIn = (email, password) => {
-  const request = {
+  const body = JSON.stringify({ email, password })
+  const init = {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },
-    body: {
-      email, password
-    }
+    body 
   }
-  fetch("http://localhost:3000/api/users", request)
+  const request = new Request("http://localhost:3000/api/users", init);
+  return fetch(request)
     .then(response => response.json())
-    .then(data => console.log(data))
+    .then(data => data.data)
 }

@@ -11,7 +11,6 @@ class Nav extends Component {
   }
 
   toggleLogin = () => {
-    console.log('CLICK');
     this.setState({ showLogin: !this.state.showLogin });
   }
   render() {
