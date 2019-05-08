@@ -23,24 +23,27 @@ const MovieCard = ({ title, overview, posterImg, id, rating, releaseDate }) => {
     ratingNum = rating;
   }
 
+  let ratingCircle = 
+    <svg viewBox="0 0 36 36" className="rating-circle">
+      <path className="circle-bg"
+        d="M18 2.0845
+          a 15.9155 15.9155 0 0 1 0 31.831
+          a 15.9155 15.9155 0 0 1 0 -31.831"/>
+      <path className="circle"
+        strokeDasharray={`${percentage}, 100`}
+        d="M18 2.0845
+          a 15.9155 15.9155 0 0 1 0 31.831
+          a 15.9155 15.9155 0 0 1 0 -31.831"/>
+      <text x="9" y="23" className="rating-num">{ratingNum}</text>
+    </svg>
+
   return (
     <article className="MovieCard">
       <img className="card-img" src={posterImg} alt={`${title} poster`}/>
       <div className="card-info">
         <div className="card-header">
           <div className="circle-wrapper">
-            <svg viewBox="0 0 36 36" className="rating-circle">
-              <path className="circle-bg"
-                d="M18 2.0845
-                  a 15.9155 15.9155 0 0 1 0 31.831
-                  a 15.9155 15.9155 0 0 1 0 -31.831"/>
-              <path className="circle"
-                strokeDasharray={`${percentage}, 100`}
-                d="M18 2.0845
-                  a 15.9155 15.9155 0 0 1 0 31.831
-                  a 15.9155 15.9155 0 0 1 0 -31.831"/>
-              <text x="9" y="23" className="rating-num">{ratingNum}</text>
-            </svg>
+            {ratingCircle}
           </div>
           <div className="card-title-wrap">
             <h2 className="card-title">{title}</h2>

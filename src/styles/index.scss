@@ -6,7 +6,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+@import './node_modules/normalize-scss/sass/normalize';
 @import '../containers/App/App.scss';
 @import '../containers/MovieContainer/MovieContainer';
 @import '../components/MovieCard/MovieCard';
+@import '../components/Nav/Nav';
+@import '../components/SearchBar/SearchBar';
 
