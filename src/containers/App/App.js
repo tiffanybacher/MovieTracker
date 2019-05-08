@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Switch, Route } from 'react-router';
 import './App.css';
 import { fetchDiscover } from '../../api/fetchDiscover';
-import { cleanDiscover } from '../../api/cleaners';
+import { cleanAllMovies } from '../../api/cleaners';
 import { addDiscoverMovies } from '../../actions';
 import MovieContainer from '../MovieContainer/MovieContainer';
 
@@ -17,7 +17,7 @@ class App extends Component {
   
   componentDidMount() {
     return fetchDiscover()
-      .then(response => cleanDiscover(response.results))
+      .then(response => cleanAllMovies(response.results))
       .then(movies => this.props.addDiscoverMovies(movies))
       .catch(error => this.setState({error: error.message}));
   }
