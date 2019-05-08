@@ -31,31 +31,34 @@ export class LoginForm extends Component {
   }
 
   handleChange = (e) => {
-    this.setState({ [e.target.id]: e.target.value });
+    this.setState({ [e.target.name]: e.target.value });
   } 
 
   render() {
     return (
       <form
         onSubmit={this.handleSubmit}
+        className="LoginForm"
       >
-        <label htmlFor="username">Username</label>
+        <label htmlFor="username-input">Username</label>
         <input 
           type="text" 
-          id="username"
+          id="username-input"
+          name="username"
           value={this.state.username} 
           onChange={this.handleChange}
         />
         <label htmlFor="password">Password</label>
         <input 
           type="password" 
-          id="password" 
+          id="password-input"
+          name="password" 
           value={this.state.password}
           onChange={this.handleChange}
         />
-        <button type="submit">Submit</button>
+        <button type="submit" className="submit-btn">Submit</button>
         <p>
-          Not a member? <Link to="/signup">Create an account</Link>
+          Not a member? <Link to="/signup" className="signup-link">Create an account</Link>
         </p>
       </form>
     );

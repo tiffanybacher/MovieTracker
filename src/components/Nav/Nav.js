@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import LoginForm from '../LoginForm/LoginForm';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { logoutUser } from '../../actions';
 
 class Nav extends Component {
   constructor() {
@@ -14,6 +16,12 @@ class Nav extends Component {
 
   toggleLogin = () => {
     this.setState({ showLogin: !this.state.showLogin });
+  }
+
+  handleLogout = () => {
+    //create action that takes in id to update global state to user: {}
+    //create dispatch to invoke action
+    this.props.logoutUser();
   }
 
   render() {
@@ -38,6 +46,7 @@ class Nav extends Component {
       accountNav =
         <div className="account-wrapper">
           <p className="userGreeting">Hi, {name}!</p>
+          <Link to="/" className="logout-link" onClick={this.handleLogout}>Logout</Link>
         </div>
     }
 
@@ -68,4 +77,8 @@ const mapStateToProps = (state) => ({
   user: state.user
 });
 
-export default connect(mapStateToProps)(Nav);
+const mapDispatchToProps = (dispatch) => ({
+  logoutUser: () => dispatch(logoutUser())
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Nav);

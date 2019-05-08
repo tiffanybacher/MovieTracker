@@ -8,6 +8,7 @@ export const fetchSignIn = (email, password) => {
     body 
   }
   const request = new Request("http://localhost:3000/api/users", init);
+  
   return fetch(request)
     .then(response => response.json())
     .then(data => data.data)
