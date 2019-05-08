@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Switch, Route } from 'react-router';
-import './App.css';
 import { fetchDiscover } from '../../api/fetchDiscover';
 import { cleanDiscover } from '../../api/cleaners';
 import { addDiscoverMovies } from '../../actions';
