@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import LoginForm from '../LoginForm/LoginForm';
+import { connect } from 'react-redux';
 
 class Nav extends Component {
   constructor() {
-    super()
+    super();
+
     this.state = {
       showLogin: false
     }
@@ -13,7 +15,32 @@ class Nav extends Component {
   toggleLogin = () => {
     this.setState({ showLogin: !this.state.showLogin });
   }
+
   render() {
+    let accountNav;
+    const { name } = this.props.user;
+
+    if (!this.props.user.name) {
+      accountNav =
+        <div className="account-wrapper">
+            <p 
+              className="login-link nav-link"
+              role="link"
+              onClick={this.toggleLogin}
+            >
+              LOGIN
+            </p>
+            <NavLink to="/signup" className="nav-link">
+              SIGN UP
+            </NavLink>
+          </div>
+    } else {
+      accountNav =
+        <div className="account-wrapper">
+          <p className="userGreeting">Hi, {name}!</p>
+        </div>
+    }
+
     return (
       <nav className="Nav">
         <div className="nav-left">
@@ -30,21 +57,15 @@ class Nav extends Component {
             </NavLink>
           </div>
         </div>
-        <div className="account-wrapper">
-          <p 
-            className="login-link nav-link"
-            onClick={this.toggleLogin}
-          >
-            LOGIN
-          </p>
-          <NavLink to="/signup" className="nav-link">
-            SIGN UP
-          </NavLink>
-        </div>
-        {this.state.showLogin && <LoginForm />}
+        {accountNav}
+        {this.state.showLogin && <LoginForm toggleLogin={this.toggleLogin} />}
       </nav>
     );
   }
 }
 
-export default Nav;
+const mapStateToProps = (state) => ({
+  user: state.user
+});
+
+export default connect(mapStateToProps)(Nav);
