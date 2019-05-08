@@ -1,0 +1,88 @@
+.MovieCard {
+  display: flex;
+  margin: 10px;
+  text-align: left;
+  width: 525px;
+  height: 300px;
+
+  .card-img {
+    height: 300px;
+    object-fit: cover;
+  }
+
+  .card-info {
+    border: 3px solid black;
+    padding: 20px;
+    position: relative;
+
+    .card-header {
+      display: flex;
+
+      .rating-circle {
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+      }
+    
+      .circle-bg {
+        fill: none;
+        stroke: #999;
+        stroke-width: 4px;
+      }
+
+      .circle {
+        fill: none;
+        stroke: #4CC790;
+        stroke-width: 4px;
+        stroke-linecap: round;
+        animation: progress 1s ease-out forwards;
+      }
+
+      .rating-num {
+        font-size: .8em;
+      }
+
+      .card-title-wrap {
+        margin: 0 0 0 10px;
+
+        .card-title {
+          font-size: 1.1em;
+          margin: 0;
+        }
+
+        .card-year {
+          margin: 0;
+        }
+      }
+    }
+
+    .card-overview {
+      height: 120px;
+      overflow: auto;
+      margin: 20px 0;
+    }
+
+    .more-info-btn {
+      background: black;
+      border-top: 3px solid black;
+      bottom: 0;
+      color: white;
+      font-weight: 600;
+      left: 0;
+      padding: 15px;
+      position: absolute;
+      right: 0;
+      text-align: center;
+
+      &:hover {
+        background: #333;
+      }
+    }
+  }
+}
+
+@keyframes progress {
+  0% {
+    stroke-dasharray: 0 100;
+  }
+}
