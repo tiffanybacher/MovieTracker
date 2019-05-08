@@ -8,14 +8,15 @@ import { addDiscoverMovies } from "../../actions";
 
 
 jest.mock('../../api/fetchDiscover.js');
-jest.mock('../../api/cleaners.js')
+jest.mock('../../api/cleaners.js');
 
 describe('App', () => {
   let wrapper, instance;
+  let mockAddDiscoverMovies = jest.fn();
   fetchDiscover.mockImplementation(() => Promise.resolve([mockUncleanMovie]));
   
   beforeEach(() => {
-    wrapper = shallow(<App />)
+    wrapper = shallow(<App addDiscoverMovies={mockAddDiscoverMovies}/>);
     instance = wrapper.instance();
   });
 
@@ -50,15 +51,16 @@ describe('App', () => {
       expect(cleanAllMovies).toHaveBeenCalled();
     });
 
-    it.skip('should invoke addDiscoverMovies', () => {
-
+    it('should invoke addDiscoverMovies', () => {
+      instance.setDiscoverMovies();
+      expect(mockAddDiscoverMovies).toHaveBeenCalled();
     });
 
     it.skip('should set error message in state if response not ok', async () => {
       fetchDiscover.mockImplementation(() =>
         Promise.resolve({ ok: false}));
       await instance.setDiscoverMovies();
-      expect(wrapper.state('error')).toEqual();
+      expect(wrapper.state('error')).toEqual('Discover failed to fetch');
     });
   });
 
