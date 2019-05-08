@@ -9,7 +9,7 @@ export class LoginForm extends Component {
     super();
 
     this.state = {
-      username: '',
+      email: '',
       password: ''
     }
   }
@@ -17,15 +17,15 @@ export class LoginForm extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
 
-    const { username, password } = this.state;
+    const { email, password } = this.state;
 
-    fetchSignIn(username, password)
+    fetchSignIn(email, password)
       .then(user => this.props.updateUser(user.id, user.name));
 
     this.props.toggleLogin();
 
     this.setState({
-      username: '',
+      email: '',
       password: ''
     });
   }
@@ -40,12 +40,12 @@ export class LoginForm extends Component {
         onSubmit={this.handleSubmit}
         className="LoginForm"
       >
-        <label htmlFor="username-input">Username</label>
+        <label htmlFor="email-input">Email</label>
         <input 
           type="text" 
-          id="username-input"
-          name="username"
-          value={this.state.username} 
+          id="email-input"
+          name="email"
+          value={this.state.email} 
           onChange={this.handleChange}
         />
         <label htmlFor="password">Password</label>

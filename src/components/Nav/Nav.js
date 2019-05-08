@@ -19,8 +19,6 @@ class Nav extends Component {
   }
 
   handleLogout = () => {
-    //create action that takes in id to update global state to user: {}
-    //create dispatch to invoke action
     this.props.logoutUser();
   }
 
