@@ -1,5 +1,7 @@
+import { serverUrl } from './pathNames';
+
 export const fetchSignIn = (email, password) => {
-  const body = JSON.stringify({ email, password })
+  const body = JSON.stringify({ email, password });
   const init = {
     method: 'POST',
     headers: {
@@ -7,9 +9,9 @@ export const fetchSignIn = (email, password) => {
     },
     body 
   }
-  const request = new Request("http://localhost:3000/api/users", init);
-  
+  const request = new Request(serverUrl, init);
+
   return fetch(request)
     .then(response => response.json())
-    .then(data => data.data)
+    .then(data => data.data);
 }
