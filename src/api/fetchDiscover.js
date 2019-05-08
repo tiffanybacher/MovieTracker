@@ -1,6 +1,6 @@
 import { jacobKey, baseUrl } from '../utils/API-logins'
 
-export const fetchDiscover = () => {
+const fetchDiscover = () => {
   return fetch(`${baseUrl}discover/movie${jacobKey}`)
     .then(response => {
       if (!response.ok) {
@@ -10,4 +10,6 @@ export const fetchDiscover = () => {
       }
   });
 }
+
+export default fetchDiscover;
 

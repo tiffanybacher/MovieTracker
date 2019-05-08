@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Switch, Route } from 'react-router';
-import { fetchDiscover } from '../../api/fetchDiscover';
+import './App.css';
+import  fetchDiscover  from '../../api/fetchDiscover';
 import { cleanDiscover } from '../../api/cleaners';
 import { addDiscoverMovies } from '../../actions';
 import MovieContainer from '../MovieContainer/MovieContainer';
 
-class App extends Component {
+export class App extends Component {
   constructor() {
     super();
     this.state = {
@@ -15,10 +16,14 @@ class App extends Component {
   }
   
   componentDidMount() {
-    return fetchDiscover()
-      .then(response => cleanDiscover(response.results))
+    this.setDiscoverMovies();
+  }
+
+  setDiscoverMovies = () => {
+    fetchDiscover()
+      .then(response => cleanAllMovies(response.results))
       .then(movies => this.props.addDiscoverMovies(movies))
-      .catch(error => this.setState({error: error.message}));
+      .catch(error => this.setState({ error: error.message }));
   }
   
   render() {
@@ -34,11 +39,11 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
+export const mapStateToProps = (state) => ({
   movies: state.movies
 });
 
-const mapDispatchToProps = (dispatch) => ({
+export const mapDispatchToProps = (dispatch) => ({
   addDiscoverMovies: (movies) => dispatch(addDiscoverMovies(movies))
 });
 
