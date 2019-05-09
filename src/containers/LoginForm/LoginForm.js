@@ -7,22 +7,25 @@ import { updateUser } from '../../actions';
 export class LoginForm extends Component {
   constructor() {
     super();
-
     this.state = {
       email: '',
-      password: ''
+      password: '',
+      error: false
     }
   }
 
   handleSubmit = (e) => {
     e.preventDefault();
-
     const { email, password } = this.state;
-
     fetchSignIn(email, password)
-      .then(user => this.props.updateUser(user.id, user.name));
-
-    this.props.toggleLogin();
+      .then(user => {
+        this.props.updateUser(user.id, user.name);
+        this.props.toggleLogin();
+      })
+      .catch(error => this.setState({ 
+        error: true,
+        password: '',
+      }));
   }
 
   handleChange = (e) => {
@@ -40,7 +43,7 @@ export class LoginForm extends Component {
           type="text" 
           id="email-input"
           name="email"
-          value={this.state.email} 
+          value={this.state.email}
           onChange={this.handleChange}
         />
         <label htmlFor="password-input">Password</label>
@@ -51,6 +54,9 @@ export class LoginForm extends Component {
           value={this.state.password}
           onChange={this.handleChange}
         />
+        {this.state.error && 
+          <p className='error-message'>Incorrect password. Please try again.</p>
+        }
         <button type="submit" className="submit-btn">Submit</button>
         <p>
           Not a member? <Link to="/signup" className="signup-link" onClick={this.props.hideLogin}>Create an account</Link>

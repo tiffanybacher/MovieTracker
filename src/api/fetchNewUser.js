@@ -12,6 +12,12 @@ export const fetchNewUser = (email, name, password) => {
   const request = new Request(`${serverUrl}/new`, init);
 
   return fetch(request)
-    .then(response => response.json())
+    .then(response => {
+      if (!response.ok) {
+        throw new Error("Failed to create account");
+      } else {
+        return response.json();
+      }
+    })
     .then(data => data.id);
 }

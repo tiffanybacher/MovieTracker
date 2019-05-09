@@ -12,6 +12,12 @@ export const fetchSignIn = (email, password) => {
   const request = new Request(serverUrl, init);
 
   return fetch(request)
-    .then(response => response.json())
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Failed to sign in');
+      } else {
+        return response.json();
+      }
+    })
     .then(data => data.data);
 }
