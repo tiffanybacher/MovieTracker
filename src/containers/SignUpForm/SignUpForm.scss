@@ -1,0 +1,61 @@
+.signup-backdrop {
+  @include transparency($theme-rgb);
+  display: flex;
+  justify-content: space-around;
+
+  .SignUpForm {
+    background: white;
+    margin: 50px 0;
+    padding: 50px;
+    text-align: left;
+    width: 80%;
+
+    h2 {
+      margin: 20px 0;
+    }
+
+    h4 {
+      margin: 10px 0;
+    }
+
+    .flex-wrapper {
+      display: flex;
+      justify-content: space-between;
+
+      form {
+        @include flex-column;
+        @include form-layout;
+        flex: 1;
+        margin: 30px 0;
+
+        .cancel-link {
+          margin: 0 10px;
+        }
+      }
+    }
+  }
+}
+
+.signup-blurb {
+  @include box-shadow(#E5E5E5);
+  height: 280px;
+  margin: 40px 0 0 40px;
+  position: relative;
+  top: 18px;
+  width: 300px;
+
+  h3 {
+    background: gray;
+    margin: 0;
+    padding: 20px;
+  }
+
+  .signup-sub-blurb {
+    padding: 20px;
+    min-width: 200px;
+
+    ul {
+      padding: 20px;
+    }
+  }
+}
