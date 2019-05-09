@@ -7,7 +7,6 @@ import { updateUser } from '../../actions';
 export class LoginForm extends Component {
   constructor() {
     super();
-
     this.state = {
       email: '',
       password: ''
@@ -16,18 +15,10 @@ export class LoginForm extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-
     const { email, password } = this.state;
-
     fetchSignIn(email, password)
       .then(user => this.props.updateUser(user.id, user.name));
-
     this.props.toggleLogin();
-
-    this.setState({
-      email: '',
-      password: ''
-    });
   }
 
   handleChange = (e) => {
@@ -45,7 +36,6 @@ export class LoginForm extends Component {
           type="text" 
           id="email-input"
           name="email"
-          value={this.state.email} 
           onChange={this.handleChange}
         />
         <label htmlFor="password">Password</label>
@@ -53,7 +43,6 @@ export class LoginForm extends Component {
           type="password" 
           id="password-input"
           name="password" 
-          value={this.state.password}
           onChange={this.handleChange}
         />
         <button type="submit" className="submit-btn">Submit</button>
