@@ -1,0 +1,28 @@
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin form-layout {
+  label {
+    text-align: left;
+    margin: 5px 0;
+  }
+
+  input {
+    background: white;
+    font-size: 1em;
+    margin: 0 0 10px 0;
+    padding: 10px;
+  }
+
+  button {
+    background: black;
+    border: none;
+    color: white;
+    font-size: 1.1em;
+    font-weight: 600;
+    margin: 10px 0;
+    padding: 10px;
+  }
+}

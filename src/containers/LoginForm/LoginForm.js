@@ -23,11 +23,6 @@ export class LoginForm extends Component {
       .then(user => this.props.updateUser(user.id, user.name));
 
     this.props.toggleLogin();
-
-    this.setState({
-      email: '',
-      password: ''
-    });
   }
 
   handleChange = (e) => {
