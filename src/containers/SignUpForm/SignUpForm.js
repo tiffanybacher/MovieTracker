@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { fetchNewUser } from '../../api/fetchNewUser';
+import { connect } from 'react-redux';
+import { updateUser } from '../../actions';
 
 class SignUpForm extends Component {
   state = {
@@ -7,6 +10,23 @@ class SignUpForm extends Component {
     name: '',
     password: '',
     passwordConfirm: ''
+  }
+
+  handleChange = (e) => {
+    const { name, value } = e.target;
+
+    this.setState({
+      [name]: value
+    });
+  }
+
+  handleSubmit = (e) => {
+    const { email, name, password } = this.state;
+
+    e.preventDefault();
+
+    fetchNewUser(email, name, password)
+      .then(id => this.props.updateUser(id, name));
   }
 
   render() {
@@ -71,4 +91,8 @@ class SignUpForm extends Component {
   }
 }
 
-export default SignUpForm;
+export const mapDispatchToProps = (dispatch) => ({
+  updateUser: (id, name) => dispatch(updateUser(id, name))
+});
+
+export default connect(null, mapDispatchToProps)(SignUpForm);
