@@ -48,7 +48,7 @@ export class LoginForm extends Component {
           value={this.state.email} 
           onChange={this.handleChange}
         />
-        <label htmlFor="password">Password</label>
+        <label htmlFor="password-input">Password</label>
         <input 
           type="password" 
           id="password-input"
