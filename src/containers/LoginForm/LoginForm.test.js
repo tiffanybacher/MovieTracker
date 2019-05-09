@@ -2,6 +2,7 @@ import React from "react";
 import { shallow } from "enzyme";
 import { LoginForm, mapDispatchToProps } from "./LoginForm";
 import { fetchSignIn } from "../../api/fetchSignIn";
+import { updateUser } from "../../actions";
 
 jest.mock("../../api/fetchSignIn");
 
@@ -48,7 +49,7 @@ describe("LoginForm", () => {
     expect(wrapper.state()).toEqual(mockDefaultState);
   });
 
-  describe('Event Listeners', () => {
+  describe('Event Handlers', () => {
     it('should invoke handleChange on input change', () => {
       wrapper.find('#email-input').simulate('change', mockChangeEvent);
       expect(wrapper.state("email")).toEqual("email@email.com");
@@ -82,6 +83,16 @@ describe("LoginForm", () => {
     it("should invoke toggleLogin", () => {
       instance.handleSubmit(mockSubmitEvent);
       expect(mockToggleLogin).toHaveBeenCalled();
+    });
+  });
+
+  describe('mapDispatchToProps', () => {
+    it('should call dispatch when using a function from MDTP', () => {
+      const mockDispatch = jest.fn();
+      const actionToDispatch = updateUser(1, 'Jacob');
+      const mappedProps = mapDispatchToProps(mockDispatch);
+      mappedProps.updateUser(1, 'Jacob');
+      expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
     });
   });
 });
