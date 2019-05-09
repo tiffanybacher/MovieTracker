@@ -20,12 +20,14 @@ export class LoginForm extends Component {
     fetchSignIn(email, password)
       .then(user => {
         this.props.updateUser(user.id, user.name);
-        this.props.toggleLogin();
+        this.props.hideLogin();
       })
-      .catch(error => this.setState({ 
-        error: true,
-        password: '',
-      }));
+      .catch(error => {
+        this.setState({
+          error: true,
+          password: ""
+        });
+      });
   }
 
   handleChange = (e) => {
