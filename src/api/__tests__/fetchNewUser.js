@@ -1,16 +1,15 @@
-import { fetchSignIn } from "../fetchSignIn";
+import { fetchNewUser } from "../fetchNewUser";
 import { serverUrl } from "../pathNames";
 
 const mockUser = {
-  data: {
-    id: 1,
-    name: "Jacob"
-  }
+  id: 1
 };
 
-const email = "email@email.com";
-const password = "password";
-const body = JSON.stringify({ email, password });
+const email = 'email@email.com';
+const name = "Jacob";
+const password = 'password';
+
+const body = JSON.stringify({ email, name, password });
 const init = {
   method: "POST",
   headers: {
@@ -18,7 +17,7 @@ const init = {
   },
   body
 };
-const request = new Request(serverUrl, init);
+const request = new Request(`${serverUrl}/new`, init);
 window.fetch = jest.fn().mockImplementation(() =>
   Promise.resolve({
     ok: true,
@@ -28,13 +27,13 @@ window.fetch = jest.fn().mockImplementation(() =>
 
 describe("fetchSignIn", () => {
   it("should call fetch with the correct params", () => {
-    fetchSignIn(email, password);
+    fetchNewUser(email, name, password);
     expect(fetch).toHaveBeenCalledWith(request);
   });
 
   it("should retrun the correct data", async () => {
-    const result = await fetchSignIn(email, password);
-    expect(result).toEqual(mockUser.data);
+    const result = await fetchNewUser(email, name, password);
+    expect(result).toEqual(mockUser.id);
   });
 
   it("should throw an error if fetch fails", async () => {
@@ -45,9 +44,9 @@ describe("fetchSignIn", () => {
     );
 
     try {
-      await fetchSignIn(email, password);
+      await fetchNewUser(email, name, password);
     } catch (error) {
-      expect(error.message).toBe("Failed to sign in");
+      expect(error.message).toBe("Failed to create account");
     }
   });
 });
