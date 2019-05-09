@@ -2,8 +2,19 @@ import React from "react";
 import { shallow } from "enzyme";
 import { SignUpForm, mapDispatchToProps } from "./SignUpForm";
 import { fetchNewUser } from "../../api/fetchNewUser";
+import { updateUser } from "../../actions";
 
 jest.mock("../../api/fetchNewUser");
+
+const mockChangeEvent = {
+  target: {
+    name: "name",
+    value: "Jacob"
+  }
+};
+const mockSubmitEvent = {
+  preventDefault: () => {}
+};
 
 describe("SignUpForm", () => {
   let wrapper, instance;
@@ -34,32 +45,45 @@ describe("SignUpForm", () => {
     expect(wrapper.state()).toEqual(mockDefaultState);
   });
 
-  describe('handleChange', () => {
-    const mockEvent = {
-      target: {
-        name: 'name',
-        value: 'Jacob'
-      }
-    };
+  describe('Event Handlers', () => {
+    it('should invoke handleChange on input change', () => {
+      wrapper.find("#signup-email-input").simulate('change', mockChangeEvent);
+      expect(wrapper.state("name")).toEqual("Jacob");
+    });
 
+    it('should invoke handleSubmit on form submit', () => {
+      wrapper.find(".signup-form-inputs").simulate('submit', mockSubmitEvent);
+      expect(fetchNewUser).toHaveBeenCalled();
+    });
+
+  });
+
+  describe('handleChange', () => {
     it('should set the appropriate state to the input value', () => {
-      instance.handleChange(mockEvent);
+      instance.handleChange(mockChangeEvent);
       expect(wrapper.state('name')).toEqual('Jacob');
     });
   });
 
   describe("handleSubmit", () => {
-    const mockEvent = {
-      preventDefault: () => {}
-    }
     it("should invoke fetchNewUser", () => {
-      instance.handleSubmit(mockEvent);
+      instance.handleSubmit(mockSubmitEvent);
       expect(fetchNewUser).toHaveBeenCalled();
     });
 
     it("should invoke updateUser", () => {
-      instance.handleSubmit(mockEvent);
+      instance.handleSubmit(mockSubmitEvent);
       expect(mockUpdateUser).toHaveBeenCalled();
     });
+  });
+
+  describe('mapDispatchToProps', () => {
+    it('should call dispatch when using a function from MDTP', () => {
+      const mockDispatch = jest.fn();
+      const actionToDispatch = updateUser(1, 'Jacob');
+      const mappedProps = mapDispatchToProps(mockDispatch);
+      mappedProps.updateUser(1, 'Jacob');
+      expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
+    })
   });
 });
