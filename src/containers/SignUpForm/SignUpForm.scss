@@ -38,14 +38,15 @@
 
 .signup-blurb {
   @include box-shadow(#E5E5E5);
-  height: 280px;
+  height: 290px;
   margin: 40px 0 0 40px;
   position: relative;
   top: 18px;
   width: 300px;
 
   h3 {
-    background: gray;
+    background: $theme;
+    color: white;
     margin: 0;
     padding: 20px;
   }

@@ -25,7 +25,7 @@ export class LoginForm extends Component {
       .catch(error => {
         this.setState({
           error: true,
-          password: ""
+          password: ''
         });
       });
   }
@@ -57,7 +57,7 @@ export class LoginForm extends Component {
           onChange={this.handleChange}
         />
         {this.state.error && 
-          <p className='error-message'>Incorrect password. Please try again.</p>
+          <p className="error-message">Incorrect password. Please try again.</p>
         }
         <button type="submit" className="submit-btn">Submit</button>
         <p>
