@@ -2,6 +2,7 @@ import React from "react";
 import { shallow } from "enzyme";
 import { SignUpForm, mapDispatchToProps } from "./SignUpForm";
 import { fetchNewUser } from "../../api/fetchNewUser";
+import { updateUser } from "../../actions";
 
 jest.mock("../../api/fetchNewUser");
 
@@ -74,5 +75,15 @@ describe("SignUpForm", () => {
       instance.handleSubmit(mockSubmitEvent);
       expect(mockUpdateUser).toHaveBeenCalled();
     });
+  });
+
+  describe('mapDispatchToProps', () => {
+    it('should call dispatch when using a function from MDTP', () => {
+      const mockDispatch = jest.fn();
+      const actionToDispatch = updateUser(1, 'Jacob');
+      const mappedProps = mapDispatchToProps(mockDispatch);
+      mappedProps.updateUser(1, 'Jacob');
+      expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
+    })
   });
 });
