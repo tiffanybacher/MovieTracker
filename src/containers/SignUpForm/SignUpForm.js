@@ -3,13 +3,15 @@ import { Link } from 'react-router-dom';
 import { fetchNewUser } from '../../api/fetchNewUser';
 import { connect } from 'react-redux';
 import { updateUser } from '../../actions';
+import { fetchAllUsers } from '../../api/fetchAllUsers';
 
 export class SignUpForm extends Component {
   state = {
     email: '',
     name: '',
     password: '',
-    passwordConfirm: ''
+    passwordConfirm: '',
+    error: '',
   }
 
   handleChange = (e) => {
@@ -21,15 +23,41 @@ export class SignUpForm extends Component {
   }
 
   handleSubmit = (e) => {
-    const { email, name, password } = this.state;
-
     e.preventDefault();
+    const { email, name, password, passwordConfirm } = this.state;
+    this.setState( { error: ''} )
+    fetchAllUsers()
+      .then(data => {
+        this.checkEmail(data, email);
+        this.checkPasswords(password, passwordConfirm);
+        if (!this.state.error) {
+          fetchNewUser(email, name, password)
+            .then(id => {
+              this.props.updateUser(id, name);
+              this.props.history.push("/");
+            })
+            .catch(error => console.log(error));
+        }
+      })
+      .catch(error => console.log(error));
+  }
 
-    fetchNewUser(email, name, password)
-      .then(id => this.props.updateUser(id, name));
+  checkEmail = (data, email) => {
+    data.forEach(user => {
+      if(user.email === email) {
+        this.setState({ error: 'Email is already taken. Please try again.' })
+      }
+    });
+  }
+
+  checkPasswords = (password, passwordConfirm) => {
+    if(password !== passwordConfirm) {
+      this.setState({ error: 'Passwords do not match. Please try again.' })
+    }
   }
 
   render() {
+    let { error } = this.state;
     return (
       <div className="signup-backdrop">
         <div className="SignUpForm">
