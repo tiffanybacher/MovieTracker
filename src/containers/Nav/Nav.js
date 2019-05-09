@@ -10,7 +10,7 @@ class Nav extends Component {
     super();
 
     this.state = {
-      showLogin: false
+      showLogin: false,
     }
   }
 
@@ -18,17 +18,21 @@ class Nav extends Component {
     this.setState({ showLogin: !this.state.showLogin });
   }
 
+  hideLogin = () => {
+    this.setState({ showLogin: false })
+  }
+
   handleLogout = () => {
     this.props.logoutUser();
   }
 
   render() {
-    let accountNav;
     const { name } = this.props.user;
+    let accountNav;
 
     if (!this.props.user.name) {
       accountNav =
-        <div className="account-wrapper">
+        <div className="nav-right">
             <p 
               className="login-link nav-link"
               role="link"
@@ -36,22 +40,27 @@ class Nav extends Component {
             >
               LOGIN
             </p>
-            <NavLink to="/signup" className="nav-link">
+            <NavLink to="/signup" className="nav-link" onClick={this.hideLogin}>
               SIGN UP
             </NavLink>
           </div>
     } else {
       accountNav =
-        <div className="account-wrapper">
+        <div className="nav-right">
           <p className="userGreeting">Hi, {name}!</p>
           <Link to="/" className="logout-link" onClick={this.handleLogout}>Logout</Link>
         </div>
     }
 
+    const loginDropdown =
+      <article className="login-dropdown">
+        <LoginForm toggleLogin={this.hideLogin} />
+      </article>
+
     return (
       <nav className="Nav">
         <div className="nav-left">
-          <img src="" alt="Logo" />
+          <img src="" className="header-logo" alt="Logo" />
           <div className="main-nav-wrapper">
             <NavLink to="/" className="nav-link">
               DISCOVER
@@ -65,7 +74,7 @@ class Nav extends Component {
           </div>
         </div>
         {accountNav}
-        {this.state.showLogin && <LoginForm toggleLogin={this.toggleLogin} />}
+        {this.state.showLogin && loginDropdown}
       </nav>
     );
   }

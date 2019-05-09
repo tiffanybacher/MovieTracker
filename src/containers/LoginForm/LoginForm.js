@@ -48,7 +48,7 @@ export class LoginForm extends Component {
           value={this.state.email} 
           onChange={this.handleChange}
         />
-        <label htmlFor="password">Password</label>
+        <label htmlFor="password-input">Password</label>
         <input 
           type="password" 
           id="password-input"
@@ -58,7 +58,7 @@ export class LoginForm extends Component {
         />
         <button type="submit" className="submit-btn">Submit</button>
         <p>
-          Not a member? <Link to="/signup" className="signup-link">Create an account</Link>
+          Not a member? <Link to="/signup" className="signup-link" onClick={this.props.hideLogin}>Create an account</Link>
         </p>
       </form>
     );
