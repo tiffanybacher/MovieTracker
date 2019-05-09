@@ -1,4 +1,5 @@
-import { jacobKey, baseUrl } from '../utils/API-logins'
+import { jacobKey } from '../utils/API-logins';
+import { baseUrl } from './pathNames';
 
 const fetchDiscover = () => {
   return fetch(`${baseUrl}discover/movie${jacobKey}`)

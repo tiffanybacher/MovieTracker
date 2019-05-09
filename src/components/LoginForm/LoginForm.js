@@ -2,53 +2,63 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { fetchSignIn } from '../../api/fetchSignIn';
-import { updateUser } from '../../actions'
+import { updateUser } from '../../actions';
 
 export class LoginForm extends Component {
   constructor() {
-    super() 
+    super();
+
     this.state = {
-      username: '',
+      email: '',
       password: ''
     }
   }
+
   handleSubmit = (e) => {
     e.preventDefault();
-    const { username, password } = this.state;
-    fetchSignIn(username, password)
-      .then(user => this.props.updateUser(user.id, user.name))
+
+    const { email, password } = this.state;
+
+    fetchSignIn(email, password)
+      .then(user => this.props.updateUser(user.id, user.name));
+
+    this.props.toggleLogin();
+
     this.setState({
-      username: '',
+      email: '',
       password: ''
-    })
+    });
   }
 
   handleChange = (e) => {
-    this.setState({ [e.target.id]: e.target.value });
+    this.setState({ [e.target.name]: e.target.value });
   } 
 
   render() {
     return (
       <form
         onSubmit={this.handleSubmit}
+        className="LoginForm"
       >
-        <label htmlFor="username">Username</label>
+        <label htmlFor="email-input">Email</label>
         <input 
           type="text" 
-          id="username"
-          value={this.state.username} 
+          id="email-input"
+          name="email"
+          value={this.state.email} 
           onChange={this.handleChange}
         />
         <label htmlFor="password">Password</label>
         <input 
           type="password" 
-          id="password" 
+          id="password-input"
+          name="password" 
           value={this.state.password}
           onChange={this.handleChange}
         />
-        <button type='submit'>Submit</button>
+        <button type="submit" className="submit-btn">Submit</button>
         <p>
-          Not a member? <Link to='/signup'>Create an account</Link>
+          Not a member? <Link to="/signup" className="signup-link">Create an account</Link>
         </p>
       </form>
     );

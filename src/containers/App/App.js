@@ -6,6 +6,7 @@ import { cleanAllMovies } from '../../api/cleaners';
 import { addDiscoverMovies } from '../../actions';
 import Header from '../../components/Header/Header';
 import MovieContainer from '../MovieContainer/MovieContainer';
+import SignUpForm from '../SignUpForm/SignUpForm';
 
 export class App extends Component {
   constructor() {
@@ -31,7 +32,8 @@ export class App extends Component {
       <div className="App">
         <Header />
         <Switch>
-          <Route exact path='/' component={MovieContainer}/>
+          <Route exact path="/" component={MovieContainer} />
+          <Route exact path="/signup" component={SignUpForm} />
         </Switch> 
       </div>
     );

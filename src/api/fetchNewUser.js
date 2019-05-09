@@ -1,17 +1,17 @@
 import { serverUrl } from './pathNames';
 
-export const fetchSignIn = (email, password) => {
-  const body = JSON.stringify({ email, password });
+export const fetchNewUser = (email, name, password) => {
+  const body = JSON.stringify({ email, name, password });
   const init = {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },
-    body 
+    body
   }
-  const request = new Request(serverUrl, init);
+  const request = new Request(`${serverUrl}/new`, init);
 
   return fetch(request)
     .then(response => response.json())
-    .then(data => data.data);
+    .then(data => data.id);
 }
