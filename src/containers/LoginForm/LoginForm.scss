@@ -1,9 +1,11 @@
 .LoginForm {
   @include flex-column;
   @include form-layout;
-  .error-message {
-    color: red;
-    font-weight: bold;
-    margin-top: 10px;
-    margin-bottom: 20px;
+}
+
+.error-message {
+  color: red;
+  font-weight: bold;
+  margin-top: 10px;
+  margin-bottom: 20px;
 }
