@@ -11,7 +11,7 @@ export class SignUpForm extends Component {
     name: '',
     password: '',
     passwordConfirm: '',
-    error: '',
+    error: ' ',
   }
 
   handleChange = (e) => {
@@ -25,7 +25,7 @@ export class SignUpForm extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     const { email, name, password, passwordConfirm } = this.state;
-    this.setState( { error: ''} )
+    this.setState( { error: ' '} )
     fetchAllUsers()
       .then(data => {
         this.checkEmail(data, email);
@@ -62,47 +62,59 @@ export class SignUpForm extends Component {
       <div className="signup-backdrop">
         <div className="SignUpForm">
           <h2>Sign up for an account</h2>
-          <h4>Sign up is free and easy! Fill out the form below to get started.</h4>
+          <h4>
+            Sign up is free and easy! Fill out the form below to get
+            started.
+          </h4>
           <div className="flex-wrapper">
             <form
               onSubmit={this.handleSubmit}
               className="signup-form-inputs"
             >
+              <div className="error-holder">
+                <p className="error-message">{error}</p>
+              </div>
               <label htmlFor="signup-email-input">Email</label>
-              <input 
-                type="text" 
+              <input
+                type="text"
                 id="signup-email-input"
                 name="email"
-                value={this.state.email} 
+                value={this.state.email}
                 onChange={this.handleChange}
               />
               <label htmlFor="signup-name-input">Name</label>
-              <input 
-                type="text" 
+              <input
+                type="text"
                 id="signup-name-input"
                 name="name"
-                value={this.state.name} 
+                value={this.state.name}
                 onChange={this.handleChange}
               />
               <label htmlFor="signup-password-input">Password</label>
-              <input 
-                type="password" 
+              <input
+                type="password"
                 id="signup-password-input"
-                name="password" 
+                name="password"
                 value={this.state.password}
                 onChange={this.handleChange}
               />
-              <label htmlFor="password-confirm-input">Confirm Password</label>
-              <input 
-                type="password" 
+              <label htmlFor="password-confirm-input">
+                Confirm Password
+              </label>
+              <input
+                type="password"
                 id="password-confirm-input"
-                name="passwordConfirm" 
+                name="passwordConfirm"
                 value={this.state.passwordConfirm}
                 onChange={this.handleChange}
               />
               <div className="signup-btn-wrapper">
-                <button type="submit" className="signup-btn btn">Sign Up</button>
-                <Link to="/" className="cancel-link">Cancel</Link>
+                <button type="submit" className="signup-btn btn">
+                  Sign Up
+                </button>
+                <Link to="/" className="cancel-link">
+                  Cancel
+                </Link>
               </div>
             </form>
             <article className="signup-blurb">
