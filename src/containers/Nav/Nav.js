@@ -18,6 +18,10 @@ class Nav extends Component {
     this.setState({ showLogin: !this.state.showLogin });
   }
 
+  hideLogin = () => {
+    this.setState({ showLogin: false })
+  }
+
   handleLogout = () => {
     this.props.logoutUser();
   }
@@ -36,7 +40,7 @@ class Nav extends Component {
             >
               LOGIN
             </p>
-            <NavLink to="/signup" className="nav-link">
+            <NavLink to="/signup" className="nav-link" onClick={this.hideLogin}>
               SIGN UP
             </NavLink>
           </div>
@@ -50,7 +54,7 @@ class Nav extends Component {
 
     const loginDropdown =
       <article className="login-dropdown">
-        <LoginForm toggleLogin={this.toggleLogin} />
+        <LoginForm toggleLogin={this.hideLogin} />
       </article>
 
     return (
