@@ -15,6 +15,7 @@ exports[`LoginForm should match the snapshot 1`] = `
     name="email"
     onChange={[Function]}
     type="text"
+    value=""
   />
   <label
     htmlFor="password-input"
@@ -26,6 +27,7 @@ exports[`LoginForm should match the snapshot 1`] = `
     name="password"
     onChange={[Function]}
     type="password"
+    value=""
   />
   <button
     className="submit-btn"
@@ -37,6 +39,7 @@ exports[`LoginForm should match the snapshot 1`] = `
     Not a member? 
     <Link
       className="signup-link"
+      onClick={[MockFunction]}
       to="/signup"
     >
       Create an account

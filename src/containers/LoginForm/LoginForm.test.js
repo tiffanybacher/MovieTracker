@@ -20,14 +20,14 @@ const mockSubmitEvent = {
 describe("LoginForm", () => {
   let wrapper, instance;
   let mockUpdateUser = jest.fn();
-  let mockToggleLogin = jest.fn();
+  let mockHideLogin = jest.fn();
   fetchSignIn.mockImplementation(() => Promise.resolve(1));
 
   beforeEach(() => {
     wrapper = shallow(
     <LoginForm 
       updateUser={mockUpdateUser} 
-      toggleLogin={mockToggleLogin}
+      hideLogin={mockHideLogin}
     />);
     instance = wrapper.instance();
   });
@@ -43,7 +43,8 @@ describe("LoginForm", () => {
   it("should have a defult state", () => {
     const mockDefaultState = {
       email: "",
-      password: ""
+      password: "",
+      error: false
     };
     wrapper = shallow(<LoginForm />, { disableLifecycleMethods: true });
     expect(wrapper.state()).toEqual(mockDefaultState);
@@ -69,9 +70,8 @@ describe("LoginForm", () => {
   });
 
   describe("handleSubmit", () => {
-    
     it("should invoke fetchSignIn", () => {
-      instance.handleSubmit(mockSubmitEvent);
+      instance.handleSubmit();
       expect(fetchSignIn).toHaveBeenCalled();
     });
 
@@ -80,10 +80,16 @@ describe("LoginForm", () => {
       expect(mockUpdateUser).toHaveBeenCalled();
     });
 
-    it("should invoke toggleLogin", () => {
+    it("should invoke hideLogin", () => {
       instance.handleSubmit(mockSubmitEvent);
-      expect(mockToggleLogin).toHaveBeenCalled();
+      expect(mockHideLogin).toHaveBeenCalled();
     });
+
+    it('should set error in state to true if fetch fails', async () => {
+      fetchSignIn.mockImplementation(() => Promise.reject());
+      await instance.handleSubmit(mockSubmitEvent);
+      expect(wrapper.state('error')).toEqual(true);
+    })
   });
 
   describe('mapDispatchToProps', () => {

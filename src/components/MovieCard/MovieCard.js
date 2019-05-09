@@ -1,6 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-const MovieCard = ({ title, overview, posterImg, id, rating, releaseDate }) => {
+export const MovieCard = ({ title, overview, posterImg, id, rating, releaseDate }) => {
   let movieOverview;
   let ratingNum;
   let releaseYear = releaseDate.substring(0, 4);
@@ -51,10 +52,18 @@ const MovieCard = ({ title, overview, posterImg, id, rating, releaseDate }) => {
           </div>
         </div>
         <p className="card-overview">{movieOverview}</p>
-        <div className="more-info-btn" role="button">More Info</div>
+        <Link 
+          className="more-info-btn" 
+          role="button"
+          to={`/movie/${id}`}
+        >
+          More Info
+        </Link>
       </div>
     </article>
   );
 } 
+
+
 
 export default MovieCard;

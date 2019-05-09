@@ -8,3 +8,13 @@ export const cleanAllMovies = (moviesArray) => {
   });
   return cleanMovies;
 }
+
+export const cleanPeople = (data) => {
+  const director = data.crew.filter(person => person.job === "Director");
+  const writer = data.crew.filter(person => person.job === "Writer");
+  const cast = data.cast.map(person => {
+    let { name , character, profile_path,  cast_id} = person;
+    return { name, character, headshot: profile_path, id: cast_id };
+  });
+  return { director, writer, cast }
+}
