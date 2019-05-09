@@ -17,7 +17,7 @@ exports[`LoginForm should match the snapshot 1`] = `
     type="text"
   />
   <label
-    htmlFor="password"
+    htmlFor="password-input"
   >
     Password
   </label>

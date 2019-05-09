@@ -5,6 +5,17 @@ import { fetchSignIn } from "../../api/fetchSignIn";
 
 jest.mock("../../api/fetchSignIn");
 
+const mockChangeEvent = {
+  target: {
+    name: "email",
+    value: "email@email.com"
+  }
+};
+
+const mockSubmitEvent = {
+  preventDefault: () => {}
+};
+
 describe("LoginForm", () => {
   let wrapper, instance;
   let mockUpdateUser = jest.fn();
@@ -37,36 +48,39 @@ describe("LoginForm", () => {
     expect(wrapper.state()).toEqual(mockDefaultState);
   });
 
-  describe("handleChange", () => {
-    const mockEvent = {
-      target: {
-        name: "email",
-        value: "email@email.com"
-      }
-    };
+  describe('Event Listeners', () => {
+    it('should invoke handleChange on input change', () => {
+      wrapper.find('#email-input').simulate('change', mockChangeEvent);
+      expect(wrapper.state("email")).toEqual("email@email.com");
+    });
 
+    it('should invoke handleSubmit on form submit', () => {
+      wrapper.find(".LoginForm").simulate('submit', mockSubmitEvent);
+      expect(fetchSignIn).toHaveBeenCalled();
+    })
+  });
+
+  describe("handleChange", () => {
     it("should set the appropriate state to the input value", () => {
-      instance.handleChange(mockEvent);
+      instance.handleChange(mockChangeEvent);
       expect(wrapper.state("email")).toEqual("email@email.com");
     });
   });
 
   describe("handleSubmit", () => {
-    const mockEvent = {
-      preventDefault: () => {}
-    };
+    
     it("should invoke fetchSignIn", () => {
-      instance.handleSubmit(mockEvent);
+      instance.handleSubmit(mockSubmitEvent);
       expect(fetchSignIn).toHaveBeenCalled();
     });
 
     it("should invoke updateUser", () => {
-      instance.handleSubmit(mockEvent);
+      instance.handleSubmit(mockSubmitEvent);
       expect(mockUpdateUser).toHaveBeenCalled();
     });
 
     it("should invoke toggleLogin", () => {
-      instance.handleSubmit(mockEvent);
+      instance.handleSubmit(mockSubmitEvent);
       expect(mockToggleLogin).toHaveBeenCalled();
     });
   });
