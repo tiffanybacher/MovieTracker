@@ -9,7 +9,7 @@ const MovieCard = ({ title, overview, posterImg, id, rating, releaseDate }) => {
   if (overview.length > 150) {
     let shortOverview = overview
       .split(' ')
-      .slice(0, 30)
+      .slice(0, 35)
       .join(' ');
 
     movieOverview = `${shortOverview}...`;
