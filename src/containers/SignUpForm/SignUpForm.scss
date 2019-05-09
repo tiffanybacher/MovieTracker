@@ -6,7 +6,7 @@
   .SignUpForm {
     background: white;
     margin: 50px 0;
-    padding: 50px;
+    padding: 75px;
     text-align: left;
     width: 80%;
 
@@ -38,14 +38,15 @@
 
 .signup-blurb {
   @include box-shadow(#E5E5E5);
-  height: 280px;
-  margin: 40px 0 0 40px;
+  height: 290px;
+  margin: 40px 0 0 75px;
   position: relative;
   top: 18px;
   width: 300px;
 
   h3 {
-    background: gray;
+    background: $theme;
+    color: white;
     margin: 0;
     padding: 20px;
   }
