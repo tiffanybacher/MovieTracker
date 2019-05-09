@@ -1,8 +1,19 @@
 .SearchBar {
 
+  padding: 0 125px;
+  background: rgba(white, .1);
+  border: rgba(white, .1) solid 3px;
+
   .search-input {
-    font-size: 1em;
-    padding: 15px 30px;
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 1.1em;
+    padding: 15px 0;
     width: 100%;
+
+    &::placeholder {
+      color: rgba(white, .3);
+    }
   }
 }

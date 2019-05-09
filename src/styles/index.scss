@@ -1,7 +1,8 @@
 body {
+  background: #081C24;
   margin: 0;
   padding: 0;
-  font-family: "Roboto", sans-serif, -apple-system, BlinkMacSystemFont;
+  font-family: "Source Sans Pro","Roboto", sans-serif, -apple-system, BlinkMacSystemFont;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
@@ -29,6 +30,7 @@ body {
 @import '../containers/App/App.scss';
 @import '../containers/MovieContainer/MovieContainer';
 @import '../components/MovieCard/MovieCard';
+@import '../components/Header/Header';
 @import '../containers/Nav/Nav';
 @import '../containers/LoginForm/LoginForm';
 @import '../components/SearchBar/SearchBar';

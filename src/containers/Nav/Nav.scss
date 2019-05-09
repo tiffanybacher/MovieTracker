@@ -1,9 +1,23 @@
 .Nav {
+  background: $theme;
+  color: white;
   display: flex;
+  font-weight: 600;
   justify-content: space-between;
-  padding: 30px;
+  padding: 35px 125px;
+
+  .header-logo {
+    height: 50px;
+  }
+
+  a {
+    color: white;
+    font-size: 1.05em;
+    text-decoration: none;
+  }
 
   .nav-left {
+    align-items: center;
     display: flex;
     flex-direction: row;
 
@@ -13,9 +27,11 @@
   }
 
   .nav-right {
+    align-items: center;
     display: flex;
 
     .login-link {
+      font-size: 1.05em;
       margin: 0 10px;
       padding: 5px;
 
@@ -31,7 +47,8 @@
   }
 
   .login-dropdown {
-    background: #999;
+    background: rgba(4, 12, 17, .9);
+    box-shadow: -2px 2px 5px $theme;
     padding: 20px;
     position: absolute;
     top: 70px;

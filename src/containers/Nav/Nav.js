@@ -54,16 +54,16 @@ class Nav extends Component {
 
     const loginDropdown =
       <article className="login-dropdown">
-        <LoginForm toggleLogin={this.hideLogin} />
+        <LoginForm hideLogin={this.hideLogin} />
       </article>
 
     return (
       <nav className="Nav">
         <div className="nav-left">
-          <img src="" className="header-logo" alt="Logo" />
+          <img src="https://www.themoviedb.org/assets/2/v4/logos/408x161-powered-by-rectangle-green-bb4301c10ddc749b4e79463811a68afebeae66ef43d17bcfd8ff0e60ded7ce99.png" className="header-logo" alt="Logo" />
           <div className="main-nav-wrapper">
             <NavLink to="/" className="nav-link">
-              DISCOVER
+              EXPLORE
             </NavLink>
             <NavLink to="/favorites" className="nav-link">
               FAVORITES
