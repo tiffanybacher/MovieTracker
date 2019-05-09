@@ -4,7 +4,6 @@ import { App, mapStateToProps, mapDispatchToProps } from './App';
 import fetchDiscover from '../../api/fetchDiscover';
 import { cleanAllMovies } from '../../api/cleaners';
 import { mockUncleanMovie } from '../../api/mockData';
-import { addDiscoverMovies } from "../../actions";
 
 
 jest.mock('../../api/fetchDiscover.js');

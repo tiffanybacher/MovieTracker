@@ -1,4 +1,4 @@
-import { fetchDiscover } from '../fetchDiscover';
+import fetchDiscover from '../fetchDiscover';
 
 describe('fetchDiscover', () => {
   let mockData;

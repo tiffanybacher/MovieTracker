@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
-import LoginForm from '../LoginForm/LoginForm';
+import LoginForm from '../../containers/LoginForm/LoginForm';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { logoutUser } from '../../actions';

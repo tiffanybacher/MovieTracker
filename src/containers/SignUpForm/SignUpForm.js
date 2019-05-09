@@ -4,7 +4,7 @@ import { fetchNewUser } from '../../api/fetchNewUser';
 import { connect } from 'react-redux';
 import { updateUser } from '../../actions';
 
-class SignUpForm extends Component {
+export class SignUpForm extends Component {
   state = {
     email: '',
     name: '',
