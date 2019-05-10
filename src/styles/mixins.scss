@@ -19,13 +19,14 @@
 
   input {
     background: white;
+    border: 2px solid gray;
     font-size: 1em;
     margin: 0 0 10px 0;
     padding: 10px;
   }
 
   button {
-    background: black;
+    background: $theme;
     border: none;
     color: white;
     font-family: 'Source Sans Pro';
