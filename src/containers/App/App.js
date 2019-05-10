@@ -7,6 +7,7 @@ import { addDiscoverMovies } from '../../actions';
 import Header from '../../components/Header/Header';
 import MovieContainer from '../MovieContainer/MovieContainer';
 import SignUpForm from '../SignUpForm/SignUpForm';
+import MovieDetailsContainer from '../MovieDetailsContainer/MovieDetailsContainer';
 
 export class App extends Component {
   constructor() {
@@ -28,13 +29,14 @@ export class App extends Component {
   }
   
   render() {
-    return(
+    return (
       <div className="App">
         <Header />
         <Switch>
           <Route exact path="/" component={MovieContainer} />
           <Route exact path="/signup" component={SignUpForm} />
-        </Switch> 
+          <Route path="/movie/:id" component={MovieDetailsContainer} />
+        </Switch>
       </div>
     );
   }
