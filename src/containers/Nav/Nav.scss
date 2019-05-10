@@ -6,11 +6,12 @@
   justify-content: space-between;
   padding: 35px 125px;
 
-  .main-header {
+  .main-heading {
     color: $accent;
     font-family: 'Righteous';
     font-size: 2.1em;
     margin: 0 20px 0 0;
+    min-width: 390px;
   }
 
   a {
@@ -18,15 +19,33 @@
     text-decoration: none;
   }
 
-  .nav-left {
+  .main-nav-wrapper,
+  .nav-left,
+  .nav-right,
+  .greeting-wrapper {
     align-items: center;
     display: flex;
-    flex-direction: row;
   }
 
-  .nav-right {
-    align-items: center;
-    display: flex;
+  .greeting-wrapper {
+    position: relative;
+    text-align: right;
+    bottom: 2px;
+    min-width: 153px;
+  }
+
+  .user-greeting {
+    font-size: 1.05em;
+    margin: 0 10px;
+  }
+
+  .logout-link {
+    font-style: italic;
+    font-weight: 400;
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 
   .login-link,

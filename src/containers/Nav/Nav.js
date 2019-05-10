@@ -45,8 +45,8 @@ class Nav extends Component {
           </div>
     } else {
       accountNav =
-        <div className="nav-right">
-          <p className="userGreeting">Hi, {name}!</p>
+        <div className="greeting-wrapper">
+          <p className="user-greeting">HI, {name.toUpperCase()}!</p>
           <Link to="/" className="logout-link" onClick={this.handleLogout}>Logout</Link>
         </div>
     }
@@ -59,7 +59,7 @@ class Nav extends Component {
     return (
       <nav className="Nav">
         <div className="nav-left">
-        <Link to="/" className="main-header"><h1>MOVIE TRACKER</h1></Link>
+          <Link to="/" className="main-heading"><h1>MOVIE TRACKER</h1></Link>
           <div className="main-nav-wrapper">
             <NavLink to="/" className="nav-link">
               EXPLORE
