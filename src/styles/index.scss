@@ -28,6 +28,7 @@ body {
 @import './variables.scss';
 @import './mixins.scss';
 @import '../containers/App/App.scss';
+@import '../components/Header/Header';
 @import '../containers/MovieContainer/MovieContainer';
 @import '../components/MovieCard/MovieCard';
 @import '../components/Header/Header';
@@ -36,4 +37,5 @@ body {
 @import '../components/SearchBar/SearchBar';
 @import '../containers/SignUpForm/SignUpForm';
 @import '../components/MovieDetails/MovieDetails.scss';
+@import '../components/Footer/Footer';
 

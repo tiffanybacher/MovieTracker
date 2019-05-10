@@ -6,44 +6,64 @@
   justify-content: space-between;
   padding: 35px 125px;
 
-  .header-logo {
-    height: 50px;
+  .main-heading {
+    color: $accent;
+    font-family: 'Righteous';
+    font-size: 2.1em;
+    margin: 0 20px 0 0;
+    min-width: 390px;
   }
 
   a {
     color: white;
-    font-size: 1.05em;
     text-decoration: none;
   }
 
-  .nav-left {
+  .main-nav-wrapper,
+  .nav-left,
+  .nav-right,
+  .greeting-wrapper {
     align-items: center;
     display: flex;
-    flex-direction: row;
-
-    .header-logo {
-      margin: 0 15px 0 0;
-    }
   }
 
-  .nav-right {
-    align-items: center;
-    display: flex;
-
-    .login-link {
-      font-size: 1.05em;
-      margin: 0 10px;
-      padding: 5px;
-
-      &:hover {
-        cursor: pointer;
-      }
-    }
+  .greeting-wrapper {
+    position: relative;
+    text-align: right;
+    bottom: 2px;
+    min-width: 153px;
   }
 
-  .nav-link {
+  .user-greeting {
+    font-size: 1.05em;
     margin: 0 10px;
-    padding: 5px;
+  }
+
+  .logout-link {
+    font-style: italic;
+    font-weight: 400;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  .login-link,
+  .nav-link {
+    border-bottom: 3px solid $theme;
+    font-size: 1.05em;
+    margin: 0 15px;
+    padding: 5px 0;
+
+    &:hover {
+      border-bottom: 3px solid $off-white;
+      cursor: pointer;
+    }
+  }
+
+  .login-link:active,
+  .nav-link.active {
+    border-bottom: 3px solid $accent;
   }
 
   .login-dropdown {
@@ -51,8 +71,8 @@
     box-shadow: -2px 2px 5px $theme;
     padding: 20px;
     position: absolute;
-    top: 70px;
-    right: 30px;
+    top: 100px;
+    right: 90px;
     width: 285px;
     z-index: 1;
   }

@@ -63,21 +63,21 @@
     }
 
     .more-info-btn {
-      background: $accent;
-      border-top: 3px solid $accent;
+      background: $dark-accent;
+      border-top: 3px solid $dark-accent;
       bottom: 0;
-      color: $theme;
+      color: white;
+      font-size: 1.1em;
       font-weight: 600;
       left: 0;
       padding: 15px;
       position: absolute;
       right: 0;
       text-align: center;
+      text-decoration: none;
 
       &:hover {
-        background: $off-white;
-        border-top: 3px solid $theme;
-        color: $accent;
+        text-decoration: underline;
       }
     }
   }

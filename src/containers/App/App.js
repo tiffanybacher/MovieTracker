@@ -8,6 +8,7 @@ import Header from '../../components/Header/Header';
 import MovieContainer from '../MovieContainer/MovieContainer';
 import SignUpForm from '../SignUpForm/SignUpForm';
 import MovieDetailsContainer from '../MovieDetailsContainer/MovieDetailsContainer';
+import Footer from '../../components/Footer/Footer';
 
 export class App extends Component {
   constructor() {
@@ -37,6 +38,7 @@ export class App extends Component {
           <Route exact path="/signup" component={SignUpForm} />
           <Route path="/movie/:id" component={MovieDetailsContainer} />
         </Switch>
+        <Footer />
       </div>
     );
   }

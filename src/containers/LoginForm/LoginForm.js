@@ -61,7 +61,7 @@ export class LoginForm extends Component {
         }
         <button type="submit" className="submit-btn">Submit</button>
         <p>
-          Not a member? <Link to="/signup" className="signup-link" onClick={this.props.hideLogin}>Create an account</Link>
+          Not a member? <Link to="/signup" className="signup-link" onClick={this.props.hideLogin}>Create an account.</Link>
         </p>
       </form>
     );

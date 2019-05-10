@@ -33,21 +33,20 @@ class Nav extends Component {
     if (!this.props.user.name) {
       accountNav =
         <div className="nav-right">
-            <p 
+            <a 
+              href="#"
               className="login-link nav-link"
-              role="link"
-              onClick={this.toggleLogin}
-            >
+              onClick={this.toggleLogin}>
               LOGIN
-            </p>
+            </a>
             <NavLink to="/signup" className="nav-link" onClick={this.hideLogin}>
               SIGN UP
             </NavLink>
           </div>
     } else {
       accountNav =
-        <div className="nav-right">
-          <p className="userGreeting">Hi, {name}!</p>
+        <div className="greeting-wrapper">
+          <p className="user-greeting">HI, {name.toUpperCase()}!</p>
           <Link to="/" className="logout-link" onClick={this.handleLogout}>Logout</Link>
         </div>
     }
@@ -60,7 +59,7 @@ class Nav extends Component {
     return (
       <nav className="Nav">
         <div className="nav-left">
-          <img src="https://www.themoviedb.org/assets/2/v4/logos/408x161-powered-by-rectangle-green-bb4301c10ddc749b4e79463811a68afebeae66ef43d17bcfd8ff0e60ded7ce99.png" className="header-logo" alt="Logo" />
+          <Link to="/" className="main-heading"><h1>MOVIE TRACKER</h1></Link>
           <div className="main-nav-wrapper">
             <NavLink to="/" className="nav-link">
               EXPLORE
