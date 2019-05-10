@@ -1,7 +1,6 @@
 import React from 'react';
 
 export default function CastCard(props) {
-  console.log(props);
   const { name, headshot, character } = props.data
   return (
     <div>
