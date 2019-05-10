@@ -27,27 +27,6 @@
     display: flex;
   }
 
-  .greeting-wrapper {
-    position: relative;
-    text-align: right;
-    bottom: 2px;
-    min-width: 153px;
-  }
-
-  .user-greeting {
-    font-size: 1.05em;
-    margin: 0 10px;
-  }
-
-  .logout-link {
-    font-style: italic;
-    font-weight: 400;
-
-    &:hover {
-      text-decoration: underline;
-    }
-  }
-
   .login-link,
   .nav-link {
     border-bottom: 3px solid $theme;
@@ -76,4 +55,28 @@
     width: 285px;
     z-index: 1;
   }
+
+  .greeting-wrapper {
+    position: relative;
+    text-align: right;
+    bottom: 2px;
+    min-width: 153px;
+  }
+
+  .user-greeting {
+    font-size: 1.05em;
+    margin: 0 10px;
+  }
+
+  .logout-link {
+    text-decoration: underline;
+    font-style: italic;
+    font-weight: 400;
+
+    &:hover {
+      color: $accent;
+    }
+  }
+  
+  // .LoginForm
 }
