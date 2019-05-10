@@ -1,0 +1,72 @@
+.MovieDetails {
+  background: $off-white;
+  display: flex;
+  margin: 20px 0;
+  text-align: left;
+  width: 80vw;
+  height: 60vh;
+
+  .card-img {
+    height: 60vh;
+    object-fit: cover;
+  }
+
+  .card-info {
+    padding: 20px;
+    position: relative;
+
+    .card-header {
+      display: flex;
+
+      .rating-circle {
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+      }
+    
+      .circle-bg {
+        fill: none;
+        stroke: #999;
+        stroke-width: 4px;
+      }
+
+      .circle {
+        fill: none;
+        stroke: $accent;
+        stroke-width: 4px;
+        stroke-linecap: round;
+        animation: progress 1s ease-out forwards;
+      }
+
+      .rating-num {
+        font-size: .8em;
+      }
+
+      .card-title-wrap {
+        margin: 0 0 0 10px;
+
+        .card-title {
+          font-size: 3em;
+          margin: 0;
+        }
+
+        .card-year {
+          margin: 0;
+        }
+      }
+    }
+
+    .card-overview {
+      height: 120px;
+      overflow: auto;
+      margin: 30px 0;
+      font-size: 1.5em;
+    }
+  }
+}
+
+@keyframes progress {
+  0% {
+    stroke-dasharray: 0 100;
+  }
+}

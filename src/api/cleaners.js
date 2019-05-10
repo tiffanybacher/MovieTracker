@@ -14,7 +14,7 @@ export const cleanPeople = (data) => {
   const writer = data.crew.filter(person => person.job === "Writer");
   const cast = data.cast.map(person => {
     let { name , character, profile_path,  cast_id} = person;
-    return { name, character, headshot: profile_path, id: cast_id };
+    return { name, character, headshot: `${imageUrl}${profile_path}`, id: cast_id };
   });
   return { director, writer, cast }
 }
