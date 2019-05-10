@@ -61,7 +61,7 @@
     }
   }
 
-  .login-link:active,
+  .login-link.active,
   .nav-link.active {
     border-bottom: 3px solid $accent;
   }
