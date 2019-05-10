@@ -28,6 +28,7 @@ body {
 @import './variables.scss';
 @import './mixins.scss';
 @import '../containers/App/App.scss';
+@import '../components/Header/Header';
 @import '../containers/MovieContainer/MovieContainer';
 @import '../components/MovieCard/MovieCard';
 @import '../components/Header/Header';
