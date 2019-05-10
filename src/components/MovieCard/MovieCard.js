@@ -4,9 +4,10 @@ import { Link } from 'react-router-dom';
 export const MovieCard = ({ title, overview, posterImg, id, rating, releaseDate }) => {
   let movieOverview;
   let ratingNum;
-  let releaseYear = releaseDate.substring(0, 4);
+  let circleClass;
   let percentage = rating * 10;
-
+  let releaseYear = releaseDate.substring(0, 4);
+  
   if (overview.length > 150) {
     let shortOverview = overview
       .split(' ')
@@ -24,13 +25,21 @@ export const MovieCard = ({ title, overview, posterImg, id, rating, releaseDate 
     ratingNum = rating;
   }
 
+  if (percentage > 60) {
+    circleClass = "circle-green";
+  } else if (percentage > 30) {
+    circleClass = "circle-yellow";
+  } else if (percentage > 0) {
+    circleClass = "circle-red";
+  } 
+
   let ratingCircle = 
     <svg viewBox="0 0 36 36" className="rating-circle">
       <path className="circle-bg"
         d="M18 2.0845
           a 15.9155 15.9155 0 0 1 0 31.831
           a 15.9155 15.9155 0 0 1 0 -31.831"/>
-      <path className="circle"
+      <path className={`circle ${circleClass}`}
         strokeDasharray={`${percentage}, 100`}
         d="M18 2.0845
           a 15.9155 15.9155 0 0 1 0 31.831
@@ -63,7 +72,5 @@ export const MovieCard = ({ title, overview, posterImg, id, rating, releaseDate 
     </article>
   );
 } 
-
-
 
 export default MovieCard;
