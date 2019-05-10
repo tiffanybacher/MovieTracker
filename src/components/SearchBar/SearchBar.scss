@@ -1,18 +1,30 @@
 .SearchBar {
-  padding: 0 125px;
   background: rgba(white, .1);
   border: rgba(white, .1) solid 3px;
+  display: flex;
+  padding: 0 125px;
+
+  .fa-search {
+    color: rgba(white, .2);
+    font-size: 1.2em;
+    position: relative;
+    top: 10px;
+  }
 
   .search-input {
     background: transparent;
     border: none;
     color: white;
     font-size: 1.1em;
+    font-weight: 600;
+    margin: 0 0 0 10px;
     padding: 10px 0;
     width: 100%;
 
     &::placeholder {
       color: rgba(white, .3);
+      font-style: italic;
+      font-weight: 400;
     }
 
     &:focus {
