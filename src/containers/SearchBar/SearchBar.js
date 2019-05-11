@@ -28,23 +28,21 @@ class SearchBar extends Component {
 
   render() {
     return (
-      <form 
-        className="SearchBar"
-        onSubmit={this.handleSubmit}
-      >
-        <i className="fas fa-search"></i>
-        <input 
-          type="text" 
-          className="search-input" 
+      <form className="SearchBar" onSubmit={this.handleSubmit}>
+        <i className="fas fa-search" />
+        <input
+          type="text"
+          className="search-input"
           placeholder="Search for a movie..."
           value={this.state.query}
           onChange={this.handleChange}
         />
-        <i 
-          className="fas fa-times"
-          role="button"
-          onClick={this.clearInput}
-        ></i>
+        <div role="button" className="clear-search">
+          <i
+            className="fas fa-times"
+            onClick={this.clearInput}
+          />
+        </div>
       </form>
     );
   }
