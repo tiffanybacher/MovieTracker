@@ -24,7 +24,6 @@ export class SignUpForm extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-
     const { email, name, password, passwordConfirm } = this.state;
 
     this.setState({ error: ' ' });
@@ -33,7 +32,7 @@ export class SignUpForm extends Component {
       .then(data => {
         this.checkEmail(data, email);
         this.checkPasswords(password, passwordConfirm);
-        if (!this.state.error) {
+        if (this.state.error.length === 1) {
           fetchNewUser(email, name, password)
             .then(id => {
               this.props.updateUser(id, name);

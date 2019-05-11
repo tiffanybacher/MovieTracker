@@ -19,5 +19,7 @@ export const fetchNewUser = (email, name, password) => {
         return response.json();
       }
     })
-    .then(data => data.id);
+    .then(data => {
+      return data.id;
+    });
 };

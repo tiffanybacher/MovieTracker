@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 const MovieContainer = (props) => {
   
-  const movieCards = props.movies.map(movie => <MovieCard {...movie} key={movie.id} />);
+  const movieCards = props.movies.map(movie => <MovieCard {...movie} userId={props.userId} key={movie.id} />);
 
   return (
     <div className="MovieContainer">
@@ -17,7 +17,8 @@ const MovieContainer = (props) => {
 }
 
 const mapStoreToProps = (state) => ({
-  movies: state.movies
+  movies: state.movies,
+  userId: state.user.id
 });
 
 export default connect(mapStoreToProps)(MovieContainer);
