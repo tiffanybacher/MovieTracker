@@ -3,6 +3,7 @@ import MovieCard from '../../components/MovieCard/MovieCard';
 import { connect } from 'react-redux';
 
 const MovieContainer = (props) => {
+  
   const movieCards = props.movies.map(movie => <MovieCard {...movie} key={movie.id} />);
 
   return (

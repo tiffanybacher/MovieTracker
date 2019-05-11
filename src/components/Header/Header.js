@@ -1,8 +1,8 @@
 import React from 'react';
 import Nav from '../../containers/Nav/Nav';
-import SearchBar from '../SearchBar/SearchBar';
+import SearchBar from '../../containers/SearchBar/SearchBar';
 
-const Header = () => {
+const Header = (props) => {
   return (
     <header>
       <Nav />
