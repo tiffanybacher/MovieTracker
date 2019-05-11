@@ -5,19 +5,20 @@ import { fetchAddFavorite } from '../../api/fetchAddFavorite';
 export class MovieCard extends Component {
   constructor(props) {
     super(props);
-    let { favorites } = props.user;
     this.state = {
-      prevPropsUserId: props.user.id || null,
-      isFavorite: false
+      favorites: null,
+      isFavorite: false,
+      error: ''
     }
   }
   
   static getDerivedStateFromProps(props, state) {
     let { favorites } = props.user;
-    if (props.userId !== state.prevPropsUserId) {
+
+    if (props.user.id && state.favorites !== favorites) {
       return {
-        prevPropsUserID: props.user.id,
-        isFavorite: favorites ? favorites.includes(props.id) : false
+        favorites: favorites,
+        isFavorite: favorites.includes(props.id)
       };
     }
     return null;
@@ -25,14 +26,15 @@ export class MovieCard extends Component {
 
   handleFavorite = () => {
     let { isFavorite} = this.state
-    if (!isFavorite) {
+    if (!isFavorite && this.props.user.id) {
       fetchAddFavorite(this.props)
-        .catch(error => console.log(error));
+        .catch(error => this.setState({ error }));
       this.props.updateUserFavorites(this.props.id);
+    } else if (isFavorite && this.props.user.id){
+      this.props.deleteUserFavorite(this.props.user.id, this.props.id);
     } else {
-      console.log('delete favorite')
+      console.log("NOT LOGGED IN")
     }
-    this.setState({ isFavorite: !isFavorite })
   }
 
   render() {

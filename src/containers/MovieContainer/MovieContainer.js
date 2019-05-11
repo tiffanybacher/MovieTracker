@@ -1,11 +1,19 @@
 import React from 'react';
 import MovieCard from '../../components/MovieCard/MovieCard';
 import { connect } from 'react-redux';
-import { updateUserFavorites } from '../../actions';
+import { updateUserFavorites, deleteUserFavorite } from '../../actions';
+import { fetchDeleteFavorite } from '../../thunks/fetchDeleteFavorite';
 
 const MovieContainer = (props) => {
   
-  const movieCards = props.movies.map(movie => <MovieCard {...movie} user={props.user} updateUserFavorites={props.updateUserFavorites} key={movie.id} />);
+  const movieCards = props.movies.map(movie => 
+    <MovieCard 
+      {...movie} 
+      user={props.user} 
+      updateUserFavorites={props.updateUserFavorites} 
+      deleteUserFavorite={props.deleteUserFavorite}
+      key={movie.id} 
+    />);
 
   return (
     <div className="MovieContainer">
@@ -23,7 +31,8 @@ const mapStoreToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  updateUserFavorites: (movieId) => dispatch(updateUserFavorites(movieId))
+  updateUserFavorites: (movieId) => dispatch(updateUserFavorites(movieId)),
+  deleteUserFavorite: (userId, movieId) => dispatch(fetchDeleteFavorite(userId, movieId))
 })
 
 export default connect(mapStoreToProps, mapDispatchToProps)(MovieContainer);
