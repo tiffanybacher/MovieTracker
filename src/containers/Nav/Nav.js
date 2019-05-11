@@ -4,6 +4,7 @@ import LoginForm from '../../containers/LoginForm/LoginForm';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { logoutUser } from '../../actions';
+import { fetchMovies } from '../../thunks/fetchMovies';
 
 class Nav extends Component {
   constructor() {
@@ -64,9 +65,19 @@ class Nav extends Component {
     return (
       <nav className="Nav">
         <div className="nav-left">
-          <Link to="/" className="main-heading"><h1>MOVIE TRACKER</h1></Link>
+          <Link
+            to="/"
+            className="main-heading"
+            onClick={() => this.props.resetMovies("discover")}
+          >
+            <h1>MOVIE TRACKER</h1>
+          </Link>
           <div className="main-nav-wrapper">
-            <NavLink to="/" className="nav-link">
+            <NavLink
+              to="/"
+              className="nav-link"
+              onClick={() => this.props.resetMovies("discover")}
+            >
               EXPLORE
             </NavLink>
             <NavLink to="/favorites" className="nav-link">
@@ -88,8 +99,9 @@ const mapStateToProps = (state) => ({
   user: state.user
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  logoutUser: () => dispatch(logoutUser())
-})
+const mapDispatchToProps = dispatch => ({
+  logoutUser: () => dispatch(logoutUser()),
+  resetMovies: fetchCase => dispatch(fetchMovies(fetchCase))
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Nav);
