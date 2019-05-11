@@ -1,7 +1,7 @@
 export const userReducer = (state = {}, action) => {
   switch (action.type) {
     case 'UPDATE_USER':
-      return {id: action.id, name: action.name};
+      return {id: action.id, name: action.name, favorites: action.favorites};
     case 'LOGOUT_USER':
       return {};
     default:
