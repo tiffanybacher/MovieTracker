@@ -3,22 +3,40 @@ import { Link } from 'react-router-dom';
 import { fetchAddFavorite } from '../../api/fetchAddFavorite';
 
 export class MovieCard extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
+    let { favorites } = props.user;
     this.state = {
+      prevPropsUserId: props.user.id || null,
       isFavorite: false
     }
   }
+  
+  static getDerivedStateFromProps(props, state) {
+    let { favorites } = props.user;
+    if (props.userId !== state.prevPropsUserId) {
+      return {
+        prevPropsUserID: props.user.id,
+        isFavorite: favorites ? favorites.includes(props.id) : false
+      };
+    }
+    return null;
+  }
 
   handleFavorite = () => {
-    fetchAddFavorite(this.props)
-      .then(result => this.setState({ isFavorite: true }))
-      .catch(error => console.log(error));
+    let { isFavorite} = this.state
+    if (!isFavorite) {
+      fetchAddFavorite(this.props)
+        .catch(error => console.log(error));
+      this.props.updateUserFavorites(this.props.id);
+    } else {
+      console.log('delete favorite')
+    }
+    this.setState({ isFavorite: !isFavorite })
   }
 
   render() {
     const { title, overview, posterImg, id, rating, releaseDate } = this.props;
-
     let heartClass = this.state.isFavorite 
       ? 'fas'
       : 'far';

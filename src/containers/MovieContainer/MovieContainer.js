@@ -1,10 +1,11 @@
 import React from 'react';
 import MovieCard from '../../components/MovieCard/MovieCard';
 import { connect } from 'react-redux';
+import { updateUserFavorites } from '../../actions';
 
 const MovieContainer = (props) => {
   
-  const movieCards = props.movies.map(movie => <MovieCard {...movie} userId={props.userId} key={movie.id} />);
+  const movieCards = props.movies.map(movie => <MovieCard {...movie} user={props.user} updateUserFavorites={props.updateUserFavorites} key={movie.id} />);
 
   return (
     <div className="MovieContainer">
@@ -18,7 +19,11 @@ const MovieContainer = (props) => {
 
 const mapStoreToProps = (state) => ({
   movies: state.movies,
-  userId: state.user.id
+  user: state.user
 });
 
-export default connect(mapStoreToProps)(MovieContainer);
+const mapDispatchToProps = (dispatch) => ({
+  updateUserFavorites: (movieId) => dispatch(updateUserFavorites(movieId))
+})
+
+export default connect(mapStoreToProps, mapDispatchToProps)(MovieContainer);

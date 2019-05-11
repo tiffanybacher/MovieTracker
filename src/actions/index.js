@@ -10,6 +10,11 @@ export const updateUser = (id, name, favorites) => ({
   favorites
 });
 
+export const updateUserFavorites = (movieId) => ({
+  type: 'UDATE_USER_FAVORITES',
+  movieId
+});
+
 export const logoutUser = () => ({
   type: 'LOGOUT_USER'
 });
