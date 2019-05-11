@@ -18,6 +18,12 @@ class SearchBar extends Component {
   handleChange = (e) => {
     this.setState({ query: e.target.value})
   }
+
+  clearInput = () => {
+    this.setState({ query: '' });
+  }
+
+
   render() {
     return (
       <form 
@@ -29,9 +35,14 @@ class SearchBar extends Component {
           type="text" 
           className="search-input" 
           placeholder="Search for a movie..."
+          value={this.state.query}
           onChange={this.handleChange}
         />
-        <i className="fas fa-times"></i>
+        <i 
+          className="fas fa-times"
+          role="button"
+          onClick={this.clearInput}
+        ></i>
       </form>
     );
   }
