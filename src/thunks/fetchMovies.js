@@ -22,7 +22,7 @@ export const fetchMovies = (fetchCase, query) => {
         throw new Error("Search failed");
       }
       const data = await response.json();
-      const movies = cleanAllMovies(data.results)
+      const movies = cleanAllMovies(data.results);
       dispatch(addDiscoverMovies(movies));
     } catch(error) {
       console.log(error);

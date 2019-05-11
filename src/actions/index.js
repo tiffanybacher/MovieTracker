@@ -3,11 +3,22 @@ export const addDiscoverMovies = (movies) => ({
   movies
 });
 
-export const updateUser = (id, name) => ({
+export const updateUser = (id, name, favorites) => ({
   type: 'UPDATE_USER',
   id, 
-  name
+  name,
+  favorites
 });
+
+export const updateUserFavorites = (movieId) => ({
+  type: 'UPDATE_USER_FAVORITES',
+  movieId
+});
+
+export const deleteUserFavorite = (movieId) => ({
+  type: 'DELETE_USER_FAVORITE',
+  movieId
+}); 
 
 export const logoutUser = () => ({
   type: 'LOGOUT_USER'

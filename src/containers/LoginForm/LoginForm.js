@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { fetchSignIn } from '../../api/fetchSignIn';
 import { updateUser } from '../../actions';
+import { fetchUserFavorites } from "../../api/fetchUserFavorites";
 
 export class LoginForm extends Component {
   constructor() {
@@ -18,16 +19,25 @@ export class LoginForm extends Component {
     e.preventDefault();
 
     const { email, password } = this.state;
+    let userId, userName;
 
     fetchSignIn(email, password)
       .then(user => {
-        this.props.updateUser(user.id, user.name);
+        userId = user.id;
+        userName = user.name;
+        return fetchUserFavorites(userId)
+      })
+      .then(favorites => {
+        let favoriteIds = favorites
+          ? favorites.map(favorite => favorite.movie_id)
+          : []
+        this.props.updateUser(userId, userName, favoriteIds);
         this.props.hideLogin();
       })
       .catch(error => {
         this.setState({
           error: true,
-          password: ''
+          password: ""
         });
       });
   }
@@ -76,7 +86,7 @@ export class LoginForm extends Component {
 }
 
 export const mapDispatchToProps = (dispatch) => ({
-  updateUser: (id, name) => dispatch(updateUser(id, name))
+  updateUser: (id, name, favorites) => dispatch(updateUser(id, name, favorites))
 });
 
 export default connect(null, mapDispatchToProps)(LoginForm);
