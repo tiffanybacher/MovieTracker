@@ -5,7 +5,6 @@ import { cleanAllMovies } from '../api/cleaners';
 
 export const fetchMovies = (fetchCase, query) => {
   let url;
-  
   switch(fetchCase) {
     case 'search':
       url = `${baseUrl}search/movie${jacobKey}&language=en-US&query=${query}&page=1&include_adult=false`

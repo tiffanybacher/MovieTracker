@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from "react-router-dom";
 import { fetchMovies } from '../../thunks/fetchMovies';
 
 class SearchBar extends Component {
@@ -13,6 +14,7 @@ class SearchBar extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     this.props.fetchSearch('search', this.state.query);
+    this.props.history.push("/search");
   }
 
   handleChange = (e) => {
@@ -52,4 +54,4 @@ export const mapDispatchToProps = (dispatch) => ({
   fetchSearch: (fetchCase, query) => dispatch(fetchMovies(fetchCase, query))
 })
 
-export default connect(null, mapDispatchToProps)(SearchBar);
+export default connect(null, mapDispatchToProps)(withRouter(SearchBar));

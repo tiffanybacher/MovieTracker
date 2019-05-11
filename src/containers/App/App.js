@@ -28,6 +28,7 @@ export class App extends Component {
         <Header />
         <Switch>
           <Route exact path="/" component={MovieContainer} />
+          <Route exact path="/search" component={MovieContainer} />
           <Route exact path="/signup" component={SignUpForm} />
           <Route path="/movie/:id" component={MovieDetailsContainer} />
         </Switch>
@@ -42,7 +43,7 @@ export const mapStateToProps = (state) => ({
 });
 
 export const mapDispatchToProps = (dispatch) => ({
-  setMovies: (fetchCase, query) => dispatch(fetchMovies(fetchCase, query))
+  setMovies: (fetchCase) => dispatch(fetchMovies(fetchCase))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
