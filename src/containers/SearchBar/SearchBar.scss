@@ -33,3 +33,11 @@
     }
   }
 }
+
+.clear-search > * {
+  width: 20px;
+  &:hover {
+    cursor: pointer;
+    color: white;
+  }
+}
