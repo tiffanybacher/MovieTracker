@@ -3,10 +3,11 @@ import fetchDiscover from '../fetchDiscover';
 describe('fetchDiscover', () => {
   let mockData;
   let fullURL =
-    "https://api.themoviedb.org/3/discover/movie?api_key=c8d18bbe15bf85bf01dba12e0717bacb";
+    'https://api.themoviedb.org/3/discover/movie?api_key=c8d18bbe15bf85bf01dba12e0717bacb';
+    
   beforeEach(() => {
     mockData = [{
-      title: "Parent Trap",
+      title: 'Parent Trap',
       id: 1
     }];
 
@@ -23,6 +24,7 @@ describe('fetchDiscover', () => {
 
   it('should return the correct data', async () => {
     const result = await fetchDiscover();
+
     expect(result).toEqual(mockData);
   });
 

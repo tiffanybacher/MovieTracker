@@ -6,7 +6,7 @@ import { MovieDetails } from '../../components/MovieDetails/MovieDetails';
 
 class MovieDetailsContainer extends Component {
   constructor(props) {
-    super(props)
+    super(props);
 
     this.state = {
       people: {},
@@ -17,6 +17,7 @@ class MovieDetailsContainer extends Component {
 
   componentDidMount() {
     const { movieId } = this.state;
+
     fetchMoviePeople(movieId)
     .then(data => cleanPeople(data))
     .then(people => this.setState({ people }));

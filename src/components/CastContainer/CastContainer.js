@@ -1,15 +1,14 @@
-import React from 'react'
+import React from 'react';
 import CastCard from '../CastCard/CastCard';
 
 export const CastContainer = (props) => {
-  console.log(props);
   const castCards = props.cast 
-  ? props.cast.map(person => 
-    <CastCard data={person} />)
-  : <p>Loading...</p>
+  ? props.cast.map(person => <CastCard data={person} />)
+  : <p>Loading...</p>;
+
   return (
     <div>
       {castCards}
     </div>
-  )
+  );
 }

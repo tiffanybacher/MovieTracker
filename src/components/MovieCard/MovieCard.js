@@ -31,7 +31,7 @@ export const MovieCard = ({ title, overview, posterImg, id, rating, releaseDate 
     circleClass = "circle-yellow";
   } else if (percentage > 0) {
     circleClass = "circle-red";
-  } 
+  }
 
   let ratingCircle = 
     <svg viewBox="0 0 36 36" className="rating-circle">
@@ -64,8 +64,7 @@ export const MovieCard = ({ title, overview, posterImg, id, rating, releaseDate 
         <Link 
           className="more-info-btn" 
           role="button"
-          to={`/movie/${id}`}
-        >
+          to={`/movie/${id}`}>
           More Info
         </Link>
       </div>

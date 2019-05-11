@@ -5,7 +5,6 @@ import fetchDiscover from '../../api/fetchDiscover';
 import { cleanAllMovies } from '../../api/cleaners';
 import { mockUncleanMovie } from '../../api/mockData';
 
-
 jest.mock('../../api/fetchDiscover.js');
 jest.mock('../../api/cleaners.js');
 
@@ -22,7 +21,7 @@ describe('App', () => {
   afterEach(() => {
     fetchDiscover.mockClear();
     cleanAllMovies.mockClear();
-  })
+  });
 
   it('should match the snapshot', () => {
     expect(wrapper).toMatchSnapshot();
@@ -62,6 +61,4 @@ describe('App', () => {
       expect(wrapper.state('error')).toEqual('Discover failed to fetch');
     });
   });
-
-  
 });

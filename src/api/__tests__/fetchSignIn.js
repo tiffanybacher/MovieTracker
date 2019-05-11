@@ -7,22 +7,22 @@ const mockUser = {
     'name': "Jacob"
   }
 };
-
-const email = "email@email.com";
-const password = "password";
+const email = 'email@email.com';
+const password = 'password';
 const body = JSON.stringify({ email, password });
 const init = {
-  method: "POST",
+  method: 'POST',
   headers: {
-    "Content-Type": "application/json"
+    'Content-Type': 'application/json'
   },
   body
 };
 const request = new Request(serverUrl, init);
+
 window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
   ok: true,
   json: () => Promise.resolve(mockUser)
-}))
+}));
 
 describe('fetchSignIn', () => {
   it('should call fetch with the correct params', () => {
@@ -30,8 +30,9 @@ describe('fetchSignIn', () => {
     expect(fetch).toHaveBeenCalledWith(request);
   });
 
-  it('should retrun the correct data', async () => {
+  it('should return the correct data', async () => {
     const result = await fetchSignIn(email, password);
+
     expect(result).toEqual(mockUser.data);
   });
 
@@ -46,6 +47,6 @@ describe('fetchSignIn', () => {
       await fetchSignIn(email, password)
     } catch(error) {
       expect(error.message).toBe('Failed to sign in')
-    }
+    };
   });
 });

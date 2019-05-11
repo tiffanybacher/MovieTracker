@@ -8,7 +8,7 @@ export const fetchSignIn = (email, password) => {
       'Content-Type': 'application/json'
     },
     body 
-  }
+  };
   const request = new Request(serverUrl, init);
 
   return fetch(request)
@@ -20,4 +20,4 @@ export const fetchSignIn = (email, password) => {
       }
     })
     .then(data => data.data);
-}
+};

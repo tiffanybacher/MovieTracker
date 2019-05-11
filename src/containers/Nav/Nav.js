@@ -19,7 +19,7 @@ class Nav extends Component {
   }
 
   hideLogin = () => {
-    this.setState({ showLogin: false })
+    this.setState({ showLogin: false });
   }
 
   handleLogout = () => {

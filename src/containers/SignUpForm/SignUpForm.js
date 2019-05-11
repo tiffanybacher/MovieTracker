@@ -24,8 +24,11 @@ export class SignUpForm extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
+
     const { email, name, password, passwordConfirm } = this.state;
-    this.setState( { error: ' '} )
+
+    this.setState({ error: ' ' });
+
     fetchAllUsers()
       .then(data => {
         this.checkEmail(data, email);
@@ -45,19 +48,20 @@ export class SignUpForm extends Component {
   checkEmail = (data, email) => {
     data.forEach(user => {
       if(user.email === email) {
-        this.setState({ error: 'Email is already taken. Please try again.' })
+        this.setState({ error: 'Email is already taken. Please try again.' });
       }
     });
   }
 
   checkPasswords = (password, passwordConfirm) => {
     if(password !== passwordConfirm) {
-      this.setState({ error: 'Passwords do not match. Please try again.' })
+      this.setState({ error: 'Passwords do not match. Please try again.' });
     }
   }
 
   render() {
     let { error } = this.state;
+
     return (
       <div className="signup-backdrop">
         <div className="SignUpForm">
@@ -69,8 +73,7 @@ export class SignUpForm extends Component {
           <div className="flex-wrapper">
             <form
               onSubmit={this.handleSubmit}
-              className="signup-form-inputs"
-            >
+              className="signup-form-inputs">
               <div className="error-holder">
                 <p className="error-message">{error}</p>
               </div>

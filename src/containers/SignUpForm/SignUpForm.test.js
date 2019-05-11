@@ -1,24 +1,25 @@
-import React from "react";
-import { shallow } from "enzyme";
-import { SignUpForm, mapDispatchToProps } from "./SignUpForm";
-import { fetchNewUser } from "../../api/fetchNewUser";
-import { updateUser } from "../../actions";
+import React from 'react';
+import { shallow } from 'enzyme';
+import { SignUpForm, mapDispatchToProps } from './SignUpForm';
+import { fetchNewUser } from '../../api/fetchNewUser';
+import { updateUser } from '../../actions';
 
-jest.mock("../../api/fetchNewUser");
+jest.mock('../../api/fetchNewUser');
 
 const mockChangeEvent = {
   target: {
-    name: "name",
-    value: "Jacob"
+    name: 'name',
+    value: 'Jacob'
   }
 };
 const mockSubmitEvent = {
   preventDefault: () => {}
 };
 
-describe("SignUpForm", () => {
+describe('SignUpForm', () => {
   let wrapper, instance;
   let mockUpdateUser = jest.fn();
+  
   fetchNewUser.mockImplementation(() => Promise.resolve(1));
 
   beforeEach(() => {
@@ -30,17 +31,18 @@ describe("SignUpForm", () => {
     fetchNewUser.mockClear();
   });
 
-  it("should match the snapshot", () => {
+  it('should match the snapshot', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  it("should have a defult state", () => {
+  it('should have a defult state', () => {
     const mockDefaultState = {
-      email: "",
-      name: "",
-      password: "",
-      passwordConfirm: ""
+      email: '',
+      name: '',
+      password: '',
+      passwordConfirm: ''
     };
+
     wrapper = shallow(<SignUpForm />, { disableLifecycleMethods: true });
     expect(wrapper.state()).toEqual(mockDefaultState);
   });
@@ -55,7 +57,6 @@ describe("SignUpForm", () => {
       wrapper.find(".signup-form-inputs").simulate('submit', mockSubmitEvent);
       expect(fetchNewUser).toHaveBeenCalled();
     });
-
   });
 
   describe('handleChange', () => {
@@ -84,6 +85,6 @@ describe("SignUpForm", () => {
       const mappedProps = mapDispatchToProps(mockDispatch);
       mappedProps.updateUser(1, 'Jacob');
       expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
-    })
+    });
   });
 });

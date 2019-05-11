@@ -9,9 +9,9 @@ export const mockUncleanMovie = {
   original_language: 'en',
   original_title: 'Avengers: Endgame',
   genre_ids: [
-      12,
-      878,
-      28
+    12,
+    878,
+    28
   ],
   backdrop_path: '/7RyHsO4yDXtBv1zUU3mTpHeQ0d5.jpg',
   adult: false,
@@ -26,4 +26,4 @@ export const cleanMovie = {
   rating: 8.6,
   releaseDate: "2019-04-24",
   title: "Avengers: Endgame"
-}
+};

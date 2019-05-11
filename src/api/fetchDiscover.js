@@ -9,8 +9,8 @@ const fetchDiscover = () => {
       } else {
         return response.json();
       }
-  });
-}
+    });
+};
 
 export default fetchDiscover;
 

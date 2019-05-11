@@ -7,6 +7,7 @@ describe('cleanAllMovies', () => {
       MD.mockUncleanMovie,
       MD.mockUncleanMovie
     ]);
+
     expect(result).toEqual([MD.cleanMovie, MD.cleanMovie]);
-  })
-})
+  });
+});
