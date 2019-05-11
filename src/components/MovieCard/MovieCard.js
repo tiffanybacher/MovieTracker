@@ -25,7 +25,7 @@ export const MovieCard = ({ title, overview, posterImg, id, rating, releaseDate 
     ratingNum = rating;
   }
 
-  if (percentage > 60) {
+  if (percentage > 70) {
     circleClass = "circle-green";
   } else if (percentage > 30) {
     circleClass = "circle-yellow";
@@ -59,6 +59,7 @@ export const MovieCard = ({ title, overview, posterImg, id, rating, releaseDate 
             <h2 className="card-title">{title}</h2>
             <p className="card-year">({releaseYear})</p>
           </div>
+          <i class="far fa-heart"></i>
         </div>
         <p className="card-overview">{movieOverview}</p>
         <Link 
