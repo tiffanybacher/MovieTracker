@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchSearch } from '../../thunks/fetchSearch';
+import { fetchMovies } from '../../thunks/fetchMovies';
 
 class SearchBar extends Component {
   constructor() {
@@ -12,7 +12,7 @@ class SearchBar extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    this.props.fetchSearch(this.state.query);
+    this.props.fetchSearch('search', this.state.query);
   }
 
   handleChange = (e) => {
@@ -49,7 +49,7 @@ class SearchBar extends Component {
 }
 
 export const mapDispatchToProps = (dispatch) => ({
-  fetchSearch: (query) => dispatch(fetchSearch(query))
+  fetchSearch: (fetchCase, query) => dispatch(fetchMovies(fetchCase, query))
 })
 
 export default connect(null, mapDispatchToProps)(SearchBar);
