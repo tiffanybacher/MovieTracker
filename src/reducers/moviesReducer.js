@@ -5,4 +5,4 @@ export const moviesReducer = (state = [], action) => {
     default:
       return state;
   }
-}
+};

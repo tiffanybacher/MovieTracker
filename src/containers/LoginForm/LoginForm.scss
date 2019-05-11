@@ -8,6 +8,12 @@
   font-weight: bold;
 }
 
-.signup-link:hover {
+.signup-link {
+  font-style: italic;
+  font-weight: 400;
   text-decoration: underline;
+}
+
+.signup-link:hover {
+  color: $accent;
 }

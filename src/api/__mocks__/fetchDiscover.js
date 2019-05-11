@@ -1,6 +1,7 @@
-import { mockUncleanMovie } from "../mockData";
+import { mockUncleanMovie } from '../mockData';
 
-const fetchDiscover = jest.fn().mockImplementation(() => Promise.resolve(mockUncleanMovie));
+const fetchDiscover = jest.fn().mockImplementation(() => 
+  Promise.resolve(mockUncleanMovie));
 
 
 export default fetchDiscover;

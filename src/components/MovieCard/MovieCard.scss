@@ -32,10 +32,22 @@
 
       .circle {
         fill: none;
-        stroke: $accent;
+        stroke: gray;
         stroke-width: 4px;
         stroke-linecap: round;
         animation: progress 1s ease-out forwards;
+      }
+
+      .circle-green {
+        stroke: $dark-accent;
+      }
+
+      .circle-yellow {
+        stroke: #FFF200;
+      }
+
+      .circle-red {
+        stroke: #EA0F12;
       }
 
       .rating-num {

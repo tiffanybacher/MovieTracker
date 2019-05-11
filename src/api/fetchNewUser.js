@@ -8,16 +8,16 @@ export const fetchNewUser = (email, name, password) => {
       'Content-Type': 'application/json'
     },
     body
-  }
+  };
   const request = new Request(`${serverUrl}/new`, init);
 
   return fetch(request)
     .then(response => {
       if (!response.ok) {
-        throw new Error("Failed to create account");
+        throw new Error('Failed to create account');
       } else {
         return response.json();
       }
     })
     .then(data => data.id);
-}
+};

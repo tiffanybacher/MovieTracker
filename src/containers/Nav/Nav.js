@@ -20,7 +20,7 @@ class Nav extends Component {
   }
 
   hideLogin = () => {
-    this.setState({ showLogin: false })
+    this.setState({ showLogin: false });
   }
 
   handleLogout = () => {
@@ -30,13 +30,18 @@ class Nav extends Component {
   render() {
     const { name } = this.props.user;
     let accountNav;
+    let loginActive = '';
+
+    if (this.state.showLogin) {
+      loginActive = 'active';
+    }
 
     if (!this.props.user.name) {
       accountNav =
         <div className="nav-right">
             <a 
               href="#"
-              className="login-link nav-link"
+              className={`login-link nav-link ${loginActive}`}
               onClick={this.toggleLogin}>
               LOGIN
             </a>

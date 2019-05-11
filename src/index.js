@@ -9,16 +9,12 @@ import thunk from "redux-thunk";
 import App from './containers/App/App';
 import './styles/index.scss';
 
-
 const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)));
-
-ReactDOM.render(
+const provider = 
   <Provider store={store}>
     <BrowserRouter>
       <App />
     </BrowserRouter>
-  </Provider>,
+  </Provider>
 
-  document.getElementById("root")
-);
-
+ReactDOM.render(provider, document.getElementById("root"));

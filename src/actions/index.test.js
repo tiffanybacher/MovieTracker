@@ -7,8 +7,9 @@ describe('Action Creators', () => {
     const expected = {
       type: 'ADD_DISCOVER_MOVIES',
       movies
-    }
+    };
     const result = actions.addDiscoverMovies(movies);
+
     expect(result).toEqual(expected);
   });
 
@@ -16,11 +17,12 @@ describe('Action Creators', () => {
     const id = 1;
     const name = 'Jacob';
     const expected = {
-      type: "UPDATE_USER",
+      type: 'UPDATE_USER',
       id,
       name
     };
     const result = actions.updateUser(id, name);
+
     expect(result).toEqual(expected);
   });
 
@@ -29,6 +31,7 @@ describe('Action Creators', () => {
       type: 'LOGOUT_USER'
     };
     const result = actions.logoutUser();
+
     expect(result).toEqual(expected);
   });
 });
