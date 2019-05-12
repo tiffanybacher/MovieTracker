@@ -12,7 +12,9 @@ export const userReducer = (state = {}, action) => {
       return {
         id: state.id,
         name: state.name,
-        favorites: [...state.favorites, action.movieId]
+        favorites: !state.favorites
+          ? [action.movieId]
+          : [...state.favorites, action.movieId]
       };
     case "DELETE_USER_FAVORITE":
       return {
