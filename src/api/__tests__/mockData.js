@@ -1,4 +1,4 @@
-import { imageUrl } from "../utils/API-logins";
+import { imageUrl } from "../../utils/API-logins";
 
 export const mockUncleanMovie = {
   vote_count: 4354,
@@ -73,4 +73,9 @@ export const cleanPeople = {
   ]
 };
 
+export const mockUser = {
+  name: 'Jacob',
+  id: 1,
+  favorites: [11111, 22222, 33333]
+};
 
