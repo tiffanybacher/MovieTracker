@@ -1,6 +1,6 @@
 import { fetchAddFavorite } from '../fetchAddFavorite';
 import { serverUrl } from '../pathNames';
-import { cleanMovie } from '../mockData';
+import { cleanMovie } from './mockData';
 
 window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
   ok: true,

@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { App, mapStateToProps, mapDispatchToProps } from './App';
 import { cleanAllMovies } from '../../api/cleaners';
-import { mockUncleanMovie } from '../../api/__tests__/mockData';
+import { mockUncleanMovie, cleanMovie } from '../../api/__tests__/mockData';
 import { fetchMovies } from '../../thunks/fetchMovies';
 
 jest.mock('../../thunks/fetchMovies');
@@ -32,5 +32,24 @@ describe('App', () => {
 
   it('CDM should call setMovies method', () => {
     expect(mockSetMovies).toHaveBeenCalled();
+  });
+
+  describe('mapStateToProps', () => {
+    it('should return an array of movies', () => {
+      const state = { user: { name: 'Jacob'}, movies: [cleanMovie, cleanMovie]};
+      const expected = { movies: state.movies};
+      const result = mapStateToProps(state);
+      expect(result).toEqual(expected);
+    });
+  });
+
+  describe('mapDispatchToProps', () => {
+    it('should call dispatch when using setMovies', () => {
+      const mockDispatch = jest.fn();
+      const actionToDispatch = fetchMovies('discover');
+      const mappedProps = mapDispatchToProps(mockDispatch);
+      mappedProps.setMovies('discover');
+      expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
+    });
   });
 });

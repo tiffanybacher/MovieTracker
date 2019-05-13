@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import LoginForm from '../LoginForm/LoginForm';
+import { LoginForm } from '../../containers/LoginForm/LoginForm';
 
 class LoginPopup extends Component {
   render() {
