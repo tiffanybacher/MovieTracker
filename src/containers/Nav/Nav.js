@@ -34,6 +34,7 @@ class Nav extends Component {
       console.log('Must be logged in to view favorites');
     } else if (this.props.user.id && !this.props.user.favorites.length) {
       console.log('Logged in but no favorites');
+      this.props.displayFavorites([]);
     } else {
       console.log('Logged in and favorites are true');
       fetchUserFavorites(this.props.user.id)

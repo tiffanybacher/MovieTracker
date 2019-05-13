@@ -11,20 +11,6 @@ export class MovieCard extends Component {
       error: ''
     }
   }
-
-  componentDidMount() {
-    const { user } = this.props;
-    const { favorites } = this.state;
-
-    console.log('props', this.props)
-    console.log('favorites', favorites)
-
-    if (user.id && favorites.includes(this.props.id)) {
-      this.setState({
-        isFavorite: true
-      });
-    }
-  }
   
   static getDerivedStateFromProps(props, state) {
     let { favorites } = props.user;

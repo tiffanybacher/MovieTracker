@@ -30,6 +30,7 @@ export class App extends Component {
         <Switch>
           <Route exact path="/" component={MovieContainer} />
           <Route exact path="/favorites" component={MovieContainer} />
+          <Route exact path="/watchlist" component={MovieContainer} />
           <Route exact path="/search" component={MovieContainer} />
           <Route exact path="/signup" component={SignUpForm} />
           <Route path="/movie/:id" component={MovieDetailsContainer} />
