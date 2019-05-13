@@ -11,6 +11,20 @@ export class MovieCard extends Component {
       error: ''
     }
   }
+
+  componentDidMount() {
+    const { user } = this.props;
+    const { favorites } = this.state;
+
+    console.log('props', this.props)
+    console.log('favorites', favorites)
+
+    if (user.id && favorites.includes(this.props.id)) {
+      this.setState({
+        isFavorite: true
+      });
+    }
+  }
   
   static getDerivedStateFromProps(props, state) {
     let { favorites } = props.user;
@@ -23,11 +37,13 @@ export class MovieCard extends Component {
           : false
       };
     }
+
     return null;
   }
 
   handleFavorite = () => {
     let { isFavorite} = this.state
+
     if (!isFavorite && this.props.user.id) {
       fetchAddFavorite(this.props)
         .catch(error => this.setState({ error }));

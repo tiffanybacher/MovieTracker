@@ -1,9 +1,17 @@
 import { imageUrl } from '../utils/API-logins';
 
 export const cleanAllMovies = (moviesArray) => {
+
   const cleanMovies = moviesArray.map(movie => {
+    let id;
+
+    if (movie.movie_id) {
+      id = movie.movie_id;
+    } else {
+      id = movie.id
+    }
+
     const { 
-      id, 
       title, 
       poster_path, 
       overview, 

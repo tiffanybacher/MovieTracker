@@ -3,6 +3,11 @@ export const addDiscoverMovies = (movies) => ({
   movies
 });
 
+export const addFavoriteMovies = (favorites) => ({
+  type: 'ADD_FAVORITE_MOVIES',
+  favorites
+})
+
 export const updateUser = (id, name, favorites) => ({
   type: 'UPDATE_USER',
   id, 

@@ -3,8 +3,10 @@ import { NavLink } from 'react-router-dom';
 import LoginForm from '../../containers/LoginForm/LoginForm';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { logoutUser } from '../../actions';
+import { logoutUser, addFavoriteMovies } from '../../actions';
 import { fetchMovies } from '../../thunks/fetchMovies';
+import { fetchUserFavorites } from '../../api/fetchUserFavorites';
+import { cleanAllMovies } from '../../api/cleaners';
 
 class Nav extends Component {
   constructor() {
@@ -31,9 +33,12 @@ class Nav extends Component {
     if (!this.props.user.id) {
       console.log('Must be logged in to view favorites');
     } else if (this.props.user.id && !this.props.user.favorites.length) {
-      console.log('No Favorites');
+      console.log('Logged in but no favorites');
     } else {
       console.log('Logged in and favorites are true');
+      fetchUserFavorites(this.props.user.id)
+        .then(result => cleanAllMovies(result))
+        .then(movies => this.props.displayFavorites(movies));
     }
   }
 
@@ -111,7 +116,8 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = dispatch => ({
   logoutUser: () => dispatch(logoutUser()),
-  resetMovies: fetchCase => dispatch(fetchMovies(fetchCase))
+  resetMovies: fetchCase => dispatch(fetchMovies(fetchCase)),
+  displayFavorites: (favorites) => dispatch(addFavoriteMovies(favorites))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Nav);
