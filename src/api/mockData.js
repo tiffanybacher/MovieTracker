@@ -1,3 +1,5 @@
+import { imageUrl } from "../utils/API-logins";
+
 export const mockUncleanMovie = {
   vote_count: 4354,
   id: 299534,
@@ -27,3 +29,48 @@ export const cleanMovie = {
   releaseDate: "2019-04-24",
   title: "Avengers: Endgame"
 };
+
+export const uncleanPeople = {
+  crew: [
+    { name: 'Ms. Director', job: 'Director'},
+    { name: 'Mr. Writer', job: 'Writer'},
+    { name: 'Kyle', job: 'Craft Services'},
+  ],
+  cast: [
+    { 
+      name: 'Chris Evans',
+      character: 'Captain America',
+      profile_path: '/fdsfdsfsdfa.png',  
+      cast_id: 1234,
+      hotness: 10
+    },
+    { 
+      name: 'Sebastian Stan',
+      character: 'Bucky',
+      profile_path: '/yeeeeeeet.png',  
+      cast_id: 4321,
+      hotness: 9.6
+    }
+  ]
+};
+
+export const cleanPeople = {
+  director: [{ name: 'Ms. Director', job: 'Director'}],
+  writer: [{ name: 'Mr. Writer', job: 'Writer'}],
+  cast: [
+    { 
+      name: 'Chris Evans',
+      character: 'Captain America',
+      headshot: `${imageUrl}/fdsfdsfsdfa.png`,  
+      id: 1234,
+    },
+    { 
+      name: 'Sebastian Stan',
+      character: 'Bucky',
+      headshot: `${imageUrl}/yeeeeeeet.png`,  
+      id: 4321,
+    }
+  ]
+};
+
+
