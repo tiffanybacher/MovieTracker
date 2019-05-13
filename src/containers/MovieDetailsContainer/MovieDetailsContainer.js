@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import fetchMoviePeople from '../../api/fetchMovieDetails';
+import fetchMoviePeople from '../../api/fetchMoviePeople';
 import { cleanPeople } from '../../api/cleaners';
-import { MovieDetails } from '../../components/MovieDetails/MovieDetails';
+import { MovieDetails } from '../../components/MovieDetails/MovieDetails.js';
 
-class MovieDetailsContainer extends Component {
+export class MovieDetailsContainer extends Component {
   constructor(props) {
     super(props);
 
@@ -33,8 +33,7 @@ class MovieDetailsContainer extends Component {
           <MovieDetails 
             movieDetails={movie}
             people={people}
-          />
-        }
+          />}
       </article>
     );
   }
@@ -44,6 +43,4 @@ export const mapStateToProps = (state) =>  ({
   movies: state.movies
 });
 
-export default connect(
-  mapStateToProps,
-  )(MovieDetailsContainer);
+export default connect(mapStateToProps)(MovieDetailsContainer);

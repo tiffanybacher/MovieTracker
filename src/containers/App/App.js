@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Switch, Route } from 'react-router';
-import  fetchDiscover  from '../../api/fetchDiscover';
-import { cleanAllMovies } from '../../api/cleaners';
 import Header from '../../components/Header/Header';
 import MovieContainer from '../MovieContainer/MovieContainer';
 import SignUpForm from '../SignUpForm/SignUpForm';
-import MovieDetailsContainer from '../MovieDetailsContainer/MovieDetailsContainer';
+import MovieDetailsContainer from '../MovieDetailsContainer/MovieDetailsContainer.js';
 import Footer from '../../components/Footer/Footer';
 import { fetchMovies } from '../../thunks/fetchMovies';
 

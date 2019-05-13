@@ -17,11 +17,10 @@ export class LoginForm extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-
     const { email, password } = this.state;
     let userId, userName;
-
-    fetchSignIn(email, password)
+    
+    return fetchSignIn(email, password)
       .then(user => {
         userId = user.id;
         userName = user.name;
