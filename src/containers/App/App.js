@@ -9,6 +9,7 @@ import SignUpForm from '../SignUpForm/SignUpForm';
 import MovieDetailsContainer from '../MovieDetailsContainer/MovieDetailsContainer';
 import Footer from '../../components/Footer/Footer';
 import { fetchMovies } from '../../thunks/fetchMovies';
+import LoginPopup from '../../components/LoginPopup/LoginPopup';
 
 export class App extends Component {
   constructor() {
@@ -28,6 +29,7 @@ export class App extends Component {
         <Header />
         <Switch>
           <Route exact path="/" component={MovieContainer} />
+          <Route exact path="/favorites" component={MovieContainer} />
           <Route exact path="/search" component={MovieContainer} />
           <Route exact path="/signup" component={SignUpForm} />
           <Route path="/movie/:id" component={MovieDetailsContainer} />

@@ -27,6 +27,16 @@ class Nav extends Component {
     this.props.logoutUser();
   }
 
+  goToFavorites = () => {
+    if (!this.props.user.id) {
+      console.log('Must be logged in to view favorites');
+    } else if (this.props.user.id && !this.props.user.favorites.length) {
+      console.log('No Favorites');
+    } else {
+      console.log('Logged in and favorites are true');
+    }
+  }
+
   render() {
     const { name } = this.props.user;
     let accountNav;
@@ -80,7 +90,7 @@ class Nav extends Component {
             >
               EXPLORE
             </NavLink>
-            <NavLink to="/favorites" className="nav-link">
+            <NavLink to="/favorites" className="nav-link" onClick={this.goToFavorites}>
               FAVORITES
             </NavLink>
             <NavLink to="/watchlist" className="nav-link">

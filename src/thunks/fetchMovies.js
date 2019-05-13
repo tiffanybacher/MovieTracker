@@ -15,6 +15,7 @@ export const fetchMovies = (fetchCase, query) => {
     default:
       console.log('Need fetchCase');
   } 
+  
   return async (dispatch) => {
     try {
       const response = await fetch(url);
