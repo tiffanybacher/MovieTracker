@@ -18,7 +18,9 @@ export class MovieCard extends Component {
     if (props.user.id && state.favorites !== favorites) {
       return {
         favorites: favorites,
-        isFavorite: favorites.includes(props.id)
+        isFavorite: favorites 
+          ? favorites.includes(props.id)
+          : false
       };
     }
     return null;
