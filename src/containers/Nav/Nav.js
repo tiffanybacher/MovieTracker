@@ -32,7 +32,6 @@ class Nav extends Component {
 
   goToFavorites = () => {
     if (!this.props.user.id) {
-      alert('Must be logged in to view Favorites');
     } else if (this.props.user.id && !this.props.user.favorites.length) {
       this.props.displayFavorites([]);
     } else {
@@ -44,7 +43,6 @@ class Nav extends Component {
 
   goToWatchlist = () => {
     if (!this.props.user.id) {
-      alert('Must be logged in to view Watchlist');
     } else if (this.props.user.id && !this.props.user.watchlist) {
       this.props.displayWatchlist([]);
     } else {
@@ -59,7 +57,7 @@ class Nav extends Component {
     const { name } = this.props.user;
     let accountNav;
     let loginActive;
-    let favoriteLink = '/favorites';
+    let favoriteLink;
     let watchLink = '/watchlist';
 
     if (this.state.showLogin) {
@@ -80,14 +78,29 @@ class Nav extends Component {
             </NavLink>
           </div>
 
-        favoriteLink = '/login';
-        watchLink = '/login';
+      favoriteLink =
+        <Link to="/login" className="nav-link" onClick={this.goToFavorites}>
+          FAVORITES
+        </Link>;
+      watchLink = 
+        <Link to="/login" className="nav-link" onClick={this.goToWatchlist}>
+          WATCHLIST
+        </Link>;
     } else {
       accountNav =
         <div className="greeting-wrapper">
           <p className="user-greeting">HI, {name.toUpperCase()}!</p>
           <Link to="/" className="logout-link" onClick={this.handleLogout}>Logout</Link>
         </div>
+      
+      favoriteLink = 
+        <NavLink to="/favorites" className="nav-link" onClick={this.goToFavorites}>
+          FAVORITES
+        </NavLink>
+      watchLink = 
+        <NavLink to="/favorites" className="nav-link" onClick={this.goToWatchlist}>
+          WATCHLIST
+        </NavLink>
     }
 
     const loginDropdown =
@@ -114,12 +127,8 @@ class Nav extends Component {
             >
               EXPLORE
             </NavLink>
-            <NavLink exact to={favoriteLink} className="nav-link" onClick={this.goToFavorites}>
-              FAVORITES
-            </NavLink>
-            <NavLink exact to={watchLink} className="nav-link" onClick={this.goToWatchlist}>
-              WATCHLIST
-            </NavLink>
+            {favoriteLink}
+            {watchLink}
           </div>
         </div>
         {accountNav}

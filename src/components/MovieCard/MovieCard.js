@@ -110,7 +110,10 @@ export class MovieCard extends Component {
                 <p className="card-year">({releaseYear})</p>
               </div>
             </div>
-            <i className={`${heartClass} fa-heart`} onClick={this.handleFavorite} />
+            <div className="icon-wrap">
+              <i className={`${heartClass} fa-heart`} onClick={this.handleFavorite} />
+              <i className="far fa-bookmark" />
+            </div>
           </div>
           <p className="card-overview">{movieOverview}</p>
           <Link className="more-info-btn" role="button" to={`/movie/${id}`}>

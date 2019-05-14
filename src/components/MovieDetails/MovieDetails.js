@@ -59,6 +59,8 @@ export const MovieDetails = (props) => {
     });
   }
 
+  let heartClass = 'far';
+
   return (
     <div className="MovieDetails-container">
       <div className="MovieDetails-backdrop" style={backgroundImg}>
@@ -67,10 +69,14 @@ export const MovieDetails = (props) => {
           <img className="card-img" src={posterImg} alt={`${title} poster`} />
           <div className="card-info">
             <div className="card-header">
-              <div className="circle-wrapper">{ratingCircle}</div>
               <div className="card-title-wrap">
                 <h2 className="card-title">{title}</h2>
                 <p className="card-year">({releaseYear})</p>
+              </div>
+              <div className="card-btns">
+                <div className="circle-wrapper">{ratingCircle}</div>
+                <div className="btn-wrapper heart-wrapper"><i className={`${heartClass} fa-heart`} /></div>
+                <div className="btn-wrapper bookmark-wrapper"><i class="far fa-bookmark"></i></div>
               </div>
             </div>
             <p className="card-overview">{overview}</p>
