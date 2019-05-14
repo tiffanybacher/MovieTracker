@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from "prop-types";
+
 
 export default function CastCard(props) {
   const { name, headshot, character, id} = props.data;
@@ -11,3 +13,7 @@ export default function CastCard(props) {
     </div>
   );
 }
+
+CastCard.propTypes = {
+  data: PropTypes.object
+};

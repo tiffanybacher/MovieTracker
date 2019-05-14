@@ -16,50 +16,61 @@ exports[`MovieCard should match the snapshot 1`] = `
       className="card-header"
     >
       <div
-        className="circle-wrapper"
+        className="card-header-left"
       >
-        <svg
-          className="rating-circle"
-          viewBox="0 0 36 36"
+        <div
+          className="circle-wrapper"
         >
-          <path
-            className="circle-bg"
-            d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
-          />
-          <path
-            className="circle circle-green"
-            d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
-            strokeDasharray="86, 100"
-          />
-          <text
-            className="rating-num"
-            x="9"
-            y="23"
+          <svg
+            className="rating-circle"
+            viewBox="0 0 36 36"
           >
-            8.6
-          </text>
-        </svg>
+            <path
+              className="circle-bg"
+              d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+            />
+            <path
+              className="circle circle-green"
+              d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+              strokeDasharray="86, 100"
+            />
+            <text
+              className="rating-num"
+              x="9"
+              y="23"
+            >
+              8.6
+            </text>
+          </svg>
+        </div>
+        <div
+          className="card-title-wrap"
+        >
+          <h2
+            className="card-title"
+          >
+            Avengers: Endgame
+          </h2>
+          <p
+            className="card-year"
+          >
+            (
+            2019
+            )
+          </p>
+        </div>
       </div>
       <div
-        className="card-title-wrap"
+        className="icon-wrap"
       >
-        <h2
-          className="card-title"
-        >
-          Avengers: Endgame
-        </h2>
-        <p
-          className="card-year"
-        >
-          (
-          2019
-          )
-        </p>
+        <i
+          className="far fa-heart"
+          onClick={[Function]}
+        />
+        <i
+          className="far fa-bookmark"
+        />
       </div>
-      <i
-        className="far fa-heart"
-        onClick={[Function]}
-      />
     </div>
     <p
       className="card-overview"

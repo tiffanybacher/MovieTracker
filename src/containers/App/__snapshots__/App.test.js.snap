@@ -7,6 +7,11 @@ exports[`App should match the snapshot 1`] = `
   <Header />
   <Switch>
     <Route
+      component={[Function]}
+      exact={true}
+      path="/login"
+    />
+    <Route
       component={
         Object {
           "$$typeof": Symbol(react.memo),
@@ -18,6 +23,32 @@ exports[`App should match the snapshot 1`] = `
       }
       exact={true}
       path="/"
+    />
+    <Route
+      component={
+        Object {
+          "$$typeof": Symbol(react.memo),
+          "WrappedComponent": [Function],
+          "compare": null,
+          "displayName": "Connect(MovieContainer)",
+          "type": [Function],
+        }
+      }
+      exact={true}
+      path="/favorites"
+    />
+    <Route
+      component={
+        Object {
+          "$$typeof": Symbol(react.memo),
+          "WrappedComponent": [Function],
+          "compare": null,
+          "displayName": "Connect(MovieContainer)",
+          "type": [Function],
+        }
+      }
+      exact={true}
+      path="/watchlist"
     />
     <Route
       component={

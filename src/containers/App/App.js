@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux';
 import { Switch, Route } from 'react-router';
 import Header from '../../components/Header/Header';
@@ -51,3 +52,9 @@ export const mapDispatchToProps = (dispatch) => ({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
+
+App.propTypes = {
+  movies: PropTypes.array,
+  setMovies: PropTypes.func,
+  user: PropTypes.object
+};

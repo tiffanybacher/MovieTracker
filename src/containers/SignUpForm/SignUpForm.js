@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { fetchNewUser } from '../../api/fetchNewUser';
 import { connect } from 'react-redux';
@@ -142,3 +143,12 @@ export const mapDispatchToProps = (dispatch) => ({
 });
 
 export default connect(null, mapDispatchToProps)(SignUpForm);
+
+SignUpForm.propTypes = {
+  history: PropTypes.object,
+  location: PropTypes.object,
+  match: PropTypes.object,
+  updateUser: PropTypes.func
+};
+
+

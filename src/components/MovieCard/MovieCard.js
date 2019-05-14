@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from "prop-types";
 import { fetchAddFavorite } from '../../api/fetchAddFavorite';
 
 export class MovieCard extends Component {
@@ -126,3 +127,16 @@ export class MovieCard extends Component {
 } 
 
 export default MovieCard;
+
+MovieCard.propTypes = {
+  backdropImg: PropTypes.string,
+  deleteUserFavorite: PropTypes.func,
+  id: PropTypes.number,
+  overview: PropTypes.string,
+  posterImg: PropTypes.string,
+  rating: PropTypes.number,
+  releaseDate: PropTypes.string,
+  title: PropTypes.string,
+  updateUserFavorites: PropTypes.func,
+  user: PropTypes.object
+};

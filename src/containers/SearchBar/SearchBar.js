@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from "react-router-dom";
 import { fetchMovies } from '../../thunks/fetchMovies';
@@ -56,3 +57,12 @@ export const mapDispatchToProps = (dispatch) => ({
 })
 
 export default connect(null, mapDispatchToProps)(withRouter(SearchBar));
+
+SearchBar.propTypes = {
+  fetchSearch: PropTypes.func,
+  history: PropTypes.object,
+  location: PropTypes.object,
+  match: PropTypes.object
+};
+
+

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import PropTypes from 'prop-types'
 import LoginForm from '../../containers/LoginForm/LoginForm';
 
 class LoginPopup extends Component {
@@ -15,3 +15,12 @@ class LoginPopup extends Component {
 }
 
 export default LoginPopup;
+
+
+LoginPopup.propTypes = {
+  history: PropTypes.object,
+  location: PropTypes.object,
+  match: PropTypes.object
+};
+
+

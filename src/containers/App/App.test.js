@@ -36,8 +36,8 @@ describe('App', () => {
 
   describe('mapStateToProps', () => {
     it('should return an array of movies', () => {
-      const state = { user: { name: 'Jacob'}, movies: [cleanMovie, cleanMovie]};
-      const expected = { movies: state.movies};
+      const state = { user: { name: 'Jacob'}, movies: [cleanMovie, cleanMovie], test: 'test'};
+      const expected = { movies: state.movies, user: state.user };
       const result = mapStateToProps(state);
       expect(result).toEqual(expected);
     });
