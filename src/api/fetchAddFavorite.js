@@ -28,7 +28,3 @@ export const fetchAddFavorite = (cardData) => {
       }
     });
 };
-
-
-// Add Favorite - /api/users/favorites/new
-// To save a favorite you must send into the body: movie_id, user_id and title, poster_path, release_date, vote_average, overview. Keep in mind the response only gives the new favorite id

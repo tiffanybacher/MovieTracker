@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CastCard should match the snapshot 1`] = `
+<div>
+  <h2>
+    Chris Evans
+  </h2>
+  <h2>
+    Captain America
+  </h2>
+  <img
+    alt="Chris Evans headshot"
+    className="headshot"
+    src="fsdfasdfa.png"
+  />
+</div>
+`;

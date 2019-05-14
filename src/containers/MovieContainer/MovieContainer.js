@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { updateUserFavorites, deleteUserFavorite } from '../../actions';
 import { fetchDeleteFavorite } from '../../thunks/fetchDeleteFavorite';
 
-const MovieContainer = (props) => {
+export const MovieContainer = (props) => {
   let header;
   let message;
   const movieCards = props.movies.map(movie => 
@@ -45,14 +45,14 @@ const MovieContainer = (props) => {
   );
 }
 
-const mapStoreToProps = (state) => ({
+export const mapStateToProps = (state) => ({
   movies: state.movies,
   user: state.user
 });
 
-const mapDispatchToProps = (dispatch) => ({
+export const mapDispatchToProps = (dispatch) => ({
   updateUserFavorites: (movieId) => dispatch(updateUserFavorites(movieId)),
   deleteUserFavorite: (userId, movieId) => dispatch(fetchDeleteFavorite(userId, movieId))
 })
 
-export default connect(mapStoreToProps, mapDispatchToProps)(MovieContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(MovieContainer);

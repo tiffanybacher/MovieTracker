@@ -1,0 +1,78 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MovieCard should match the snapshot 1`] = `
+<article
+  className="MovieCard"
+>
+  <img
+    alt="Avengers: Endgame poster"
+    className="card-img"
+    src="https://image.tmdb.org/t/p/w500/or06FN3Dka5tukK1e9sl16pB3iy.jpg"
+  />
+  <div
+    className="card-info"
+  >
+    <div
+      className="card-header"
+    >
+      <div
+        className="circle-wrapper"
+      >
+        <svg
+          className="rating-circle"
+          viewBox="0 0 36 36"
+        >
+          <path
+            className="circle-bg"
+            d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+          />
+          <path
+            className="circle circle-green"
+            d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+            strokeDasharray="86, 100"
+          />
+          <text
+            className="rating-num"
+            x="9"
+            y="23"
+          >
+            8.6
+          </text>
+        </svg>
+      </div>
+      <div
+        className="card-title-wrap"
+      >
+        <h2
+          className="card-title"
+        >
+          Avengers: Endgame
+        </h2>
+        <p
+          className="card-year"
+        >
+          (
+          2019
+          )
+        </p>
+      </div>
+      <i
+        className="far fa-heart"
+        onClick={[Function]}
+      />
+    </div>
+    <p
+      className="card-overview"
+    >
+      After the devastating events of Avengers: Infinity War, the universe is in ruins due to the efforts of the Mad Titan, Thanos. With the help of remaining allies, the Avengers must assemble once more in...
+    </p>
+    <Link
+      className="more-info-btn"
+      role="button"
+      to="/movie/299534"
+    >
+      More Info
+    </Link>
+  </div>
+</article>
+`;

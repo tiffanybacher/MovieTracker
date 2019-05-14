@@ -11,7 +11,7 @@ export class SignUpForm extends Component {
     name: '',
     password: '',
     passwordConfirm: '',
-    error: ' ',
+    error: ' '
   }
 
   handleChange = (e) => {
@@ -32,7 +32,7 @@ export class SignUpForm extends Component {
       .then(data => {
         this.checkEmail(data, email);
         this.checkPasswords(password, passwordConfirm);
-        if (this.state.error.length === 1) {
+        if (this.state.error === ' ') {
           fetchNewUser(email, name, password)
             .then(id => {
               this.props.updateUser(id, name);

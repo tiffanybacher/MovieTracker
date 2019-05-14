@@ -4,7 +4,7 @@ export const fetchAllUsers = () => {
   return fetch(serverUrl)
     .then(response => {
       if (!response.ok) {
-        throw new Error('Failed to create account');
+        throw new Error('Failed to fetch all users');
       } else {
         return response.json();
       }

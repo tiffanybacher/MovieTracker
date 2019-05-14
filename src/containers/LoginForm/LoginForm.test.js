@@ -2,9 +2,12 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { LoginForm, mapDispatchToProps } from './LoginForm';
 import { fetchSignIn } from '../../api/fetchSignIn';
+import { fetchUserFavorites } from '../../api/fetchUserFavorites';
 import { updateUser } from '../../actions';
+import { mockCleanMovie } from '../../api/mockData';
 
 jest.mock('../../api/fetchSignIn');
+jest.mock('../../api/fetchUserFavorites')
 
 const mockChangeEvent = {
   target: {
@@ -12,6 +15,8 @@ const mockChangeEvent = {
     value: 'email@email.com'
   }
 };
+
+const mockFavorites = [mockCleanMovie, mockCleanMovie]
 
 const mockSubmitEvent = {
   preventDefault: () => {}
@@ -23,7 +28,7 @@ describe('LoginForm', () => {
   let mockHideLogin = jest.fn();
 
   fetchSignIn.mockImplementation(() => Promise.resolve(1));
-
+  fetchUserFavorites.mockImplementation(() => Promise.resolve(mockFavorites));
   beforeEach(() => {
     wrapper = shallow(
       <LoginForm 
@@ -74,12 +79,17 @@ describe('LoginForm', () => {
 
   describe('handleSubmit', () => {
     it('should invoke fetchSignIn', () => {
-      instance.handleSubmit();
+      instance.handleSubmit(mockSubmitEvent);
       expect(fetchSignIn).toHaveBeenCalled();
     });
 
-    it('should invoke updateUser', () => {
-      instance.handleSubmit(mockSubmitEvent);
+    it("should invoke fetchUserFavorites", async () => {
+      await instance.handleSubmit(mockSubmitEvent);
+      expect(fetchUserFavorites).toHaveBeenCalled();
+    });
+
+    it('should invoke updateUser', async () => {
+      await instance.handleSubmit(mockSubmitEvent);
       expect(mockUpdateUser).toHaveBeenCalled();
     });
 

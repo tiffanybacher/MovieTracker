@@ -36,13 +36,13 @@ exports[`LoginForm should match the snapshot 1`] = `
     Submit
   </button>
   <p>
-    Not a member? 
+    Not a member?
     <Link
       className="signup-link"
       onClick={[MockFunction]}
       to="/signup"
     >
-      Create an account
+      Create an account.
     </Link>
   </p>
 </form>

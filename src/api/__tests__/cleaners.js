@@ -1,4 +1,4 @@
-import { cleanAllMovies } from '../cleaners';
+import { cleanAllMovies, cleanPeople } from '../cleaners';
 import * as MD from '../mockData';
 
 describe('cleanAllMovies', () => {
@@ -8,6 +8,12 @@ describe('cleanAllMovies', () => {
       MD.mockUncleanMovie
     ]);
 
-    expect(result).toEqual([MD.cleanMovie, MD.cleanMovie]);
+    expect(result).toEqual([MD.mockCleanMovie, MD.mockCleanMovie]);
+  });
+
+  it('should return an object of clean people', () => {
+    const result = cleanPeople(MD.uncleanPeople);
+    
+    expect(result).toEqual(MD.mockCleanPeople);
   });
 });

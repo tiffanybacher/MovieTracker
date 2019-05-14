@@ -9,7 +9,7 @@ import { fetchUserFavorites } from '../../api/fetchUserFavorites';
 import { cleanAllMovies } from '../../api/cleaners';
 import { Redirect } from 'react-router-dom';
 
-class Nav extends Component {
+export class Nav extends Component {
   constructor() {
     super();
 

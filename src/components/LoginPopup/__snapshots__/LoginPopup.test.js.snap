@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LoginPopup should match the snapshot 1`] = `
+<div
+  className="LoginPopup"
+>
+  <h3>
+    Please login
+  </h3>
+  <p>
+    You must be logged in to view your favorites
+  </p>
+  <LoginForm />
+</div>
+`;
