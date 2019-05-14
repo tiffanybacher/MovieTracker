@@ -16,7 +16,11 @@ const MovieContainer = (props) => {
       key={movie.id} 
     />);
 
+
+    console.log(props)
+    
   if (props.location.pathname === '/favorites') {
+
     header = 'Your Favorite Movies'
   } else if (props.location.pathname === '/watchlist') {
     header = 'Your Watchlist'

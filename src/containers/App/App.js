@@ -10,7 +10,7 @@ import MovieDetailsContainer from '../MovieDetailsContainer/MovieDetailsContaine
 import Footer from '../../components/Footer/Footer';
 import { fetchMovies } from '../../thunks/fetchMovies';
 import LoginPopup from '../../components/LoginPopup/LoginPopup';
-// import { Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 
 export class App extends Component {
   constructor() {
@@ -29,17 +29,8 @@ export class App extends Component {
       <div className="App">
         <Header />
         <Switch>
-          <Route exact path="/login" component={LoginPopup} isActive={false} />
+          <Route exact path="/login" component={LoginPopup} />
           <Route exact path="/" component={MovieContainer} />
-          {
-          //   <Route
-          //   path="/favorites" 
-          //   component={props => this.props.user.id 
-          //     ? <MovieContainer /> 
-          //     : <Redirect to="/login" />
-          //   } 
-          // />
-          }
           <Route exact path="/favorites" component={MovieContainer} />
           <Route exact path="/watchlist" component={MovieContainer} />
           <Route exact path="/search" component={MovieContainer} />

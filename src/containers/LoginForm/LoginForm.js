@@ -32,9 +32,12 @@ export class LoginForm extends Component {
           ? favorites.map(favorite => favorite.movie_id)
           : []
         this.props.updateUser(userId, userName, favoriteIds);
-        this.props.hideLogin();
+        if (this.props.hideLogin) {
+          this.props.hideLogin();
+        }
       })
       .catch(error => {
+        console.log(error);
         this.setState({
           error: true,
           password: ""

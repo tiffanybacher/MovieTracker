@@ -59,6 +59,8 @@ class Nav extends Component {
     const { name } = this.props.user;
     let accountNav;
     let loginActive;
+    let favoriteLink = '/favorites';
+    let watchLink = '/watchlist';
 
     if (this.state.showLogin) {
       loginActive = 'active';
@@ -77,6 +79,9 @@ class Nav extends Component {
               SIGN UP
             </NavLink>
           </div>
+
+        favoriteLink = '/login';
+        watchLink = '/login';
     } else {
       accountNav =
         <div className="greeting-wrapper">
@@ -102,16 +107,17 @@ class Nav extends Component {
           </Link>
           <div className="main-nav-wrapper">
             <NavLink
+              exact
               to="/"
               className="nav-link"
               onClick={() => this.props.resetMovies("discover")}
             >
               EXPLORE
             </NavLink>
-            <NavLink to="/favorites" className="nav-link" onClick={this.goToFavorites}>
+            <NavLink exact to={favoriteLink} className="nav-link" onClick={this.goToFavorites}>
               FAVORITES
             </NavLink>
-            <NavLink to="/watchlist" className="nav-link" onClick={this.goToWatchlist}>
+            <NavLink exact to={watchLink} className="nav-link" onClick={this.goToWatchlist}>
               WATCHLIST
             </NavLink>
           </div>
