@@ -54,7 +54,7 @@ export const uncleanPeople = {
   ]
 };
 
-export const cleanPeople = {
+export const mockCleanPeople = {
   director: [{ name: 'Ms. Director', job: 'Director'}],
   writer: [{ name: 'Mr. Writer', job: 'Writer'}],
   cast: [
