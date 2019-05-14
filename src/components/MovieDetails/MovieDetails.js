@@ -2,8 +2,6 @@ import React from 'react';
 import { CastContainer } from '../CastContainer/CastContainer';
 
 export const MovieDetails = (props) => {
-
-  console.log(props.people)
   const { title, overview, posterImg, id, rating, releaseDate, backdropImg } = props.movieDetails;
   const { director, writer, cast } = props.people;
   let releaseYear = releaseDate.substring(0, 4);

@@ -16,21 +16,19 @@ const MovieContainer = (props) => {
       key={movie.id} 
     />);
 
-
-    console.log(props)
-    
   if (props.location.pathname === '/favorites') {
-
-    header = 'Your Favorite Movies'
+    header = 'Your Favorite Movies';
   } else if (props.location.pathname === '/watchlist') {
-    header = 'Your Watchlist'
+    header = 'Your Watchlist';
+  } else if (props.location.pathname === '/search') {
+    header = 'Search Results';
   } else {
-    header = 'Explore Popular Movies'
+    header = 'Explore Popular Movies';
   }
 
-  if (props.location.pathname === '/favorites' && !props.movies.length) {
+  if (props.location.pathname === "/favorites" && !props.movies.length) {
     message = <h3 className="display-msg">You have not favorited any movies!</h3>
-  } else if (props.location.pathname === '/watchlist' && !props.movies.length) {
+  } else if (props.location.pathname === "/watchlist" && !props.movies.length) {
     message = <h3 className="display-msg">You have not started a watchlist!</h3>
   }
 
@@ -53,6 +51,6 @@ const mapStoreToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   updateUserFavorites: (movieId) => dispatch(updateUserFavorites(movieId)),
   deleteUserFavorite: (userId, movieId) => dispatch(fetchDeleteFavorite(userId, movieId))
-})
+});
 
 export default connect(mapStoreToProps, mapDispatchToProps)(MovieContainer);
