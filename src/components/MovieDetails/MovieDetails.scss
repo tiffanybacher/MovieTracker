@@ -1,9 +1,25 @@
-.MovieDetails {
-  background: $off-white;
+.MovieDetails-container {
+  // background: $off-white;
+}
+
+.MovieDetails-backdrop {
+  background-size: cover;
+}
+
+.backdrop-cover {
+  background: rgba($theme, .95);
+  height: 590px;
   display: flex;
-  margin: 20px 0;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.MovieDetails {
+  background: transparent;
+  color: $off-white;
+  display: flex;
   text-align: left;
-  width: 80vw;
+  width: 70vw;
   height: 60vh;
 
   .card-img {
@@ -12,16 +28,25 @@
   }
 
   .card-info {
-    padding: 20px;
+    margin: 0 20px;
+    padding: 0 20px;
     position: relative;
+    width: 80vw;
 
     .card-header {
-      display: flex;
+      // display: flex;
+      // align-items: center;
+
+      .card-btns {
+        display: flex;
+        align-items: center;
+        margin: 20px 0;
+      }
 
       .rating-circle {
         border-radius: 50%;
-        width: 40px;
-        height: 40px;
+        width: 70px;
+        height: 70px;
       }
     
       .circle-bg {
@@ -42,25 +67,74 @@
         font-size: .8em;
       }
 
+      .btn-wrapper {
+        background: transparent;
+        border: 3px solid white;
+        border-radius: 50%;
+        height: 50px;
+        margin: 0 10px 0 20px;
+        width: 50px;
+
+        &:last-child {
+          margin: 0 10px;
+        }
+      }
+
+      .fa-heart,
+      .fa-bookmark {
+        color: white;
+        font-size: 1.5em;
+        position: relative;
+        top: 14px;
+        left: 13px;
+      }
+
+      .fa-heart:hover {
+        color: red;
+      }
+
+      .fa-bookmark:hover {
+        color: $accent;
+      }
+
+      .fa-bookmark {
+        left: 16px;
+      }
+
       .card-title-wrap {
-        margin: 0 0 0 10px;
+        display: flex;
 
         .card-title {
-          font-size: 3em;
-          margin: 0;
+          font-size: 2.5em;
         }
 
         .card-year {
-          margin: 0;
+          font-size: 1.5em;
+          margin: 0 0 0 10px;
+          position: relative;
+          top: 12px;
         }
       }
     }
 
     .card-overview {
-      height: 120px;
       overflow: auto;
       margin: 30px 0;
+      font-size: 1.3em;
+    }
+
+    h3 {
       font-size: 1.5em;
+    }
+
+    .crew-info {
+      display: flex;
+      flex-wrap: wrap;
+
+      .crew-member {
+        font-size: 1.1em;
+        margin: 25px 25px 0 0;
+      }
     }
   }
 }

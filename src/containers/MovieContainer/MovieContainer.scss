@@ -1,11 +1,18 @@
 .MovieContainer {
   max-width: 1200px;
+  min-height: 500px;
   margin: 0 auto;
 
   .movie-container-header {
     color: white;
     text-align: left;
     margin: 40px 0 10px 25px;
+  }
+
+  .display-msg {
+    color: rgba(white, .2);
+    font-size: 1.6em;
+    margin: 50px 0;
   }
 
   .flex-container {

@@ -5,6 +5,7 @@ import { cleanAllMovies } from '../api/cleaners';
 
 export const fetchMovies = (fetchCase, query) => {
   let url;
+  
   switch(fetchCase) {
     case 'search':
       url = `${baseUrl}search/movie${jacobKey}&language=en-US&query=${query}&page=1&include_adult=false`
@@ -15,6 +16,7 @@ export const fetchMovies = (fetchCase, query) => {
     default:
       console.log('Need fetchCase');
   } 
+
   return async (dispatch) => {
     try {
       const response = await fetch(url);
@@ -23,6 +25,7 @@ export const fetchMovies = (fetchCase, query) => {
       }
       const data = await response.json();
       const movies = cleanAllMovies(data.results);
+
       dispatch(addDiscoverMovies(movies));
     } catch(error) {
       console.log(error);

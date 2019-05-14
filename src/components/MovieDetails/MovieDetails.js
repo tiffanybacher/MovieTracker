@@ -2,7 +2,9 @@ import React from 'react';
 import { CastContainer } from '../CastContainer/CastContainer';
 
 export const MovieDetails = (props) => {
-  const { title, overview, posterImg, id, rating, releaseDate } = props.movieDetails;
+
+  console.log(props.people)
+  const { title, overview, posterImg, id, rating, releaseDate, backdropImg } = props.movieDetails;
   const { director, writer, cast } = props.people;
   let releaseYear = releaseDate.substring(0, 4);
   let percentage = rating * 10;
@@ -28,21 +30,64 @@ export const MovieDetails = (props) => {
       <text x="9" y="23" className="rating-num">{ratingNum}</text>
     </svg>
 
+  const backgroundImg = {
+    backgroundImage: `url(${backdropImg})`
+  }
+
+  let directorInfo;
+  let writerInfo;
+
+  if (director) {
+    directorInfo = director.map(person => {
+      return (
+        <div className="crew-member">
+          <h4>{person.job}</h4>
+          <p>{person.name}</p>
+        </div>
+      );
+    });
+  }
+
+  if (writer) {
+    writerInfo = writer.map(person => {
+      return (
+        <div className="crew-member">
+          <h4>{person.job}</h4>
+          <p>{person.name}</p>
+        </div>
+      );
+    });
+  }
+
+  let heartClass = 'far';
+
   return (
-    <div>
-      <article className="MovieDetails">
-        <img className="card-img" src={posterImg} alt={`${title} poster`} />
-        <div className="card-info">
-          <div className="card-header">
-            <div className="circle-wrapper">{ratingCircle}</div>
-            <div className="card-title-wrap">
-              <h2 className="card-title">{title}</h2>
-              <p className="card-year">({releaseYear})</p>
+    <div className="MovieDetails-container">
+      <div className="MovieDetails-backdrop" style={backgroundImg}>
+        <div className="backdrop-cover">
+        <article className="MovieDetails">
+          <img className="card-img" src={posterImg} alt={`${title} poster`} />
+          <div className="card-info">
+            <div className="card-header">
+              <div className="card-title-wrap">
+                <h2 className="card-title">{title}</h2>
+                <p className="card-year">({releaseYear})</p>
+              </div>
+              <div className="card-btns">
+                <div className="circle-wrapper">{ratingCircle}</div>
+                <div className="btn-wrapper heart-wrapper"><i className={`${heartClass} fa-heart`} /></div>
+                <div className="btn-wrapper bookmark-wrapper"><i class="far fa-bookmark"></i></div>
+              </div>
+            </div>
+            <p className="card-overview">{overview}</p>
+            <div className="crew-info">
+              {directorInfo}
+              {writerInfo}
             </div>
           </div>
-          <p className="card-overview">{overview}</p>
+        </article>
         </div>
-      </article>
+      </div>
       <CastContainer cast={cast}/>
     </div>
   );

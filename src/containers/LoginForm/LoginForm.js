@@ -32,9 +32,12 @@ export class LoginForm extends Component {
           ? favorites.map(favorite => favorite.movie_id)
           : []
         this.props.updateUser(userId, userName, favoriteIds);
-        this.props.hideLogin();
+        if (this.props.hideLogin) {
+          this.props.hideLogin();
+        }
       })
       .catch(error => {
+        console.log(error);
         this.setState({
           error: true,
           password: ""
@@ -67,9 +70,8 @@ export class LoginForm extends Component {
           value={this.state.password}
           onChange={this.handleChange}
         />
-        {this.state.error && 
-          <p className="error-message">Incorrect password. Please try again.</p>
-        }
+        <p className="error-message">{this.state.error && 
+          'Incorrect email or password. Please try again.'}</p>
         <button type="submit" className="submit-btn">Submit</button>
         <p>
           Not a member? 

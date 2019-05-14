@@ -15,7 +15,7 @@
     }
 
     h4 {
-      margin: 10px 0;
+      margin: 10px 0 30px 0;
     }
 
     .flex-wrapper {
@@ -30,8 +30,22 @@
 
         .cancel-link {
           margin: 0 10px;
+
+          &:hover {
+            color: $accent;
+          }
+        }
+
+        .signup-btn {
+          &:hover {
+            background: rgba($theme, .5);
+          }
         }
       }
+    }
+
+    .error-message {
+      font-size: 1.1em;
     }
   }
 }

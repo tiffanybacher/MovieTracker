@@ -23,11 +23,13 @@ export class MovieCard extends Component {
           : false
       };
     }
+
     return null;
   }
 
   handleFavorite = () => {
     let { isFavorite} = this.state
+
     if (!isFavorite && this.props.user.id) {
       fetchAddFavorite(this.props)
         .catch(error => this.setState({ error }));
@@ -35,7 +37,7 @@ export class MovieCard extends Component {
     } else if (isFavorite && this.props.user.id){
       this.props.deleteUserFavorite(this.props.user.id, this.props.id);
     } else {
-      console.log("NOT LOGGED IN")
+      alert('You must be logged in to favorite a movie')
     }
   }
 
@@ -101,12 +103,17 @@ export class MovieCard extends Component {
         <img className="card-img" src={posterImg} alt={`${title} poster`} />
         <div className="card-info">
           <div className="card-header">
-            <div className="circle-wrapper">{ratingCircle}</div>
-            <div className="card-title-wrap">
-              <h2 className="card-title">{title}</h2>
-              <p className="card-year">({releaseYear})</p>
+            <div className="card-header-left">
+              <div className="circle-wrapper">{ratingCircle}</div>
+              <div className="card-title-wrap">
+                <h2 className="card-title">{title}</h2>
+                <p className="card-year">({releaseYear})</p>
+              </div>
             </div>
-            <i className={`${heartClass} fa-heart`} onClick={this.handleFavorite} />
+            <div className="icon-wrap">
+              <i className={`${heartClass} fa-heart`} onClick={this.handleFavorite} />
+              <i className="far fa-bookmark" />
+            </div>
           </div>
           <p className="card-overview">{movieOverview}</p>
           <Link className="more-info-btn" role="button" to={`/movie/${id}`}>
@@ -116,7 +123,6 @@ export class MovieCard extends Component {
       </article>
     );
   }
-  
 } 
 
 export default MovieCard;

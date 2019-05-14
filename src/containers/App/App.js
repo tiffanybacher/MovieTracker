@@ -9,6 +9,8 @@ import SignUpForm from '../SignUpForm/SignUpForm';
 import MovieDetailsContainer from '../MovieDetailsContainer/MovieDetailsContainer';
 import Footer from '../../components/Footer/Footer';
 import { fetchMovies } from '../../thunks/fetchMovies';
+import LoginPopup from '../../components/LoginPopup/LoginPopup';
+import { Redirect } from 'react-router-dom';
 
 export class App extends Component {
   constructor() {
@@ -27,7 +29,10 @@ export class App extends Component {
       <div className="App">
         <Header />
         <Switch>
+          <Route exact path="/login" component={LoginPopup} />
           <Route exact path="/" component={MovieContainer} />
+          <Route exact path="/favorites" component={MovieContainer} />
+          <Route exact path="/watchlist" component={MovieContainer} />
           <Route exact path="/search" component={MovieContainer} />
           <Route exact path="/signup" component={SignUpForm} />
           <Route path="/movie/:id" component={MovieDetailsContainer} />
@@ -39,7 +44,8 @@ export class App extends Component {
 }
 
 export const mapStateToProps = (state) => ({
-  movies: state.movies
+  movies: state.movies,
+  user: state.user
 });
 
 export const mapDispatchToProps = (dispatch) => ({
