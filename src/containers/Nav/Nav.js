@@ -32,8 +32,7 @@ class Nav extends Component {
 
   goToFavorites = () => {
     if (!this.props.user.id) {
-      console.log('Must be logged in to view favorites');
-
+      alert('Must be logged in to view Favorites');
     } else if (this.props.user.id && !this.props.user.favorites.length) {
       this.props.displayFavorites([]);
     } else {
@@ -45,12 +44,11 @@ class Nav extends Component {
 
   goToWatchlist = () => {
     if (!this.props.user.id) {
-      console.log('Must be logged in to view Watchlist');
-
+      alert('Must be logged in to view Watchlist');
     } else if (this.props.user.id && !this.props.user.watchlist) {
       this.props.displayWatchlist([]);
     } else {
-      console.log('Still need to create fetchUserWatchlist')
+      console.log('Create fetchUserWatchlist')
       // fetchUserWatchlist(this.props.user.id)
       //   .then(result => cleanAllMovies(result))
       //   .then(movies => this.props.displayWatchlist(movies));

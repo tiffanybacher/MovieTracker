@@ -4,8 +4,9 @@
 }
 
 .error-message {
-  color: red;
-  font-weight: bold;
+  color: $accent;
+  font-size: .94em;
+  height: 25px;
 }
 
 .signup-link {
