@@ -1,17 +1,26 @@
 .LoginForm {
   @include flex-column;
   @include form-layout;
+
+  .submit-btn {
+    background: rgba($accent, .9);
+
+    &:hover {
+      background: $accent;
+    }
+  }
 }
 
 .error-message {
   color: $accent;
   font-size: .94em;
-  height: 25px;
+  height: 20px;
 }
 
 .signup-link {
   font-style: italic;
   font-weight: 400;
+  margin: 0 0 0 5px;
   text-decoration: underline;
 }
 

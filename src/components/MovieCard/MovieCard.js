@@ -103,10 +103,12 @@ export class MovieCard extends Component {
         <img className="card-img" src={posterImg} alt={`${title} poster`} />
         <div className="card-info">
           <div className="card-header">
-            <div className="circle-wrapper">{ratingCircle}</div>
-            <div className="card-title-wrap">
-              <h2 className="card-title">{title}</h2>
-              <p className="card-year">({releaseYear})</p>
+            <div className="card-header-left">
+              <div className="circle-wrapper">{ratingCircle}</div>
+              <div className="card-title-wrap">
+                <h2 className="card-title">{title}</h2>
+                <p className="card-year">({releaseYear})</p>
+              </div>
             </div>
             <i className={`${heartClass} fa-heart`} onClick={this.handleFavorite} />
           </div>
@@ -118,7 +120,6 @@ export class MovieCard extends Component {
       </article>
     );
   }
-  
 } 
 
 export default MovieCard;

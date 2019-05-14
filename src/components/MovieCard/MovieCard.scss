@@ -17,6 +17,11 @@
 
     .card-header {
       display: flex;
+      justify-content: space-between;
+
+      .card-header-left {
+        display: flex;
+      }
 
       .rating-circle {
         border-radius: 50%;
@@ -68,8 +73,12 @@
       }
     }
 
-    .fa-heart:hover {
-      color: red;
+    .fa-heart {
+      margin: 0 0 0 7px;
+
+      &:hover {
+        color: red;
+      }
     }
 
     .card-overview {
