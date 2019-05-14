@@ -73,9 +73,6 @@ export class SignUpForm extends Component {
             <form
               onSubmit={this.handleSubmit}
               className="signup-form-inputs">
-              <div className="error-holder">
-                <p className="error-message">{error}</p>
-              </div>
               <label htmlFor="signup-email-input">Email</label>
               <input
                 type="text"
@@ -110,6 +107,9 @@ export class SignUpForm extends Component {
                 value={this.state.passwordConfirm}
                 onChange={this.handleChange}
               />
+              <div className="error-holder">
+                <p className="error-message">{error}</p>
+              </div>
               <div className="signup-btn-wrapper">
                 <button type="submit" className="signup-btn btn">
                   Sign Up
@@ -124,7 +124,7 @@ export class SignUpForm extends Component {
               <div className="signup-sub-blurb">
                 <p>As a member you can:</p>
                 <ul>
-                  <li>Log movies you have watched</li>
+                  <li>View details of any movie</li>
                   <li>Keep track of favorite movies</li>
                   <li>Build and maintain an watchlist</li>
                 </ul>

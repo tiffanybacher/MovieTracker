@@ -1,10 +1,14 @@
 .MovieCard {
   background: $off-white;
   display: flex;
+  height: 300px;
   margin: 20px 0;
   text-align: left;
   width: 550px;
-  height: 300px;
+
+  &:hover {
+    box-shadow: -3px 3px 3px black;
+  }
 
   .card-img {
     height: 300px;
@@ -17,6 +21,11 @@
 
     .card-header {
       display: flex;
+      justify-content: space-between;
+
+      .card-header-left {
+        display: flex;
+      }
 
       .rating-circle {
         border-radius: 50%;
@@ -68,8 +77,24 @@
       }
     }
 
-    .fa-heart:hover {
-      color: red;
+    .icon-wrap {
+      min-width: 45px;
+    }
+
+    .fa-heart {
+      margin: 0 0 0 7px;
+
+      &:hover {
+        color: red;
+      }
+    }
+
+    .fa-bookmark {
+      margin: 0 0 0 9px;
+
+      &:hover {
+        color: $accent;
+      }
     }
 
     .card-overview {

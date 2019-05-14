@@ -2,8 +2,22 @@ import { imageUrl } from './pathNames';
 
 export const cleanAllMovies = (moviesArray) => {
   const cleanMovies = moviesArray.map(movie => {
+    let id;
+    let backdropImg;
+
+    if (movie.movie_id) {
+      id = movie.movie_id;
+    } else {
+      id = movie.id
+    }
+
+    if (movie.backdrop_path) {
+      backdropImg = `${imageUrl}${movie.backdrop_path}`
+    } else {
+      backdropImg = '';
+    }
+
     const { 
-      id, 
       title, 
       poster_path, 
       overview, 
@@ -17,7 +31,8 @@ export const cleanAllMovies = (moviesArray) => {
       posterImg: `${imageUrl}${poster_path}`, 
       overview, 
       releaseDate: release_date, 
-      rating: vote_average 
+      rating: vote_average,
+      backdropImg
     };
   });
 

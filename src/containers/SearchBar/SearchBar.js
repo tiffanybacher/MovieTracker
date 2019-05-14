@@ -29,7 +29,12 @@ export class SearchBar extends Component {
   render() {
     return (
       <form className="SearchBar" onSubmit={this.handleSubmit}>
-        <i className="fas fa-search" />
+        <div role="button" className="clear-search">
+          <i
+            className="fas fa-times"
+            onClick={this.clearInput}
+          />
+        </div>
         <input
           type="text"
           className="search-input"
@@ -37,12 +42,10 @@ export class SearchBar extends Component {
           value={this.state.query}
           onChange={this.handleChange}
         />
-        <div role="button" className="clear-search">
-          <i
-            className="fas fa-times"
-            onClick={this.clearInput}
-          />
+        <div className="search-icon">
+        <i className="fas fa-search" />
         </div>
+        
       </form>
     );
   }
