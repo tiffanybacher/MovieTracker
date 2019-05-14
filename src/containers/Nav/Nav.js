@@ -7,6 +7,7 @@ import { logoutUser, addFavoriteMovies } from '../../actions';
 import { fetchMovies } from '../../thunks/fetchMovies';
 import { fetchUserFavorites } from '../../api/fetchUserFavorites';
 import { cleanAllMovies } from '../../api/cleaners';
+import { Redirect } from 'react-router-dom';
 
 class Nav extends Component {
   constructor() {
@@ -29,14 +30,14 @@ class Nav extends Component {
     this.props.logoutUser();
   }
 
-  goToFavorites = () => {
+  goToFavorites = (e) => {
+
     if (!this.props.user.id) {
       console.log('Must be logged in to view favorites');
+      
     } else if (this.props.user.id && !this.props.user.favorites.length) {
-      console.log('Logged in but no favorites');
       this.props.displayFavorites([]);
     } else {
-      console.log('Logged in and favorites are true');
       fetchUserFavorites(this.props.user.id)
         .then(result => cleanAllMovies(result))
         .then(movies => this.props.displayFavorites(movies));
