@@ -1,11 +1,11 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { cleanMovie, mockUser } from '../../api/__tests__/mockData'
+import { mockCleanMovie, mockUser } from '../../api/mockData'
 import { MovieContainer, mapStateToProps, mapDispatchToProps } from './MovieContainer';
 import { updateUserFavorites, deleteUserFavorite } from '../../actions';
 import { fetchDeleteFavorite } from '../../thunks/fetchDeleteFavorite';
 
-const mockMovies = [cleanMovie, cleanMovie];
+const mockMovies = [mockCleanMovie, mockCleanMovie];
 jest.mock("../../thunks/fetchDeleteFavorite");
 
 describe('MovieContainer', () => {

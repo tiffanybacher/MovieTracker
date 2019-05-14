@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { App, mapStateToProps, mapDispatchToProps } from './App';
 import { cleanAllMovies } from '../../api/cleaners';
-import { mockUncleanMovie, cleanMovie } from '../../api/__tests__/mockData';
+import { mockUncleanMovie, cleanMovie } from '../../api/mockData';
 import { fetchMovies } from '../../thunks/fetchMovies';
 
 jest.mock('../../thunks/fetchMovies');

@@ -1,17 +1,17 @@
 import { fetchAddFavorite } from '../fetchAddFavorite';
 import { serverUrl } from '../pathNames';
-import { cleanMovie } from './mockData';
+import { mockCleanMovie } from '../mockData';
 
 window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
   ok: true,
-  json: () => Promise.resolve(cleanMovie.id)
+  json: () => Promise.resolve(mockCleanMovie.id)
 }));
 
-cleanMovie.user = { id: 1 };
+mockCleanMovie.user = { id: 1 };
 const url = `${serverUrl}/favorites/new`;
 const { 
   user, title, overview, posterImg, id, rating, releaseDate 
-} = cleanMovie;
+} = mockCleanMovie;
 
 let poster_path = posterImg.split('500')[1];
 const body = {
@@ -31,13 +31,13 @@ const init = {
 
 describe('fetchAddFavorite', () => {
   it('should call fetch with the correct params', () => {
-    fetchAddFavorite(cleanMovie);
+    fetchAddFavorite(mockCleanMovie);
     expect(fetch).toBeCalledWith(url, init);
   });
 
   it('should return the correct data', async () => {
-    const result = await fetchAddFavorite(cleanMovie);
-    expect(result).toEqual(cleanMovie.id);
+    const result = await fetchAddFavorite(mockCleanMovie);
+    expect(result).toEqual(mockCleanMovie.id);
   });
 
   it("should throw an error if fetch fails", async () => {
@@ -48,7 +48,7 @@ describe('fetchAddFavorite', () => {
     );
 
     try {
-      await fetchAddFavorite(cleanMovie);
+      await fetchAddFavorite(mockCleanMovie);
     } catch (error) {
       expect(error.message).toBe("Failed to add favorite");
     }

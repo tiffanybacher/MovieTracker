@@ -1,7 +1,7 @@
 import fetchMoviePeople from "../fetchMoviePeople";
 import { baseUrl } from "../pathNames";
 import { jacobKey } from "../../utils/API-logins";
-import { uncleanPeople } from './mockData';
+import { uncleanPeople } from '../mockData';
 
 window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
   ok: true,

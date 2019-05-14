@@ -1,4 +1,4 @@
-import { imageUrl } from "../../utils/API-logins";
+import { imageUrl } from "./pathNames";
 
 export const mockUncleanMovie = {
   vote_count: 4354,
@@ -21,7 +21,7 @@ export const mockUncleanMovie = {
   release_date: '2019-04-24'
 };
 
-export const cleanMovie = {
+export const mockCleanMovie = {
   id: 299534,
   overview: "After the devastating events of Avengers: Infinity War, the universe is in ruins due to the efforts of the Mad Titan, Thanos. With the help of remaining allies, the Avengers must assemble once more in order to undo Thanos' actions and restore order to the universe once and for all, no matter what consequences may be in store.",
   posterImg: "https://image.tmdb.org/t/p/w500/or06FN3Dka5tukK1e9sl16pB3iy.jpg",

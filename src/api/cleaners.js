@@ -1,4 +1,4 @@
-import { imageUrl } from '../utils/API-logins';
+import { imageUrl } from './pathNames';
 
 export const cleanAllMovies = (moviesArray) => {
   const cleanMovies = moviesArray.map(movie => {

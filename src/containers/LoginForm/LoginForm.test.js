@@ -4,7 +4,7 @@ import { LoginForm, mapDispatchToProps } from './LoginForm';
 import { fetchSignIn } from '../../api/fetchSignIn';
 import { fetchUserFavorites } from '../../api/fetchUserFavorites';
 import { updateUser } from '../../actions';
-import { cleanMovie } from '../../api/__tests__/mockData';
+import { mockCleanMovie } from '../../api/mockData';
 
 jest.mock('../../api/fetchSignIn');
 jest.mock('../../api/fetchUserFavorites')
@@ -16,7 +16,7 @@ const mockChangeEvent = {
   }
 };
 
-const mockFavorites = [cleanMovie, cleanMovie]
+const mockFavorites = [mockCleanMovie, mockCleanMovie]
 
 const mockSubmitEvent = {
   preventDefault: () => {}

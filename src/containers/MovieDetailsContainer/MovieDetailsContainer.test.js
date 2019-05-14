@@ -1,12 +1,12 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { MovieDetailsContainer, mapStateToProps } from './MovieDetailsContainer';
-import { cleanMovie, uncleanPeople, mockCleanPeople } from '../../api/__tests__/mockData';
+import { mockCleanMovie, uncleanPeople, mockCleanPeople } from '../../api/mockData';
 import fetchMoviePeople from '../../api/fetchMoviePeople';
 import { cleanPeople } from '../../api/cleaners';
 
 const mockLocation = { pathname: '/localhost3001/11111'};
-const mockMovies = [cleanMovie, cleanMovie]
+const mockMovies = [mockCleanMovie, mockCleanMovie]
 jest.mock('../../api/fetchMoviePeople');
 jest.mock("../../api/cleaners");
 

@@ -1,7 +1,7 @@
 import { MovieCard } from "./MovieCard";
 import { shallow } from "enzyme";
 import React from "react";
-import { cleanMovie, mockUser } from "../../api/__tests__/mockData";
+import { mockCleanMovie, mockUser } from "../../api/mockData";
 import { fetchAddFavorite } from "../../api/fetchAddFavorite";
 
 jest.mock("../../api/fetchAddFavorite");
@@ -15,7 +15,7 @@ const defaultState = {
 };
 const userlessComponent = (
   <MovieCard
-    {...cleanMovie}
+    {...mockCleanMovie}
     user={{}}
     updateUserFavorites={mockUpdateUserFavorites}
     deleteUserFavorite={mockDeleteUserFavorite}
@@ -24,7 +24,7 @@ const userlessComponent = (
 );
 const userComponent = (
   <MovieCard
-    {...cleanMovie}
+    {...mockCleanMovie}
     user={mockUser}
     updateUserFavorites={mockUpdateUserFavorites}
     deleteUserFavorite={mockDeleteUserFavorite}
@@ -58,10 +58,10 @@ describe("MovieCard", () => {
       expect(mockUpdateUserFavorites).toHaveBeenCalled();
     });
 
-    it.skip('should set state to an error if the fetch fails', () => {
+    it('should set state to an error if the fetch fails', async () => {
       let wrapper = shallow(userComponent);
-      fetchAddFavorite.mockImplementation(() => {throw new Error('error')});
-      wrapper.instance().handleFavorite();
+      fetchAddFavorite.mockImplementation(() => Promise.reject('error'));
+      await wrapper.instance().handleFavorite();
       expect(wrapper.state('error')).toEqual('error')
     });
 

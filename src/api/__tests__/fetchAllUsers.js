@@ -1,6 +1,6 @@
 import { fetchAllUsers } from "../fetchAllUsers";
 import { serverUrl } from "../pathNames";
-import { mockUser } from "./mockData";
+import { mockUser } from "../mockData";
 
 window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
   ok: true,

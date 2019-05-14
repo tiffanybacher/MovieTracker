@@ -4,7 +4,7 @@ import { SignUpForm, mapDispatchToProps } from './SignUpForm';
 import { fetchNewUser } from '../../api/fetchNewUser';
 import { fetchAllUsers } from '../../api/fetchAllUsers';
 import { updateUser } from '../../actions';
-import { mockUser } from '../../api/__tests__/mockData';
+import { mockUser } from '../../api/mockData';
 
 jest.mock('../../api/fetchNewUser');
 jest.mock('../../api/fetchAllUsers')
@@ -32,9 +32,7 @@ describe('SignUpForm', () => {
   }
   
   fetchNewUser.mockImplementation(() => Promise.resolve(1));
-  fetchAllUsers.mockImplementation(() => Promise.resolve({
-    data: [mockUser, mockUser]
-  }));
+  fetchAllUsers.mockImplementation(() => Promise.resolve([mockUser, mockUser]));
 
   beforeEach(() => {
     wrapper = shallow(
@@ -139,7 +137,7 @@ describe('SignUpForm', () => {
   });
 
   describe('checkEmail', () => {
-    const mockUserData = [ { email: 'email@email.com' }, {email: 'test@test.com'}];
+    const mockUserData = [{ email: 'email@email.com' }, {email: 'test@test.com'}];
 
     it('should set an error in state if the given email matches any existing emails', () => {
       expect(wrapper.state('error')).toEqual(' ');

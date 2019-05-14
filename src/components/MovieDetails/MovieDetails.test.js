@@ -1,14 +1,14 @@
 import React from "react";
 import { shallow } from "enzyme";
 import { MovieDetails } from "./MovieDetails";
-import { cleanMovie, cleanPeople } from "../../api/__tests__/mockData";
+import { mockCleanMovie, mockCleanPeople } from "../../api/mockData";
 
 describe("MovieDetails", () => {
   it("should match the snapshot", () => {
     let wrapper = shallow(
       <MovieDetails 
-        movieDetails={cleanMovie}
-        people={cleanPeople}
+        movieDetails={mockCleanMovie}
+        people={mockCleanPeople}
       />
     );
     expect(wrapper).toMatchSnapshot();
