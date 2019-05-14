@@ -10,6 +10,6 @@ exports[`LoginPopup should match the snapshot 1`] = `
   <p>
     You must be logged in to view your favorites
   </p>
-  <LoginForm />
+  <ConnectFunction />
 </div>
 `;

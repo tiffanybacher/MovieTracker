@@ -15,9 +15,6 @@ export const MovieContainer = (props) => {
       deleteUserFavorite={props.deleteUserFavorite}
       key={movie.id} 
     />);
-
-
-    console.log(props)
     
   if (props.location.pathname === '/favorites') {
 

@@ -2,8 +2,6 @@ import React from 'react';
 import { CastContainer } from '../CastContainer/CastContainer';
 
 export const MovieDetails = (props) => {
-
-  console.log(props.people)
   const { title, overview, posterImg, id, rating, releaseDate, backdropImg } = props.movieDetails;
   const { director, writer, cast } = props.people;
   let releaseYear = releaseDate.substring(0, 4);
@@ -40,7 +38,7 @@ export const MovieDetails = (props) => {
   if (director) {
     directorInfo = director.map(person => {
       return (
-        <div className="crew-member">
+        <div className="crew-member" key={person.id}>
           <h4>{person.job}</h4>
           <p>{person.name}</p>
         </div>
@@ -51,7 +49,7 @@ export const MovieDetails = (props) => {
   if (writer) {
     writerInfo = writer.map(person => {
       return (
-        <div className="crew-member">
+        <div className="crew-member" key={person.id}>
           <h4>{person.job}</h4>
           <p>{person.name}</p>
         </div>
@@ -76,7 +74,7 @@ export const MovieDetails = (props) => {
               <div className="card-btns">
                 <div className="circle-wrapper">{ratingCircle}</div>
                 <div className="btn-wrapper heart-wrapper"><i className={`${heartClass} fa-heart`} /></div>
-                <div className="btn-wrapper bookmark-wrapper"><i class="far fa-bookmark"></i></div>
+                <div className="btn-wrapper bookmark-wrapper"><i className="far fa-bookmark"></i></div>
               </div>
             </div>
             <p className="card-overview">{overview}</p>

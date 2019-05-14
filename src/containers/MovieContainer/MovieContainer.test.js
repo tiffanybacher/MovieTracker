@@ -5,14 +5,16 @@ import { MovieContainer, mapStateToProps, mapDispatchToProps } from './MovieCont
 import { updateUserFavorites, deleteUserFavorite } from '../../actions';
 import { fetchDeleteFavorite } from '../../thunks/fetchDeleteFavorite';
 
+mockCleanMovie.backdropImg = "https://image.tmdb.org/t/p/w500/7RyHsO4yDXtBv1zUU3mTpHeQ0d5.jpg";
 const mockMovies = [mockCleanMovie, mockCleanMovie];
+const mockLocation = { pathname: '/favorites' }
 jest.mock("../../thunks/fetchDeleteFavorite");
 
 describe('MovieContainer', () => {
   let wrapper;
 
   beforeEach(() => {
-    wrapper = shallow(<MovieContainer movies={mockMovies} />);
+    wrapper = shallow(<MovieContainer movies={mockMovies} location={mockLocation}/>);
   });
 
   it('should match snapshot', () => {

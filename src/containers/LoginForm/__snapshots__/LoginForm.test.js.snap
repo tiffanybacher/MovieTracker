@@ -29,6 +29,9 @@ exports[`LoginForm should match the snapshot 1`] = `
     type="password"
     value=""
   />
+  <p
+    className="error-message"
+  />
   <button
     className="submit-btn"
     type="submit"

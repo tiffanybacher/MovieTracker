@@ -5,9 +5,15 @@ exports[`SearchBar should match snapshot 1`] = `
   className="SearchBar"
   onSubmit={[Function]}
 >
-  <i
-    className="fas fa-search"
-  />
+  <div
+    className="clear-search"
+    role="button"
+  >
+    <i
+      className="fas fa-times"
+      onClick={[Function]}
+    />
+  </div>
   <input
     className="search-input"
     onChange={[Function]}
@@ -16,12 +22,10 @@ exports[`SearchBar should match snapshot 1`] = `
     value=""
   />
   <div
-    className="clear-search"
-    role="button"
+    className="search-icon"
   >
     <i
-      className="fas fa-times"
-      onClick={[Function]}
+      className="fas fa-search"
     />
   </div>
 </form>
