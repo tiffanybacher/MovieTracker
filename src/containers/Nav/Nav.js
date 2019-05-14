@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import LoginForm from '../../containers/LoginForm/LoginForm';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { logoutUser, addFavoriteMovies } from '../../actions';
+import { logoutUser, addFavoriteMovies, addWatchlistMovies } from '../../actions';
 import { fetchMovies } from '../../thunks/fetchMovies';
 import { fetchUserFavorites } from '../../api/fetchUserFavorites';
 import { cleanAllMovies } from '../../api/cleaners';
@@ -30,11 +30,10 @@ class Nav extends Component {
     this.props.logoutUser();
   }
 
-  goToFavorites = (e) => {
-
+  goToFavorites = () => {
     if (!this.props.user.id) {
       console.log('Must be logged in to view favorites');
-      
+
     } else if (this.props.user.id && !this.props.user.favorites.length) {
       this.props.displayFavorites([]);
     } else {
@@ -44,10 +43,24 @@ class Nav extends Component {
     }
   }
 
+  goToWatchlist = () => {
+    if (!this.props.user.id) {
+      console.log('Must be logged in to view Watchlist');
+
+    } else if (this.props.user.id && !this.props.user.watchlist) {
+      this.props.displayWatchlist([]);
+    } else {
+      console.log('Still need to create fetchUserWatchlist')
+      // fetchUserWatchlist(this.props.user.id)
+      //   .then(result => cleanAllMovies(result))
+      //   .then(movies => this.props.displayWatchlist(movies));
+    }
+  }
+
   render() {
     const { name } = this.props.user;
     let accountNav;
-    let loginActive = '';
+    let loginActive;
 
     if (this.state.showLogin) {
       loginActive = 'active';
@@ -100,7 +113,7 @@ class Nav extends Component {
             <NavLink to="/favorites" className="nav-link" onClick={this.goToFavorites}>
               FAVORITES
             </NavLink>
-            <NavLink to="/watchlist" className="nav-link">
+            <NavLink to="/watchlist" className="nav-link" onClick={this.goToWatchlist}>
               WATCHLIST
             </NavLink>
           </div>
@@ -119,7 +132,8 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = dispatch => ({
   logoutUser: () => dispatch(logoutUser()),
   resetMovies: fetchCase => dispatch(fetchMovies(fetchCase)),
-  displayFavorites: (favorites) => dispatch(addFavoriteMovies(favorites))
+  displayFavorites: (favorites) => dispatch(addFavoriteMovies(favorites)),
+  displayWatchlist: (watchlist) => dispatch(addWatchlistMovies(watchlist))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Nav);
