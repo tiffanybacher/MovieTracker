@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import { logoutUser } from '../../actions';
 import { fetchMovies } from '../../thunks/fetchMovies';
 
-class Nav extends Component {
+export class Nav extends Component {
   constructor() {
     super();
 
