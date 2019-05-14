@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { fetchSignIn } from '../../api/fetchSignIn';
@@ -91,3 +92,7 @@ export const mapDispatchToProps = (dispatch) => ({
 
 export default connect(null, mapDispatchToProps)(LoginForm);
 
+LoginForm.propTypes = {
+  hideLogin: PropTypes.func,
+  updateUser: PropTypes.func
+};

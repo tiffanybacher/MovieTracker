@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types'
 import { CastContainer } from '../CastContainer/CastContainer';
 
 export const MovieDetails = (props) => {
@@ -90,3 +91,9 @@ export const MovieDetails = (props) => {
     </div>
   );
 }
+
+MovieDetails.propTypes = {
+  ovieDetails: PropTypes.object,
+  people: PropTypes.object
+};
+

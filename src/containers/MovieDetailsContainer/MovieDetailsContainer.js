@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import fetchMoviePeople from '../../api/fetchMoviePeople';
 import { cleanPeople } from '../../api/cleaners';
@@ -44,3 +45,11 @@ export const mapStateToProps = (state) =>  ({
 });
 
 export default connect(mapStateToProps)(MovieDetailsContainer);
+
+MovieDetailsContainer.propTypes = {
+  ispatch: PropTypes.func,
+  history: PropTypes.object,
+  location: PropTypes.object,
+  match: PropTypes.object,
+  movies: PropTypes.array
+};

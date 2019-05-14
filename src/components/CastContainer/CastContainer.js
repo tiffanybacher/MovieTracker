@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from "prop-types";
 import CastCard from '../CastCard/CastCard';
 
 export const CastContainer = (props) => {
@@ -12,3 +13,7 @@ export const CastContainer = (props) => {
     </div>
   );
 }
+
+CastContainer.propTypes = {
+  cast: PropTypes.array
+};
