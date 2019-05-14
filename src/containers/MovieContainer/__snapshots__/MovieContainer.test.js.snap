@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MovieContainer should match snapshot 1`] = `
+<div
+  className="MovieContainer"
+>
+  <h2
+    className="movie-container-header"
+  >
+    Explore Popular Movies
+  </h2>
+  <section
+    className="flex-container"
+  >
+    <MovieCard
+      id={299534}
+      key="299534"
+      overview="After the devastating events of Avengers: Infinity War, the universe is in ruins due to the efforts of the Mad Titan, Thanos. With the help of remaining allies, the Avengers must assemble once more in order to undo Thanos' actions and restore order to the universe once and for all, no matter what consequences may be in store."
+      posterImg="https://image.tmdb.org/t/p/w500/or06FN3Dka5tukK1e9sl16pB3iy.jpg"
+      rating={8.6}
+      releaseDate="2019-04-24"
+      title="Avengers: Endgame"
+    />
+    <MovieCard
+      id={299534}
+      key="299534"
+      overview="After the devastating events of Avengers: Infinity War, the universe is in ruins due to the efforts of the Mad Titan, Thanos. With the help of remaining allies, the Avengers must assemble once more in order to undo Thanos' actions and restore order to the universe once and for all, no matter what consequences may be in store."
+      posterImg="https://image.tmdb.org/t/p/w500/or06FN3Dka5tukK1e9sl16pB3iy.jpg"
+      rating={8.6}
+      releaseDate="2019-04-24"
+      title="Avengers: Endgame"
+    />
+  </section>
+</div>
+`;
