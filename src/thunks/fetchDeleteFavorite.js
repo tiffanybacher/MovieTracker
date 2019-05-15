@@ -20,7 +20,6 @@ export const fetchDeleteFavorite = (user_id, movie_id) => {
         }
       })
       .then(result => {
-        console.log(result);
         dispatch(deleteUserFavorite(movie_id));
       })
       .catch(error => console.log(error));

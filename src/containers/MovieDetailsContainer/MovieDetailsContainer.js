@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import fetchMoviePeople from '../../api/fetchMovieDetails';
 import { cleanPeople } from '../../api/cleaners';
 import MovieDetails from '../../components/MovieDetails/MovieDetails';
-import { updateUserFavorites, deleteUserFavorite } from '../../actions';
+import { updateUserFavorites } from '../../actions';
 import { fetchDeleteFavorite } from '../../thunks/fetchDeleteFavorite';
 
 class MovieDetailsContainer extends Component {

@@ -1,7 +1,7 @@
 import React from 'react';
 import MovieCard from '../../components/MovieCard/MovieCard';
 import { connect } from 'react-redux';
-import { updateUserFavorites, deleteUserFavorite } from '../../actions';
+import { updateUserFavorites } from '../../actions';
 import { fetchDeleteFavorite } from '../../thunks/fetchDeleteFavorite';
 
 const MovieContainer = (props) => {
