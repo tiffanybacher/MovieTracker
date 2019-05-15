@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { fetchNewUser } from '../../api/fetchNewUser';
 import { connect } from 'react-redux';
@@ -11,7 +12,7 @@ export class SignUpForm extends Component {
     name: '',
     password: '',
     passwordConfirm: '',
-    error: ' ',
+    error: ' '
   }
 
   handleChange = (e) => {
@@ -32,7 +33,7 @@ export class SignUpForm extends Component {
       .then(data => {
         this.checkEmail(data, email);
         this.checkPasswords(password, passwordConfirm);
-        if (this.state.error.length === 1) {
+        if (this.state.error === ' ') {
           fetchNewUser(email, name, password)
             .then(id => {
               this.props.updateUser(id, name);
@@ -142,3 +143,12 @@ export const mapDispatchToProps = (dispatch) => ({
 });
 
 export default connect(null, mapDispatchToProps)(SignUpForm);
+
+SignUpForm.propTypes = {
+  history: PropTypes.object,
+  location: PropTypes.object,
+  match: PropTypes.object,
+  updateUser: PropTypes.func
+};
+
+

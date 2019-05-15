@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types'
 import { CastContainer } from '../CastContainer/CastContainer';
 import { fetchAddFavorite } from '../../api/fetchAddFavorite';
 
@@ -107,6 +108,11 @@ class MovieDetails extends Component {
               <div className="crew-info">
                 {directorInfo}
                 {writerInfo}
+              <div className="card-btns">
+                <div className="circle-wrapper">{ratingCircle}</div>
+                <div className="btn-wrapper heart-wrapper"><i className={`${heartClass} fa-heart`} /></div>
+                <div className="btn-wrapper bookmark-wrapper"><i className="far fa-bookmark"></i></div>
+
               </div>
             </div>
           </article>
@@ -119,3 +125,9 @@ class MovieDetails extends Component {
 }
 
 export default MovieDetails;
+
+MovieDetails.propTypes = {
+  ovieDetails: PropTypes.object,
+  people: PropTypes.object
+};
+

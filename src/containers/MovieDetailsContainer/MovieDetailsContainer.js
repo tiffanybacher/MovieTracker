@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import fetchMoviePeople from '../../api/fetchMovieDetails';
+import fetchMoviePeople from '../../api/fetchMoviePeople';
 import { cleanPeople } from '../../api/cleaners';
 import MovieDetails from '../../components/MovieDetails/MovieDetails';
 import { updateUserFavorites, deleteUserFavorite } from '../../actions';
 import { fetchDeleteFavorite } from '../../thunks/fetchDeleteFavorite';
 
-class MovieDetailsContainer extends Component {
+export class MovieDetailsContainer extends Component {
   constructor(props) {
     super(props);
 
@@ -55,3 +56,11 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(MovieDetailsContainer);
+
+MovieDetailsContainer.propTypes = {
+  ispatch: PropTypes.func,
+  history: PropTypes.object,
+  location: PropTypes.object,
+  match: PropTypes.object,
+  movies: PropTypes.array
+};
