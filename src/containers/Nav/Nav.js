@@ -60,7 +60,7 @@ export class Nav extends Component {
     }
 
     if (!this.props.user.name) {
-      accountNav =
+      accountNav = (
         <div className="nav-right">
             <a 
               href="#"

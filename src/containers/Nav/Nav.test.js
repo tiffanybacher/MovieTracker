@@ -70,7 +70,7 @@ describe('Nav', () => {
         />
       );
       wrapper.instance().setState({ showLogin: true });
-      wrapper.find(".signup-link").simulate("click");
+      wrapper.find(".signup-nav-link").simulate("click");
       expect(wrapper.state("showLogin")).toEqual(false);
     });
 
