@@ -71,7 +71,7 @@ export class Nav extends Component {
             <NavLink to="/signup" className="signup-nav-link nav-link" onClick={this.hideLogin}>
               SIGN UP
             </NavLink>
-          </div>
+          </div>)
 
       favoriteLink =
         <Link to="/login" className="nav-link">
