@@ -1,92 +1,125 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { CastContainer } from '../CastContainer/CastContainer';
+import { fetchAddFavorite } from '../../api/fetchAddFavorite';
 
-export const MovieDetails = (props) => {
-  const { title, overview, posterImg, id, rating, releaseDate, backdropImg } = props.movieDetails;
-  const { director, writer, cast } = props.people;
-  let releaseYear = releaseDate.substring(0, 4);
-  let percentage = rating * 10;
-  let ratingNum;
+class MovieDetails extends Component {
+  state = {
+    error: ''
+  }
+  
+  handleFavorite = () => {
+    const { user, movieDetails } = this.props;
 
-  if (rating.toString().length === 1) {
-    ratingNum = `${rating}.0`;
-  } else {
-    ratingNum = rating;
-  };
-
-  let ratingCircle = 
-    <svg viewBox="0 0 36 36" className="rating-circle">
-      <path className="circle-bg"
-        d="M18 2.0845
-          a 15.9155 15.9155 0 0 1 0 31.831
-          a 15.9155 15.9155 0 0 1 0 -31.831"/>
-      <path className="circle"
-        strokeDasharray={`${percentage}, 100`}
-        d="M18 2.0845
-          a 15.9155 15.9155 0 0 1 0 31.831
-          a 15.9155 15.9155 0 0 1 0 -31.831"/>
-      <text x="9" y="23" className="rating-num">{ratingNum}</text>
-    </svg>
-
-  const backgroundImg = {
-    backgroundImage: `url(${backdropImg})`
+    if (user.id && !user.favorites.includes(movieDetails.id)) {
+      fetchAddFavorite({ ...movieDetails,  user })
+        .catch(error => this.setState({ error }));
+      this.props.updateUserFavorites(movieDetails.id);
+    } else if (user.id && user.favorites.includes(movieDetails.id)){
+      this.props.deleteUserFavorite(user.id, movieDetails.id);
+    } else {
+      alert('You must be logged in to favorite a movie')
+    }
   }
 
-  let directorInfo;
-  let writerInfo;
+  render() {
+    console.log(this.props)
+    const { props } = this;
+    const { title, overview, posterImg, id, rating, releaseDate, backdropImg } = props.movieDetails;
+    const { director, writer, cast } = props.people;
+    let releaseYear = releaseDate.substring(0, 4);
+    let percentage = rating * 10;
+    let ratingNum;
 
-  if (director) {
-    directorInfo = director.map(person => {
-      return (
-        <div className="crew-member">
-          <h4>{person.job}</h4>
-          <p>{person.name}</p>
-        </div>
-      );
-    });
-  }
+    if (rating.toString().length === 1) {
+      ratingNum = `${rating}.0`;
+    } else {
+      ratingNum = rating;
+    };
 
-  if (writer) {
-    writerInfo = writer.map(person => {
-      return (
-        <div className="crew-member">
-          <h4>{person.job}</h4>
-          <p>{person.name}</p>
-        </div>
-      );
-    });
-  }
+    let ratingCircle = 
+      <svg viewBox="0 0 36 36" className="rating-circle">
+        <path className="circle-bg"
+          d="M18 2.0845
+            a 15.9155 15.9155 0 0 1 0 31.831
+            a 15.9155 15.9155 0 0 1 0 -31.831"/>
+        <path className="circle"
+          strokeDasharray={`${percentage}, 100`}
+          d="M18 2.0845
+            a 15.9155 15.9155 0 0 1 0 31.831
+            a 15.9155 15.9155 0 0 1 0 -31.831"/>
+        <text x="9" y="23" className="rating-num">{ratingNum}</text>
+      </svg>
 
-  let heartClass = 'far';
+    const backgroundImg = {
+      backgroundImage: `url(${backdropImg})`
+    }
 
-  return (
-    <div className="MovieDetails-container">
-      <div className="MovieDetails-backdrop" style={backgroundImg}>
-        <div className="backdrop-cover">
-        <article className="MovieDetails">
-          <img className="card-img" src={posterImg} alt={`${title} poster`} />
-          <div className="card-info">
-            <div className="card-header">
-              <div className="card-title-wrap">
-                <h2 className="card-title">{title}</h2>
-                <p className="card-year">({releaseYear})</p>
-              </div>
-              <div className="card-btns">
-                <div className="circle-wrapper">{ratingCircle}</div>
-                <div className="btn-wrapper heart-wrapper"><i className={`${heartClass} fa-heart`} /></div>
-                <div className="btn-wrapper bookmark-wrapper"><i class="far fa-bookmark"></i></div>
-              </div>
-            </div>
-            <p className="card-overview">{overview}</p>
-            <div className="crew-info">
-              {directorInfo}
-              {writerInfo}
-            </div>
+    let directorInfo;
+    let writerInfo;
+
+    if (director) {
+      directorInfo = director.map(person => {
+        return (
+          <div className="crew-member">
+            <h4>{person.job}</h4>
+            <p>{person.name}</p>
           </div>
-        </article>
+        );
+      });
+    }
+
+    if (writer) {
+      writerInfo = writer.map(person => {
+        return (
+          <div className="crew-member">
+            <h4>{person.job}</h4>
+            <p>{person.name}</p>
+          </div>
+        );
+      });
+    }
+
+    let heartClass = 'far';
+
+    if (props.user.id && props.user.favorites.includes(id)) {
+      heartClass = 'fas';
+    }
+
+    return (
+      <div className="MovieDetails-container">
+        <div className="MovieDetails-backdrop" style={backgroundImg}>
+          <div className="backdrop-cover">
+          <article className="MovieDetails">
+            <img className="card-img" src={posterImg} alt={`${title} poster`} />
+            <div className="card-info">
+              <div className="card-header">
+                <div className="card-title-wrap">
+                  <h2 className="card-title">{title}</h2>
+                  <p className="card-year">({releaseYear})</p>
+                </div>
+                <div className="card-btns">
+                  <div className="circle-wrapper">{ratingCircle}</div>
+                  <div 
+                    className="btn-wrapper heart-wrapper"
+                    onClick={this.handleFavorite}>
+                    <i className={`${heartClass} fa-heart`} />
+                  </div>
+                  <div className="btn-wrapper bookmark-wrapper"><i class="far fa-bookmark"></i></div>
+                </div>
+              </div>
+              <p className="card-overview">{overview}</p>
+              <div className="crew-info">
+                {directorInfo}
+                {writerInfo}
+              </div>
+            </div>
+          </article>
+          </div>
         </div>
+        <CastContainer cast={cast}/>
       </div>
-      <CastContainer cast={cast}/>
-    </div>
-  );
+    );
+  }
 }
+
+export default MovieDetails;
