@@ -66,7 +66,7 @@ class MovieDetails extends Component {
     if (director) {
       directorInfo = director.map(person => {
         return (
-          <div className="crew-member">
+          <div key={person.id} className="crew-member" >
             <h4>{person.job}</h4>
             <p>{person.name}</p>
           </div>
@@ -77,7 +77,7 @@ class MovieDetails extends Component {
     if (writer) {
       writerInfo = writer.map(person => {
         return (
-          <div className="crew-member">
+          <div key={person.id}  className="crew-member">
             <h4>{person.job}</h4>
             <p>{person.name}</p>
           </div>

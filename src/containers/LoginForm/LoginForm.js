@@ -39,7 +39,6 @@ export class LoginForm extends Component {
         }
       })
       .catch(error => {
-        console.log(error);
         this.setState({
           error: true,
           password: ""

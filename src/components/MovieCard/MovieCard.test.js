@@ -8,6 +8,7 @@ jest.mock("../../api/fetchAddFavorite");
 
 const mockUpdateUserFavorites = jest.fn();
 const mockDeleteUserFavorite = jest.fn();
+const mockHistory = { push: jest.fn() }
 const defaultState = {
   favorites: null,
   isFavorite: false,
@@ -17,6 +18,7 @@ const userlessComponent = (
   <MovieCard
     {...mockCleanMovie}
     user={{}}
+    history={mockHistory}
     updateUserFavorites={mockUpdateUserFavorites}
     deleteUserFavorite={mockDeleteUserFavorite}
     key={111}
@@ -72,9 +74,10 @@ describe("MovieCard", () => {
       expect(mockUpdateUserFavorites).toHaveBeenCalled();
     });
 
-    it.skip('should prompt the user to login if they favoroite without being logged in', () => {
+    it('should prompt the user to login if they favoroite without being logged in', () => {
       let wrapper = shallow(userlessComponent);
-      // expect something to have been called
+      wrapper.instance().handleFavorite();
+      expect(wrapper.instance().props.history.push).toHaveBeenCalled();
     });
   });
 });
