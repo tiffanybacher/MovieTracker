@@ -42,7 +42,7 @@ export class MovieCard extends Component {
   }
 
   render() {
-    const { title, overview, posterImg, id, rating, releaseDate } = this.props;
+    const { title, overview, posterImg, id, rating, releaseDate, user } = this.props;
     let heartClass = this.state.isFavorite 
       ? 'fas'
       : 'far';
@@ -51,7 +51,7 @@ export class MovieCard extends Component {
     let circleClass;
     let percentage = rating * 10;
     let releaseYear = releaseDate.substring(0, 4);
-
+  
     if (overview.length > 150) {
       let shortOverview = overview
         .split(" ")

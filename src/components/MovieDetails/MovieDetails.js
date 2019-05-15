@@ -6,7 +6,7 @@ class MovieDetails extends Component {
   state = {
     error: ''
   }
-  
+
   handleFavorite = () => {
     const { user, movieDetails } = this.props;
 
@@ -22,13 +22,22 @@ class MovieDetails extends Component {
   }
 
   render() {
-    console.log(this.props)
     const { props } = this;
     const { title, overview, posterImg, id, rating, releaseDate, backdropImg } = props.movieDetails;
     const { director, writer, cast } = props.people;
+    const backgroundImg = {
+      backgroundImage: `url(${backdropImg})`
+    }
     let releaseYear = releaseDate.substring(0, 4);
     let percentage = rating * 10;
     let ratingNum;
+    let directorInfo;
+    let writerInfo;
+    let heartClass = 'far';
+
+    if (props.user.id && props.user.favorites.includes(id)) {
+      heartClass = 'fas';
+    }
 
     if (rating.toString().length === 1) {
       ratingNum = `${rating}.0`;
@@ -50,13 +59,6 @@ class MovieDetails extends Component {
         <text x="9" y="23" className="rating-num">{ratingNum}</text>
       </svg>
 
-    const backgroundImg = {
-      backgroundImage: `url(${backdropImg})`
-    }
-
-    let directorInfo;
-    let writerInfo;
-
     if (director) {
       directorInfo = director.map(person => {
         return (
@@ -77,12 +79,6 @@ class MovieDetails extends Component {
           </div>
         );
       });
-    }
-
-    let heartClass = 'far';
-
-    if (props.user.id && props.user.favorites.includes(id)) {
-      heartClass = 'fas';
     }
 
     return (
