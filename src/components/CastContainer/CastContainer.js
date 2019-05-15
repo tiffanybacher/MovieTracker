@@ -5,7 +5,8 @@ export const CastContainer = (props) => {
   let castCards;
 
   if (props.cast) {
-    const topFiveCast = props.cast.slice(0, 6);
+    const topFiveCast = props.cast
+    // .slice(0, 6);
     castCards = topFiveCast.map(person => <CastCard data={person} />);
   } else {
     castCards = <p>Loading...</p>

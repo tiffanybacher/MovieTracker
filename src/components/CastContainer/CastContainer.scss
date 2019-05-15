@@ -15,6 +15,9 @@
 
   .CastContainer {
     display: flex;
+    flex-wrap: nowrap;
+    height: 325px;
     margin: 0 0 80px 0;
+    overflow-x: auto;
   }
 }
