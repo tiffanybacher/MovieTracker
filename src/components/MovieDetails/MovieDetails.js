@@ -4,8 +4,11 @@ import { CastContainer } from '../CastContainer/CastContainer';
 import { fetchAddFavorite } from '../../api/fetchAddFavorite';
 
 class MovieDetails extends Component {
-  state = {
-    error: ''
+  constructor() {
+    super() 
+    this.state = {
+      error: ""
+    };
   }
 
   handleFavorite = () => {
@@ -18,7 +21,7 @@ class MovieDetails extends Component {
     } else if (user.id && user.favorites.includes(movieDetails.id)){
       this.props.deleteUserFavorite(user.id, movieDetails.id);
     } else {
-      alert('You must be logged in to favorite a movie')
+      this.props.history.push("/login");
     }
   }
 

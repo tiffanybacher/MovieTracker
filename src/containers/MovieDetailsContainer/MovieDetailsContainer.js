@@ -35,6 +35,7 @@ export class MovieDetailsContainer extends Component {
           <MovieDetails 
             movieDetails={movie}
             people={people}
+            history={this.props.history}
             user={this.props.user} 
             updateUserFavorites={this.props.updateUserFavorites} 
             deleteUserFavorite={this.props.deleteUserFavorite}
@@ -45,12 +46,12 @@ export class MovieDetailsContainer extends Component {
   }
 }
 
-const mapStateToProps = (state) =>  ({
+export const mapStateToProps = (state) =>  ({
   user: state.user,
   movies: state.movies
 });
 
-const mapDispatchToProps = (dispatch) => ({
+export const mapDispatchToProps = (dispatch) => ({
   updateUserFavorites: (movieId) => dispatch(updateUserFavorites(movieId)),
   deleteUserFavorite: (userId, movieId) => dispatch(fetchDeleteFavorite(userId, movieId))
 });

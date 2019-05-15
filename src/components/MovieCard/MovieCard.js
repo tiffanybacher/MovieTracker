@@ -38,7 +38,7 @@ export class MovieCard extends Component {
     } else if (isFavorite && this.props.user.id){
       this.props.deleteUserFavorite(this.props.user.id, this.props.id);
     } else {
-      alert('You must be logged in to favorite a movie')
+      this.props.history.push('/login');
     }
   }
 

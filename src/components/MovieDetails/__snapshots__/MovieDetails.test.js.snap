@@ -75,6 +75,7 @@ exports[`MovieDetails should match the snapshot 1`] = `
               </div>
               <div
                 className="btn-wrapper heart-wrapper"
+                onClick={[Function]}
               >
                 <i
                   className="far fa-heart"
@@ -84,7 +85,7 @@ exports[`MovieDetails should match the snapshot 1`] = `
                 className="btn-wrapper bookmark-wrapper"
               >
                 <i
-                  className="far fa-bookmark"
+                  class="far fa-bookmark"
                 />
               </div>
             </div>

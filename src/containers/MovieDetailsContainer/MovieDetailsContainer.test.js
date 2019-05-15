@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { MovieDetailsContainer, mapStateToProps } from './MovieDetailsContainer';
-import { mockCleanMovie, uncleanPeople, mockCleanPeople } from '../../api/mockData';
+import { mockCleanMovie, uncleanPeople, mockCleanPeople, mockUser } from '../../api/mockData';
 import fetchMoviePeople from '../../api/fetchMoviePeople';
 import { cleanPeople } from '../../api/cleaners';
 
@@ -55,8 +55,8 @@ describe('MovieDetailsContainer', () => {
 
   describe('MSTP', () => {
     it('should return an object with a movies array', () => {
-      const state = { movies: mockMovies, user: { name: 'Jacob' }}
-      const expected = { movies: mockMovies };
+      const state = { movies: mockMovies, user: mockUser, test: 'test'}
+      const expected = { movies: mockMovies, user: mockUser };
       const result = mapStateToProps(state);
       expect(result).toEqual(expected);
     });

@@ -8,14 +8,16 @@ import { fetchDeleteFavorite } from '../../thunks/fetchDeleteFavorite';
 export const MovieContainer = (props) => {
   let header;
   let message;
-  const movieCards = props.movies.map(movie => 
-    <MovieCard 
-      {...movie} 
-      user={props.user} 
-      updateUserFavorites={props.updateUserFavorites} 
+  const movieCards = props.movies.map(movie => (
+    <MovieCard
+      {...movie}
+      user={props.user}
+      history={props.history}
+      updateUserFavorites={props.updateUserFavorites}
       deleteUserFavorite={props.deleteUserFavorite}
-      key={movie.id} 
-    />);
+      key={movie.id}
+    />
+  ));
 
   if (props.location.pathname === '/favorites') {
     header = 'Your Favorite Movies';
