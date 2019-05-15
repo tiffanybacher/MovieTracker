@@ -14,7 +14,7 @@ exports[`LoginForm should match the snapshot 1`] = `
     id="email-input"
     name="email"
     onChange={[Function]}
-    type="text"
+    type="email"
     value=""
   />
   <label

@@ -4,16 +4,16 @@ exports[`CastCard should match the snapshot 1`] = `
 <div
   className="CastCard"
 >
-  <h2>
-    Chris Evans
-  </h2>
-  <h2>
-    Captain America
-  </h2>
   <img
     alt="Chris Evans headshot"
     className="headshot"
     src="fsdfasdfa.png"
   />
+  <h3>
+    Chris Evans
+  </h3>
+  <p>
+    Captain America
+  </p>
 </div>
 `;
