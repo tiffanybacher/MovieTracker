@@ -16,12 +16,14 @@ describe('Action Creators', () => {
   it('should return a UPDATE_USER action', () => {
     const id = 1;
     const name = 'Jacob';
+    const favorites = [11111, 22222, 33333];
     const expected = {
       type: 'UPDATE_USER',
       id,
-      name
+      name,
+      favorites
     };
-    const result = actions.updateUser(id, name);
+    const result = actions.updateUser(id, name, favorites);
 
     expect(result).toEqual(expected);
   });
@@ -31,6 +33,28 @@ describe('Action Creators', () => {
       type: 'LOGOUT_USER'
     };
     const result = actions.logoutUser();
+
+    expect(result).toEqual(expected);
+  });
+
+  it("should return a UPDATE_USER_FAVORITES action", () => {
+    const movieId = 11111;
+    const expected = {
+      type: "UPDATE_USER_FAVORITES",
+      movieId
+    };
+    const result = actions.updateUserFavorites(movieId);
+
+    expect(result).toEqual(expected);
+  });
+
+  it("should return a DELETE_USER_FAVORITE action", () => {
+    const movieId = 11111;
+    const expected = {
+      type: "DELETE_USER_FAVORITE",
+      movieId
+    };
+    const result = actions.deleteUserFavorite(movieId);
 
     expect(result).toEqual(expected);
   });

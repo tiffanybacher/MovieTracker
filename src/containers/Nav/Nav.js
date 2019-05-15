@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types'
 import { NavLink } from 'react-router-dom';
 import LoginForm from '../../containers/LoginForm/LoginForm';
 import { connect } from 'react-redux';
@@ -9,7 +10,7 @@ import { fetchUserFavorites } from '../../api/fetchUserFavorites';
 import { cleanAllMovies } from '../../api/cleaners';
 import { Redirect } from 'react-router-dom';
 
-class Nav extends Component {
+export class Nav extends Component {
   constructor() {
     super();
 
@@ -153,3 +154,12 @@ const mapDispatchToProps = dispatch => ({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Nav);
+
+Nav.propTypes = {
+  isplayFavorites: PropTypes.func,
+  displayWatchlist: PropTypes.func,
+  logoutUser: PropTypes.func,
+  resetMovies: PropTypes.func,
+  user: PropTypes.object
+}
+
