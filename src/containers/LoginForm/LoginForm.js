@@ -34,9 +34,12 @@ export class LoginForm extends Component {
         this.props.updateUser(userId, userName, favoriteIds);
         if (this.props.hideLogin) {
           this.props.hideLogin();
+        } else if(this.props.redirectHome) {
+          this.props.redirectHome();
         }
       })
       .catch(error => {
+        console.log(error);
         this.setState({
           error: true,
           password: ""
