@@ -68,7 +68,7 @@ export class Nav extends Component {
               onClick={this.toggleLogin}>
               LOGIN
             </a>
-            <NavLink to="/signup" className="signup-link nav-link" onClick={this.hideLogin}>
+            <NavLink to="/signup" className="signup-nav-link nav-link" onClick={this.hideLogin}>
               SIGN UP
             </NavLink>
           </div>
