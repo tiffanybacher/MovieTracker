@@ -22,6 +22,10 @@
   font-weight: 400;
   margin: 0 0 0 5px;
   text-decoration: underline;
+
+  &:visited {
+    color: white;
+  }
 }
 
 .signup-link:hover {
