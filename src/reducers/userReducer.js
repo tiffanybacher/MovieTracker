@@ -20,7 +20,8 @@ export const userReducer = (state = {}, action) => {
       return {
         id: state.id,
         name: state.name,
-        favorites: state.favorites.filter(favorite => favorite !== action.movieId)
+        favorites: state.favorites.filter(favorite => 
+          favorite !== action.movieId)
       };
     default:
       return state;

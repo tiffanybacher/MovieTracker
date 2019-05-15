@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types'
 import MovieCard from '../../components/MovieCard/MovieCard';
 import { connect } from 'react-redux';
-import { updateUserFavorites, deleteUserFavorite } from '../../actions';
+import { updateUserFavorites } from '../../actions';
 import { fetchDeleteFavorite } from '../../thunks/fetchDeleteFavorite';
 
 export const MovieContainer = (props) => {

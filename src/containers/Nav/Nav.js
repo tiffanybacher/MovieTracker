@@ -8,7 +8,6 @@ import { logoutUser, addFavoriteMovies, addWatchlistMovies } from '../../actions
 import { fetchMovies } from '../../thunks/fetchMovies';
 import { fetchUserFavorites } from '../../api/fetchUserFavorites';
 import { cleanAllMovies } from '../../api/cleaners';
-import { Redirect } from 'react-router-dom';
 
 export class Nav extends Component {
   constructor() {
@@ -46,9 +45,6 @@ export class Nav extends Component {
       this.props.displayWatchlist([]);
     } else {
       console.log('Create fetchUserWatchlist')
-      // fetchUserWatchlist(this.props.user.id)
-      //   .then(result => cleanAllMovies(result))
-      //   .then(movies => this.props.displayWatchlist(movies));
     }
   }
 
@@ -58,7 +54,6 @@ export class Nav extends Component {
     let loginActive;
     let favoriteLink;
     let watchLink;
-    let linkType;
 
     if (this.state.showLogin) {
       loginActive = 'active';
