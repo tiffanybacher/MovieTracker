@@ -31,8 +31,6 @@
     width: 80vw;
 
     .card-header {
-      // display: flex;
-      // align-items: center;
 
       .card-btns {
         display: flex;
@@ -47,7 +45,7 @@
       }
     
       .circle-bg {
-        fill: none;
+        fill: white;
         stroke: #999;
         stroke-width: 4px;
       }
@@ -62,6 +60,7 @@
 
       .rating-num {
         font-size: .8em;
+        font-weight: bold;
       }
 
       .btn-wrapper {
@@ -74,6 +73,18 @@
 
         &:last-child {
           margin: 0 10px;
+        }
+
+        &:hover {
+          background: white;
+        }
+
+        &:hover > .fa-heart {
+          color: red;
+        }
+        
+        &:hover > .fa-bookmark {
+          color: $accent;
         }
       }
 
