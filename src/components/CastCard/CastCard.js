@@ -7,9 +7,9 @@ export default function CastCard(props) {
   
   return (
     <div className="CastCard">
-      <h2>{name}</h2>
-      <h2>{character}</h2>
       <img className="headshot" src={headshot} alt={`${name} headshot`} />
+      <h3>{name}</h3>
+      <p>{character}</p>
     </div>
   );
 }

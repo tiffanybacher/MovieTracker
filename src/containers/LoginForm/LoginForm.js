@@ -55,7 +55,7 @@ export class LoginForm extends Component {
         className="LoginForm">
         <label htmlFor="email-input">Email</label>
         <input 
-          type="text" 
+          type="email" 
           id="email-input"
           name="email"
           value={this.state.email}

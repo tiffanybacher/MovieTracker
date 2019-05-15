@@ -59,7 +59,8 @@ export class Nav extends Component {
     let accountNav;
     let loginActive;
     let favoriteLink;
-    let watchLink = '/watchlist';
+    let watchLink;
+    let linkType;
 
     if (this.state.showLogin) {
       loginActive = 'active';
@@ -82,11 +83,12 @@ export class Nav extends Component {
       favoriteLink =
         <Link to="/login" className="nav-link" onClick={this.goToFavorites}>
           FAVORITES
-        </Link>;
+        </Link>
+
       watchLink = 
         <Link to="/login" className="nav-link" onClick={this.goToWatchlist}>
           WATCHLIST
-        </Link>;
+        </Link>
     } else {
       accountNav =
         <div className="greeting-wrapper">
@@ -95,11 +97,12 @@ export class Nav extends Component {
         </div>
       
       favoriteLink = 
-        <NavLink to="/favorites" className="nav-link" onClick={this.goToFavorites}>
+        <NavLink exact to="/favorites" className="nav-link" onClick={this.goToFavorites}>
           FAVORITES
         </NavLink>
+
       watchLink = 
-        <NavLink to="/favorites" className="nav-link" onClick={this.goToWatchlist}>
+        <NavLink exact to="/watchlist" className="nav-link" onClick={this.goToWatchlist}>
           WATCHLIST
         </NavLink>
     }

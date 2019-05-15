@@ -1,4 +1,13 @@
 .CastCard {
   background: white;
-  width: 20px;
+  height: 275px;
+  margin: 0 15px 15px 0;
+  width: 150px;
+
+  .headshot {
+    height: 200px;
+    width: 150px;
+    object-fit: cover;
+  }
+
 }
