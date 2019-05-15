@@ -2,7 +2,15 @@ import { serverUrl } from "./pathNames";
 
 export const fetchAddFavorite = (cardData) => {
   const url = `${serverUrl}/favorites/new`;
-  const { user, title, overview, posterImg, id, rating, releaseDate } = cardData;
+  const { 
+    user, 
+    title, 
+    overview, 
+    posterImg, 
+    id, 
+    rating, 
+    releaseDate 
+  } = cardData;
   let poster_path = posterImg.split('500')[1];
   const body = {
     movie_id: id, 

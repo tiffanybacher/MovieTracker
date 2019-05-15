@@ -12,6 +12,7 @@ export class MovieCard extends Component {
       error: ''
     }
   }
+
   
   static getDerivedStateFromProps(props, state) {
     let { favorites } = props.user;
@@ -43,7 +44,7 @@ export class MovieCard extends Component {
   }
 
   render() {
-    const { title, overview, posterImg, id, rating, releaseDate, user } = this.props;
+    const { title, overview, posterImg, id, rating, releaseDate } = this.props;
     let heartClass = this.state.isFavorite 
       ? 'fas'
       : 'far';

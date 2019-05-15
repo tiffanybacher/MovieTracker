@@ -9,7 +9,6 @@ import MovieDetailsContainer from '../MovieDetailsContainer/MovieDetailsContaine
 import Footer from '../../components/Footer/Footer';
 import { fetchMovies } from '../../thunks/fetchMovies';
 import LoginPopup from '../../components/LoginPopup/LoginPopup';
-import { Redirect } from 'react-router-dom';
 
 export class App extends Component {
   constructor() {

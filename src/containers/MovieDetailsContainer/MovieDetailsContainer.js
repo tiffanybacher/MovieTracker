@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import fetchMoviePeople from '../../api/fetchMoviePeople';
 import { cleanPeople } from '../../api/cleaners';
 import MovieDetails from '../../components/MovieDetails/MovieDetails';
-import { updateUserFavorites, deleteUserFavorite } from '../../actions';
+import { updateUserFavorites } from '../../actions';
 import { fetchDeleteFavorite } from '../../thunks/fetchDeleteFavorite';
 
 export class MovieDetailsContainer extends Component {
