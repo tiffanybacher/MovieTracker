@@ -22,6 +22,7 @@ exports[`CastCard should match the snapshot 1`] = `
             "name": "Chris Evans",
           }
         }
+        key="1"
       />
       <CastCard
         data={
@@ -32,6 +33,7 @@ exports[`CastCard should match the snapshot 1`] = `
             "name": "Chris Evans",
           }
         }
+        key="1"
       />
     </div>
   </div>
