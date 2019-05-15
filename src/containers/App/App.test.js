@@ -1,26 +1,24 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { App, mapStateToProps, mapDispatchToProps } from './App';
-import fetchDiscover from '../../api/fetchDiscover';
 import { cleanAllMovies } from '../../api/cleaners';
-import { mockUncleanMovie } from '../../api/mockData';
+import { mockUncleanMovie, cleanMovie } from '../../api/mockData';
+import { fetchMovies } from '../../thunks/fetchMovies';
 
-jest.mock('../../api/fetchDiscover.js');
+jest.mock('../../thunks/fetchMovies');
 jest.mock('../../api/cleaners.js');
 
 describe('App', () => {
   let wrapper, instance;
-  let mockAddDiscoverMovies = jest.fn();
-  fetchDiscover.mockImplementation(() => Promise.resolve([mockUncleanMovie]));
+  let mockSetMovies = jest.fn();
   
   beforeEach(() => {
-    wrapper = shallow(<App addDiscoverMovies={mockAddDiscoverMovies}/>);
+    wrapper = shallow(<App setMovies={mockSetMovies}/>);
     instance = wrapper.instance();
   });
 
   afterEach(() => {
-    fetchDiscover.mockClear();
-    cleanAllMovies.mockClear();
+    mockSetMovies.mockClear();
   });
 
   it('should match the snapshot', () => {
@@ -32,33 +30,26 @@ describe('App', () => {
     expect(wrapper.state()).toEqual({ error: ''});
   });
 
-  it('CDM should call setDisoverMovies method', () => {
-    jest.spyOn(instance, 'setDiscoverMovies');
-    instance.componentDidMount();
-    expect(instance.setDiscoverMovies).toHaveBeenCalled();
+  it('CDM should call setMovies method', () => {
+    expect(mockSetMovies).toHaveBeenCalled();
   });
 
-  describe('setDiscoverMovies', () => {
-    it("should invoke fetchDiscover", () => {
-      instance.setDiscoverMovies();
-      expect(fetchDiscover).toHaveBeenCalled();
+  describe('mapStateToProps', () => {
+    it('should return an array of movies', () => {
+      const state = { user: { name: 'Jacob'}, movies: [cleanMovie, cleanMovie], test: 'test'};
+      const expected = { movies: state.movies, user: state.user };
+      const result = mapStateToProps(state);
+      expect(result).toEqual(expected);
     });
+  });
 
-    it('should invoke cleanAllMovies', () => {
-      instance.setDiscoverMovies();
-      expect(cleanAllMovies).toHaveBeenCalled();
-    });
-
-    it('should invoke addDiscoverMovies', () => {
-      instance.setDiscoverMovies();
-      expect(mockAddDiscoverMovies).toHaveBeenCalled();
-    });
-
-    it.skip('should set error message in state if response not ok', async () => {
-      fetchDiscover.mockImplementation(() =>
-        Promise.resolve({ ok: false}));
-      await instance.setDiscoverMovies();
-      expect(wrapper.state('error')).toEqual('Discover failed to fetch');
+  describe('mapDispatchToProps', () => {
+    it('should call dispatch when using setMovies', () => {
+      const mockDispatch = jest.fn();
+      const actionToDispatch = fetchMovies('discover');
+      const mappedProps = mapDispatchToProps(mockDispatch);
+      mappedProps.setMovies('discover');
+      expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
     });
   });
 });

@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CastCard should match the snapshot 1`] = `
+<div>
+  <CastCard
+    data={
+      Object {
+        "character": "Captain America",
+        "headshot": "fsdfasdfa.png",
+        "id": 1,
+        "name": "Chris Evans",
+      }
+    }
+    key="1"
+  />
+  <CastCard
+    data={
+      Object {
+        "character": "Captain America",
+        "headshot": "fsdfasdfa.png",
+        "id": 1,
+        "name": "Chris Evans",
+      }
+    }
+    key="1"
+  />
+</div>
+`;

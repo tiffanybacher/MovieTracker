@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { fetchSignIn } from '../../api/fetchSignIn';
@@ -17,11 +18,10 @@ export class LoginForm extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-
     const { email, password } = this.state;
     let userId, userName;
-
-    fetchSignIn(email, password)
+    
+    return fetchSignIn(email, password)
       .then(user => {
         userId = user.id;
         userName = user.name;
@@ -37,7 +37,6 @@ export class LoginForm extends Component {
         }
       })
       .catch(error => {
-        console.log(error);
         this.setState({
           error: true,
           password: ""
@@ -93,3 +92,7 @@ export const mapDispatchToProps = (dispatch) => ({
 
 export default connect(null, mapDispatchToProps)(LoginForm);
 
+LoginForm.propTypes = {
+  hideLogin: PropTypes.func,
+  updateUser: PropTypes.func
+};
