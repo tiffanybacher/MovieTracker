@@ -117,6 +117,7 @@ class MovieDetails extends Component {
           </div>
         </div>
         <CastContainer cast={cast}/>
+        
       </div>
     );
   }
