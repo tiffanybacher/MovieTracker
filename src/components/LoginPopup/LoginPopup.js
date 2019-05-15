@@ -6,7 +6,7 @@ class LoginPopup extends Component {
     return(
       <div className="LoginPopup">
         <h3>Please login</h3>
-        <p>You must be logged in to view your favorites</p>
+        <p>You must be logged in to view your favorites or watchlist!</p>
         <LoginForm />
       </div>
     );
