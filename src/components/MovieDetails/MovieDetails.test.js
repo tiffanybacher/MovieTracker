@@ -1,16 +1,22 @@
 import React from "react";
 import { shallow } from "enzyme";
-import { MovieDetails } from "./MovieDetails";
-import { mockCleanMovie, mockCleanPeople } from "../../api/mockData";
+import MovieDetails from "./MovieDetails";
+import { mockCleanMovie, mockCleanPeople, mockUser } from "../../api/mockData";
 
 describe("MovieDetails", () => {
-  it("should match the snapshot", () => {
-    let wrapper = shallow(
+  let wrapper;
+
+  beforeEach(() => {
+    wrapper = shallow(
       <MovieDetails 
         movieDetails={mockCleanMovie}
         people={mockCleanPeople}
+        user={mockUser}
       />
-    );
+    ); 
+  });
+
+  it("should match the snapshot", () => {
     expect(wrapper).toMatchSnapshot();
   });
 });

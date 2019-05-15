@@ -4,8 +4,11 @@ import { CastContainer } from '../CastContainer/CastContainer';
 import { fetchAddFavorite } from '../../api/fetchAddFavorite';
 
 class MovieDetails extends Component {
-  state = {
-    error: ''
+  constructor() {
+    super() 
+    this.state = {
+      error: ""
+    };
   }
 
   handleFavorite = () => {
