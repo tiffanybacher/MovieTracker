@@ -110,17 +110,6 @@ class MovieDetails extends Component {
                   {writerInfo}
                 </div>
               </div>
-              <p className="card-overview">{overview}</p>
-              <div className="crew-info">
-                {directorInfo}
-                {writerInfo}
-              <div className="card-btns">
-                <div className="circle-wrapper">{ratingCircle}</div>
-                <div className="btn-wrapper heart-wrapper"><i className={`${heartClass} fa-heart`} /></div>
-                <div className="btn-wrapper bookmark-wrapper"><i className="far fa-bookmark"></i></div>
-
-              </div>
-            </div>
           </article>
           </div>
         </div>
