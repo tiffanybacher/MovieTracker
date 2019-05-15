@@ -35,6 +35,7 @@ export class MovieDetailsContainer extends Component {
           <MovieDetails 
             movieDetails={movie}
             people={people}
+            history={this.props.history}
             user={this.props.user} 
             updateUserFavorites={this.props.updateUserFavorites} 
             deleteUserFavorite={this.props.deleteUserFavorite}
