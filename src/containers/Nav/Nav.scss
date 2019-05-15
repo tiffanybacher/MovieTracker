@@ -19,10 +19,6 @@
     text-decoration: none;
   }
 
-  .signup-link {
-    text-decoration: underline;
-  }
-
   .main-nav-wrapper,
   .nav-left,
   .nav-right,
@@ -58,6 +54,10 @@
     right: 90px;
     width: 285px;
     z-index: 1;
+  }
+
+  .signup-link {
+    text-decoration: underline;
   }
 
   .greeting-wrapper {

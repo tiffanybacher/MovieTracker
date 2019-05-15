@@ -62,22 +62,16 @@ export class Nav extends Component {
     if (!this.props.user.name) {
       accountNav = (
         <div className="nav-right">
-          <a
-            href="#"
-            className={`login-link nav-link ${loginActive}`}
-            onClick={this.toggleLogin}
-          >
-            LOGIN
-          </a>
-          <NavLink
-            to="/signup"
-            className="signup-nav-link nav-link"
-            onClick={this.hideLogin}
-          >
-            SIGN UP
-          </NavLink>
-        </div>
-      );
+            <a 
+              href="#"
+              className={`login-link nav-link ${loginActive}`}
+              onClick={this.toggleLogin}>
+              LOGIN
+            </a>
+            <NavLink to="/signup" className="signup-nav-link nav-link" onClick={this.hideLogin}>
+              SIGN UP
+            </NavLink>
+          </div>
 
       favoriteLink =
         <Link to="/login" className="nav-link">
