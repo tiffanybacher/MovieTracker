@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from "react-router-dom";
 import { fetchMovies } from '../../thunks/fetchMovies';
 
-class SearchBar extends Component {
+export class SearchBar extends Component {
   constructor() {
     super();
     this.state = {
@@ -11,14 +12,14 @@ class SearchBar extends Component {
     }
   }
 
+  handleChange = (e) => {
+    this.setState({ query: e.target.value})
+  }
+
   handleSubmit = (e) => {
     e.preventDefault();
     this.props.fetchSearch('search', this.state.query);
     this.props.history.push("/search");
-  }
-
-  handleChange = (e) => {
-    this.setState({ query: e.target.value})
   }
 
   clearInput = () => {
@@ -56,3 +57,12 @@ export const mapDispatchToProps = (dispatch) => ({
 })
 
 export default connect(null, mapDispatchToProps)(withRouter(SearchBar));
+
+SearchBar.propTypes = {
+  fetchSearch: PropTypes.func,
+  history: PropTypes.object,
+  location: PropTypes.object,
+  match: PropTypes.object
+};
+
+

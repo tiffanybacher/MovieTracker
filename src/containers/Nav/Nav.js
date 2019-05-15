@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types'
 import { NavLink } from 'react-router-dom';
 import LoginForm from '../../containers/LoginForm/LoginForm';
 import { connect } from 'react-redux';
@@ -8,7 +9,7 @@ import { fetchMovies } from '../../thunks/fetchMovies';
 import { fetchUserFavorites } from '../../api/fetchUserFavorites';
 import { cleanAllMovies } from '../../api/cleaners';
 
-class Nav extends Component {
+export class Nav extends Component {
   constructor() {
     super();
 
@@ -30,8 +31,7 @@ class Nav extends Component {
   }
 
   goToFavorites = () => {
-    if (!this.props.user.id) {
-    } else if (this.props.user.id && !this.props.user.favorites.length) {
+    if (!this.props.user.favorites.length) {
       this.props.displayFavorites([]);
     } else {
       fetchUserFavorites(this.props.user.id)
@@ -41,8 +41,7 @@ class Nav extends Component {
   }
 
   goToWatchlist = () => {
-    if (!this.props.user.id) {
-    } else if (this.props.user.id && !this.props.user.watchlist) {
+    if (!this.props.user.watchlist) {
       this.props.displayWatchlist([]);
     } else {
       console.log('Create fetchUserWatchlist')
@@ -69,18 +68,18 @@ class Nav extends Component {
               onClick={this.toggleLogin}>
               LOGIN
             </a>
-            <NavLink to="/signup" className="nav-link" onClick={this.hideLogin}>
+            <NavLink to="/signup" className="signup-link nav-link" onClick={this.hideLogin}>
               SIGN UP
             </NavLink>
           </div>
 
       favoriteLink =
-        <Link to="/login" className="nav-link" onClick={this.goToFavorites}>
+        <Link to="/login" className="nav-link">
           FAVORITES
         </Link>
 
       watchLink = 
-        <Link to="/login" className="nav-link" onClick={this.goToWatchlist}>
+        <Link to="/login" className="nav-link">
           WATCHLIST
         </Link>
     } else {
@@ -91,12 +90,12 @@ class Nav extends Component {
         </div>
       
       favoriteLink = 
-        <NavLink exact to="/favorites" className="nav-link" onClick={this.goToFavorites}>
+        <NavLink exact to="/favorites" className="nav-link favorite-link" onClick={this.goToFavorites}>
           FAVORITES
         </NavLink>
 
       watchLink = 
-        <NavLink exact to="/watchlist" className="nav-link" onClick={this.goToWatchlist}>
+        <NavLink exact to="/watchlist" className="nav-link watchlist-link" onClick={this.goToWatchlist}>
           WATCHLIST
         </NavLink>
     }
@@ -120,7 +119,7 @@ class Nav extends Component {
             <NavLink
               exact
               to="/"
-              className="nav-link"
+              className="nav-link explore-link"
               onClick={() => this.props.resetMovies("discover")}
             >
               EXPLORE
@@ -136,11 +135,11 @@ class Nav extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
+export const mapStateToProps = (state) => ({
   user: state.user
 });
 
-const mapDispatchToProps = dispatch => ({
+export const mapDispatchToProps = dispatch => ({
   logoutUser: () => dispatch(logoutUser()),
   resetMovies: fetchCase => dispatch(fetchMovies(fetchCase)),
   displayFavorites: (favorites) => dispatch(addFavoriteMovies(favorites)),
@@ -148,3 +147,12 @@ const mapDispatchToProps = dispatch => ({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Nav);
+
+Nav.propTypes = {
+  isplayFavorites: PropTypes.func,
+  displayWatchlist: PropTypes.func,
+  logoutUser: PropTypes.func,
+  resetMovies: PropTypes.func,
+  user: PropTypes.object
+}
+

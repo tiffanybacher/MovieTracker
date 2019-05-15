@@ -1,0 +1,145 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MovieDetails should match the snapshot 1`] = `
+<div
+  className="MovieDetails-container"
+>
+  <div
+    className="MovieDetails-backdrop"
+    style={
+      Object {
+        "backgroundImage": "url(undefined)",
+      }
+    }
+  >
+    <div
+      className="backdrop-cover"
+    >
+      <article
+        className="MovieDetails"
+      >
+        <img
+          alt="Avengers: Endgame poster"
+          className="card-img"
+          src="https://image.tmdb.org/t/p/w500/or06FN3Dka5tukK1e9sl16pB3iy.jpg"
+        />
+        <div
+          className="card-info"
+        >
+          <div
+            className="card-header"
+          >
+            <div
+              className="card-title-wrap"
+            >
+              <h2
+                className="card-title"
+              >
+                Avengers: Endgame
+              </h2>
+              <p
+                className="card-year"
+              >
+                (
+                2019
+                )
+              </p>
+            </div>
+            <div
+              className="card-btns"
+            >
+              <div
+                className="circle-wrapper"
+              >
+                <svg
+                  className="rating-circle"
+                  viewBox="0 0 36 36"
+                >
+                  <path
+                    className="circle-bg"
+                    d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                  />
+                  <path
+                    className="circle"
+                    d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                    strokeDasharray="86, 100"
+                  />
+                  <text
+                    className="rating-num"
+                    x="9"
+                    y="23"
+                  >
+                    8.6
+                  </text>
+                </svg>
+              </div>
+              <div
+                className="btn-wrapper heart-wrapper"
+                onClick={[Function]}
+              >
+                <i
+                  className="far fa-heart"
+                />
+              </div>
+              <div
+                className="btn-wrapper bookmark-wrapper"
+              >
+                <i
+                  class="far fa-bookmark"
+                />
+              </div>
+            </div>
+          </div>
+          <p
+            className="card-overview"
+          >
+            After the devastating events of Avengers: Infinity War, the universe is in ruins due to the efforts of the Mad Titan, Thanos. With the help of remaining allies, the Avengers must assemble once more in order to undo Thanos' actions and restore order to the universe once and for all, no matter what consequences may be in store.
+          </p>
+          <div
+            className="crew-info"
+          >
+            <div
+              className="crew-member"
+            >
+              <h4>
+                Director
+              </h4>
+              <p>
+                Ms. Director
+              </p>
+            </div>
+            <div
+              className="crew-member"
+            >
+              <h4>
+                Writer
+              </h4>
+              <p>
+                Mr. Writer
+              </p>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+  <CastContainer
+    cast={
+      Array [
+        Object {
+          "character": "Captain America",
+          "headshot": "https://image.tmdb.org/t/p/w500/fdsfdsfsdfa.png",
+          "id": 1234,
+          "name": "Chris Evans",
+        },
+        Object {
+          "character": "Bucky",
+          "headshot": "https://image.tmdb.org/t/p/w500/yeeeeeeet.png",
+          "id": 4321,
+          "name": "Sebastian Stan",
+        },
+      ]
+    }
+  />
+</div>
+`;

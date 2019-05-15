@@ -1,20 +1,23 @@
 import React from 'react';
+import PropTypes from 'prop-types'
 import MovieCard from '../../components/MovieCard/MovieCard';
 import { connect } from 'react-redux';
 import { updateUserFavorites } from '../../actions';
 import { fetchDeleteFavorite } from '../../thunks/fetchDeleteFavorite';
 
-const MovieContainer = (props) => {
+export const MovieContainer = (props) => {
   let header;
   let message;
-  const movieCards = props.movies.map(movie => 
-    <MovieCard 
-      {...movie} 
-      user={props.user} 
-      updateUserFavorites={props.updateUserFavorites} 
+  const movieCards = props.movies.map(movie => (
+    <MovieCard
+      {...movie}
+      user={props.user}
+      history={props.history}
+      updateUserFavorites={props.updateUserFavorites}
       deleteUserFavorite={props.deleteUserFavorite}
-      key={movie.id} 
-    />);
+      key={movie.id}
+    />
+  ));
 
   if (props.location.pathname === '/favorites') {
     header = 'Your Favorite Movies';
@@ -43,14 +46,24 @@ const MovieContainer = (props) => {
   );
 }
 
-const mapStoreToProps = (state) => ({
+export const mapStateToProps = (state) => ({
   movies: state.movies,
   user: state.user
 });
 
-const mapDispatchToProps = (dispatch) => ({
+export const mapDispatchToProps = (dispatch) => ({
   updateUserFavorites: (movieId) => dispatch(updateUserFavorites(movieId)),
   deleteUserFavorite: (userId, movieId) => dispatch(fetchDeleteFavorite(userId, movieId))
 });
 
-export default connect(mapStoreToProps, mapDispatchToProps)(MovieContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(MovieContainer);
+
+MovieContainer.propTypes = {
+  deleteUserFavorite: PropTypes.func,
+  history: PropTypes.object,
+  location: PropTypes.object,
+  match: PropTypes.object,
+  movies: PropTypes.array,
+  updateUserFavorites: PropTypes.func,
+  user: PropTypes.object
+};

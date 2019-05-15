@@ -22,7 +22,7 @@ window.fetch = jest.fn().mockImplementation(() =>
   })
 );
 
-describe('fetchSignIn', () => {
+describe('fetchNewUser', () => {
   it('should call fetch with the correct params', () => {
     fetchNewUser(email, name, password);
     expect(fetch).toHaveBeenCalledWith(request);

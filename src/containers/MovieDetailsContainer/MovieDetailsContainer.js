@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import fetchMoviePeople from '../../api/fetchMovieDetails';
+import fetchMoviePeople from '../../api/fetchMoviePeople';
 import { cleanPeople } from '../../api/cleaners';
 import MovieDetails from '../../components/MovieDetails/MovieDetails';
 import { updateUserFavorites } from '../../actions';
 import { fetchDeleteFavorite } from '../../thunks/fetchDeleteFavorite';
 
-class MovieDetailsContainer extends Component {
+export class MovieDetailsContainer extends Component {
   constructor(props) {
     super(props);
 
@@ -34,6 +35,7 @@ class MovieDetailsContainer extends Component {
           <MovieDetails 
             movieDetails={movie}
             people={people}
+            history={this.props.history}
             user={this.props.user} 
             updateUserFavorites={this.props.updateUserFavorites} 
             deleteUserFavorite={this.props.deleteUserFavorite}
@@ -44,14 +46,22 @@ class MovieDetailsContainer extends Component {
   }
 }
 
-const mapStateToProps = (state) =>  ({
+export const mapStateToProps = (state) =>  ({
   user: state.user,
   movies: state.movies
 });
 
-const mapDispatchToProps = (dispatch) => ({
+export const mapDispatchToProps = (dispatch) => ({
   updateUserFavorites: (movieId) => dispatch(updateUserFavorites(movieId)),
   deleteUserFavorite: (userId, movieId) => dispatch(fetchDeleteFavorite(userId, movieId))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(MovieDetailsContainer);
+
+MovieDetailsContainer.propTypes = {
+  ispatch: PropTypes.func,
+  history: PropTypes.object,
+  location: PropTypes.object,
+  match: PropTypes.object,
+  movies: PropTypes.array
+};

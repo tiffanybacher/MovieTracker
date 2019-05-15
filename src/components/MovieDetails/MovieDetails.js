@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types'
 import { CastContainer } from '../CastContainer/CastContainer';
 import { fetchAddFavorite } from '../../api/fetchAddFavorite';
 
 class MovieDetails extends Component {
-  state = {
-    error: ''
+  constructor() {
+    super() 
+    this.state = {
+      error: ""
+    };
   }
 
   handleFavorite = () => {
@@ -17,7 +21,7 @@ class MovieDetails extends Component {
     } else if (user.id && user.favorites.includes(movieDetails.id)){
       this.props.deleteUserFavorite(user.id, movieDetails.id);
     } else {
-      alert('You must be logged in to favorite a movie')
+      this.props.history.push("/login");
     }
   }
 
@@ -85,30 +89,30 @@ class MovieDetails extends Component {
       <div className="MovieDetails-container">
         <div className="MovieDetails-backdrop" style={backgroundImg}>
           <div className="backdrop-cover">
-          <article className="MovieDetails">
-            <img className="card-img" src={posterImg} alt={`${title} poster`} />
-            <div className="card-info">
-              <div className="card-header">
-                <div className="card-title-wrap">
-                  <h2 className="card-title">{title}</h2>
-                  <p className="card-year">({releaseYear})</p>
-                </div>
-                <div className="card-btns">
-                  <div className="circle-wrapper">{ratingCircle}</div>
-                  <div 
-                    className="btn-wrapper heart-wrapper"
-                    onClick={this.handleFavorite}>
-                    <i className={`${heartClass} fa-heart`} />
+            <article className="MovieDetails">
+              <img className="card-img" src={posterImg} alt={`${title} poster`} />
+              <div className="card-info">
+                <div className="card-header">
+                  <div className="card-title-wrap">
+                    <h2 className="card-title">{title}</h2>
+                    <p className="card-year">({releaseYear})</p>
                   </div>
-                  <div className="btn-wrapper bookmark-wrapper"><i class="far fa-bookmark"></i></div>
+                  <div className="card-btns">
+                    <div className="circle-wrapper">{ratingCircle}</div>
+                    <div 
+                      className="btn-wrapper heart-wrapper"
+                      onClick={this.handleFavorite}>
+                      <i className={`${heartClass} fa-heart`} />
+                    </div>
+                    <div className="btn-wrapper bookmark-wrapper"><i class="far fa-bookmark"></i></div>
+                  </div>
+                </div>
+                <p className="card-overview">{overview}</p>
+                <div className="crew-info">
+                  {directorInfo}
+                  {writerInfo}
                 </div>
               </div>
-              <p className="card-overview">{overview}</p>
-              <div className="crew-info">
-                {directorInfo}
-                {writerInfo}
-              </div>
-            </div>
           </article>
           </div>
         </div>
@@ -119,3 +123,8 @@ class MovieDetails extends Component {
 }
 
 export default MovieDetails;
+
+MovieDetails.propTypes = {
+  ovieDetails: PropTypes.object,
+  people: PropTypes.object
+};

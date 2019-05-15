@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SearchBar should match snapshot 1`] = `
+<form
+  className="SearchBar"
+  onSubmit={[Function]}
+>
+  <div
+    className="clear-search"
+    role="button"
+  >
+    <i
+      className="fas fa-times"
+      onClick={[Function]}
+    />
+  </div>
+  <input
+    className="search-input"
+    onChange={[Function]}
+    placeholder="Search for a movie..."
+    type="text"
+    value=""
+  />
+  <div
+    className="search-icon"
+  >
+    <i
+      className="fas fa-search"
+    />
+  </div>
+</form>
+`;

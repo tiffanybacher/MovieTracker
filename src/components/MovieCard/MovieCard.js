@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from "prop-types";
 import { fetchAddFavorite } from '../../api/fetchAddFavorite';
 
 export class MovieCard extends Component {
@@ -38,7 +39,7 @@ export class MovieCard extends Component {
     } else if (isFavorite && this.props.user.id){
       this.props.deleteUserFavorite(this.props.user.id, this.props.id);
     } else {
-      alert('You must be logged in to favorite a movie')
+      this.props.history.push('/login');
     }
   }
 
@@ -127,3 +128,16 @@ export class MovieCard extends Component {
 } 
 
 export default MovieCard;
+
+MovieCard.propTypes = {
+  backdropImg: PropTypes.string,
+  deleteUserFavorite: PropTypes.func,
+  id: PropTypes.number,
+  overview: PropTypes.string,
+  posterImg: PropTypes.string,
+  rating: PropTypes.number,
+  releaseDate: PropTypes.string,
+  title: PropTypes.string,
+  updateUserFavorites: PropTypes.func,
+  user: PropTypes.object
+};
