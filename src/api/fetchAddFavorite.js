@@ -2,7 +2,15 @@ import { serverUrl } from "./pathNames";
 
 export const fetchAddFavorite = (cardData) => {
   const url = `${serverUrl}/favorites/new`;
-  const { user, title, overview, posterImg, id, rating, releaseDate } = cardData;
+  const { 
+    user, 
+    title, 
+    overview, 
+    posterImg, 
+    id, 
+    rating, 
+    releaseDate 
+  } = cardData;
   let poster_path = posterImg.split('500')[1];
   const body = {
     movie_id: id, 
@@ -28,7 +36,3 @@ export const fetchAddFavorite = (cardData) => {
       }
     });
 };
-
-
-// Add Favorite - /api/users/favorites/new
-// To save a favorite you must send into the body: movie_id, user_id and title, poster_path, release_date, vote_average, overview. Keep in mind the response only gives the new favorite id

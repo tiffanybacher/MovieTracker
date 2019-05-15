@@ -8,11 +8,11 @@ export const cleanAllMovies = (moviesArray) => {
     if (movie.movie_id) {
       id = movie.movie_id;
     } else {
-      id = movie.id
+      id = movie.id;
     }
 
     if (movie.backdrop_path) {
-      backdropImg = `${imageUrl}${movie.backdrop_path}`
+      backdropImg = `${imageUrl}${movie.backdrop_path}`;
     } else {
       backdropImg = '';
     }
