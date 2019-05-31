@@ -8,6 +8,8 @@ An educational project utilizing React, Redux, and Router to create a movie data
 
 ![image](https://user-images.githubusercontent.com/46252038/58738391-c8f67580-83c2-11e9-9782-4c85443443a2.png)
 
+![image](https://user-images.githubusercontent.com/46252038/58738438-f80ce700-83c2-11e9-900d-1919028b5725.png)
+
 ## Installation - Front-End
 Clone the repo - https://github.com/jacobogart/MovieTracker.git
 
