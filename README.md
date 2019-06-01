@@ -4,15 +4,21 @@ An educational project utilizing React, Redux, and Router to create a movie data
 
 ![image](https://user-images.githubusercontent.com/46252038/58738357-ab291080-83c2-11e9-9893-5bdefb0dd159.png)
 
-![image](https://user-images.githubusercontent.com/46252038/58738376-bf6d0d80-83c2-11e9-8849-02beae46931e.png)
+* Login, logout and or create a new account 
 
-![image](https://user-images.githubusercontent.com/46252038/58738391-c8f67580-83c2-11e9-9782-4c85443443a2.png)
+![Account Screenshot](https://media.giphy.com/media/iheZFJ0MMD2YuL4UzH/giphy.gif)
 
-![image](https://user-images.githubusercontent.com/46252038/58738438-f80ce700-83c2-11e9-900d-1919028b5725.png)
+* Easily view and edit favorite movies
 
-![image](https://user-images.githubusercontent.com/46252038/58738492-3e624600-83c3-11e9-9f6e-97b9fb2bb83e.png)
+![Favoriting Screenshot](https://media.giphy.com/media/XHvdNeL4fWXRlMUM0b/giphy.gif)
 
-![image](https://user-images.githubusercontent.com/46252038/58738505-47ebae00-83c3-11e9-977a-e86fe0c92423.png)
+* Prompts user to login when favoriting without an account
+
+![Prompt Screenshot](https://media.giphy.com/media/JRhJjES0pj1rcPX6AF/giphy.gif)
+
+* Search and favorite any movie in The Movie Database
+
+![Search Screenshot](https://media.giphy.com/media/kaTbmsyIVCtiqg7vHp/giphy.gif)
 
 ## Installation - Front-End
 Clone the repo - https://github.com/jacobogart/MovieTracker.git
